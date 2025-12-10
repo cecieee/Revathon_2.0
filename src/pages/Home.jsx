@@ -1,4 +1,5 @@
 import React from "react";
+import Hero from "../sections/Home/Hero";
 import Countdown from "../sections/Home/Countdown";
 import About from "../sections/Home/About";
 import EventDetails from "../sections/Home/EventDetails";
@@ -14,6 +15,7 @@ const Home = () => {
     <>
       <Navbar />
       <main>
+        <Hero />
         <Countdown />
         <About />
         <EventDetails />
