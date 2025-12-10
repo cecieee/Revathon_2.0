@@ -63,14 +63,14 @@ const PivotControls = ({ children, rotationRef, offset = [0, 0, 0] }) => {
 
 export default function RobotModel() {
     const group = useRef();
-    const bodyGroupRef = useRef(); // GSAP moves this
+    const bodyGroupRef = useRef();
     const partsRefs = useRef([]);
     const headInnerRef = useRef();
     const { scene } = useThree();
 
     useFrame((state, delta) => {
 
-        // 1. Head Tracking (Existing)
+        // 1. Head Tracking
         if (headInnerRef.current) {
             const mouseX = state.pointer.x;
             const mouseY = state.pointer.y;
@@ -89,7 +89,6 @@ export default function RobotModel() {
 
     // Load Parts
     const parts = partsList.map((part) => {
-        // eslint-disable-next-line react-hooks/rules-of-hooks
         const { scene } = useGLTF(part.file);
         return { ...part, scene: scene.clone() };
     });
@@ -107,7 +106,7 @@ export default function RobotModel() {
 
             // --- PHASE 1: FALL DOWN ---
 
-            // 1a. Body Group Falls
+            // Body Group Falls
             if (bodyGroupRef.current) {
                 tl.fromTo(bodyGroupRef.current.position,
                     { x: 0, y: 0, z: 0 },
@@ -121,7 +120,7 @@ export default function RobotModel() {
                 );
             }
 
-            // 1b. Parts Fall (partsRefs track the GROUPS or PRIMITIVES)
+            // Parts Fall
             partsRefs.current.forEach((part, index) => {
                 if (!part) return;
 
@@ -144,16 +143,16 @@ export default function RobotModel() {
 
             // --- PHASE 2: REASSEMBLY ---
 
-            // 2a. Body Rises
+            // Body Rises
             if (bodyGroupRef.current) {
                 tl.to(bodyGroupRef.current.position, { x: 0, y: 0, z: 0, duration: 1.5, ease: "back.out(1.2)" }, 2.5);
                 tl.to(bodyGroupRef.current.rotation, { x: 0, y: 0, z: 0, duration: 1.5, ease: "power2.out" }, 2.5);
             }
 
-            // 2b. Parts Rise
+            // Parts Rise
             partsRefs.current.forEach((part, index) => {
                 if (!part) return;
-                const isHead = index === 0; // Check partsList order, index 0 is Head
+                const isHead = index === 0;
                 if (isHead) return;
 
                 const staggerTime = 4.0 + (index * 0.3);
@@ -161,7 +160,7 @@ export default function RobotModel() {
                 tl.to(part.rotation, { x: 0, y: 0, z: 0, duration: 1.5, ease: "power2.out" }, staggerTime);
             });
 
-            // 2c. Head Rises Last
+            // Head Rises Last
             const headGroup = partsRefs.current[0];
             if (headGroup) {
                 tl.to(headGroup.position, { x: 0, y: 0, z: 0, duration: 1.5, ease: "elastic.out(1, 0.5)" }, 8.0);
@@ -175,17 +174,13 @@ export default function RobotModel() {
 
     return (
         <group ref={group} dispose={null} position={[4, -2.5, 0]} rotation={[0, -0.5, 0]} scale={0.5}>
-            {/* Body Wrapper - Controlled by GSAP */}
             <group ref={bodyGroupRef}>
-                {/* Body Inner - Controlled by Idle Animation */}
                 <primitive
                     object={bodyScene}
                 />
             </group>
 
-            {/* Parts - Animated */}
             {parts.map((part, i) => {
-                // SPECIAL HANDLINGS
 
                 // HEAD
                 if (part.name === 'Head') {

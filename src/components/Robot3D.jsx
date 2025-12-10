@@ -7,6 +7,7 @@ const Robot3D = () => {
     return (
         <div className="fixed inset-0 pointer-events-none z-50">
             <Canvas
+                onContextMenu={(e) => e.preventDefault()}
                 camera={{ position: [0, 0, 8], fov: 45 }}
                 gl={{ alpha: true, antialias: true }}
             >
@@ -24,9 +25,6 @@ const Robot3D = () => {
                     <RobotModel />
                     <Environment preset="city" />
                 </Suspense>
-
-                {/* Optional: Add controls for debugging? No, user wants scroll interaction. */}
-                {/* <OrbitControls enableZoom={false} /> */}
             </Canvas>
         </div>
     );
