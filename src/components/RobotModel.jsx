@@ -42,83 +42,90 @@ export default function RobotModel() {
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
-            // Setup Timeline
-            // Timings (arbitrary units, mapped to scroll distance):
-            // 0.0 - 0.5: Stay Assembled (Hero "Safe Zone")
-            // 0.5 - 2.0: Explode Out (Leaving Hero)
-            // 2.0 - 10.0: Reassemble sequentially (Scrolling down)
-
             const tl = gsap.timeline({
                 scrollTrigger: {
-                    trigger: 'body', // Whole page
+                    trigger: 'body',
                     start: 'top top',
                     end: 'bottom bottom',
-                    scrub: 1, // Smooth scrubbing
+                    scrub: 1,
                 },
             });
 
+            // --- PHASE 1: FALL DOWN (0.5 to 2.0) ---
+            // Everything falls to y: -8, with random x spread
+
+            // 1a. Body Falls
+            tl.fromTo(bodyRef.current.position,
+                { x: 0, y: 0, z: 0 },
+                { x: 0, y: -10, z: 0, duration: 1.5, ease: "power2.in" },
+                0.5
+            );
+            tl.fromTo(bodyRef.current.rotation,
+                { x: 0, y: 0, z: 0 },
+                { x: Math.PI / 4, y: 0, z: 0.2, duration: 1.5, ease: "power2.in" },
+                0.5
+            );
+
+            // 1b. Parts Fall
             partsRefs.current.forEach((part, index) => {
                 if (!part) return;
 
-                // Random explode position
-                const randomX = (Math.random() - 0.5) * 15;
-                const randomY = (Math.random() - 0.5) * 15;
-                const randomZ = (Math.random() - 0.5) * 10;
+                // Random scatter floor positions
+                const randomX = (Math.random() - 0.5) * 8; // Spread on floor
+                const randomZ = (Math.random() - 0.5) * 5;
+                const randomRot = Math.random() * Math.PI;
 
-                // 1. Explode OUT (Delayed start at 0.5)
-                // Use fromTo to FORCE start at 0,0,0 (Assembled)
                 tl.fromTo(part.position,
                     { x: 0, y: 0, z: 0 },
                     {
                         x: randomX,
-                        y: randomY,
+                        y: -10, // Floor
                         z: randomZ,
                         duration: 1.5,
-                        ease: "power2.inOut"
+                        ease: "power2.in"
                     },
                     0.5
                 );
 
-                // Optional: slight random rotation on explode
                 tl.fromTo(part.rotation,
                     { x: 0, y: 0, z: 0 },
-                    {
-                        x: (Math.random() - 0.5) * 1,
-                        y: (Math.random() - 0.5) * 1,
-                        z: (Math.random() - 0.5) * 1,
-                        duration: 1.5,
-                        ease: "power2.inOut"
-                    },
+                    { x: randomRot, y: randomRot, z: randomRot, duration: 1.5, ease: "power1.in" },
                     0.5
                 );
-
-                // Hide briefly
-                tl.to(part, {
-                    visible: false,
-                    duration: 0.1
-                }, 2.0);
-
-                // 2. Assemble IN (Staggered)
-                const assemblyStart = 2.5 + (index * 0.5); // Spread over the rest of the scroll
-
-                // Reset to visible
-                tl.set(part, { visible: true }, assemblyStart);
-
-                // Animate back to origin
-                tl.to(part.position, {
-                    x: 0,
-                    y: 0,
-                    z: 0,
-                    duration: 2,
-                    ease: "elastic.out(1, 0.7)",
-                }, assemblyStart);
-
-                // Rotate in
-                tl.to(part.rotation,
-                    { x: 0, y: 0, z: 0, duration: 2, ease: "power2.out" },
-                    assemblyStart
-                );
             });
+
+
+            // --- PHASE 2: REASSEMBLY (2.5 onwards) ---
+
+            // 2a. Body Rises First (2.5 -> 4.0)
+            tl.to(bodyRef.current.position, { x: 0, y: 0, z: 0, duration: 1.5, ease: "back.out(1.2)" }, 2.5);
+            tl.to(bodyRef.current.rotation, { x: 0, y: 0, z: 0, duration: 1.5, ease: "power2.out" }, 2.5);
+
+            // 2b. Limbs Rise (4.0 -> 8.0)
+            // Filter out Head (index 0 in partsList is Head)
+            // Or strictly check name if possible, but we know index 0 is Head from partsList definition
+
+            partsRefs.current.forEach((part, index) => {
+                if (!part) return;
+
+                // Check if this is the Head (index 0 based on partsList)
+                // partsList[0] is Head.
+                const isHead = index === 0;
+
+                if (isHead) return; // Skip head for now
+
+                const staggerTime = 4.0 + (index * 0.3); // Start after body
+
+                tl.to(part.position, { x: 0, y: 0, z: 0, duration: 1.5, ease: "back.out(1.7)" }, staggerTime);
+                tl.to(part.rotation, { x: 0, y: 0, z: 0, duration: 1.5, ease: "power2.out" }, staggerTime);
+            });
+
+            // 2c. Head Rises Last (8.0 -> 9.5)
+            const headRef = partsRefs.current[0];
+            if (headRef) {
+                tl.to(headRef.position, { x: 0, y: 0, z: 0, duration: 1.5, ease: "elastic.out(1, 0.5)" }, 8.0);
+                tl.to(headRef.rotation, { x: 0, y: 0, z: 0, duration: 1.5, ease: "power2.out" }, 8.0);
+            }
 
         }, scene);
 
