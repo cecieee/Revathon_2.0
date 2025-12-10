@@ -1,4 +1,5 @@
 import React from "react";
+import Robot3D from "../components/Robot3D";
 import Hero from "../sections/Home/Hero";
 import Countdown from "../sections/Home/Countdown";
 import About from "../sections/Home/About";
@@ -14,6 +15,7 @@ const Home = () => {
   return (
     <>
       <Navbar />
+      <Robot3D />
       <main>
         <Hero />
         <Countdown />

@@ -2,7 +2,8 @@ import React, { useLayoutEffect, useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useThree } from '@react-three/fiber';
+import { useThree, useFrame } from '@react-three/fiber';
+import * as THREE from 'three';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,20 +25,35 @@ const partsList = [
 
 export default function RobotModel() {
     const group = useRef();
-    const bodyRef = useRef();
+    const bodyGroupRef = useRef(); // GSAP moves this
     const partsRefs = useRef([]);
+    const headInnerRef = useRef();
     const { scene } = useThree();
+
+    useFrame((state, delta) => {
+
+        // 1. Head Tracking (Existing)
+        if (headInnerRef.current) {
+            const mouseX = state.pointer.x;
+            const mouseY = state.pointer.y;
+            const targetRotationY = mouseX * 0.8;
+            const targetRotationX = -mouseY * 0.5;
+            headInnerRef.current.rotation.y = THREE.MathUtils.lerp(headInnerRef.current.rotation.y, targetRotationY, 0.1);
+            headInnerRef.current.rotation.x = THREE.MathUtils.lerp(headInnerRef.current.rotation.x, targetRotationX, 0.1);
+        }
+
+
+
+    });
 
     // Load Body
     const { scene: bodyScene } = useGLTF('/models/body.glb');
 
     // Load Parts
-    // We use useGLTF inside the component for simplicity, 
-    // though preloading in parent is better for perf, this is fine for now.
     const parts = partsList.map((part) => {
         // eslint-disable-next-line react-hooks/rules-of-hooks
         const { scene } = useGLTF(part.file);
-        return { ...part, scene: scene.clone() }; // Clone to avoid mutation issues if reused
+        return { ...part, scene: scene.clone() };
     });
 
     useLayoutEffect(() => {
@@ -51,39 +67,33 @@ export default function RobotModel() {
                 },
             });
 
-            // --- PHASE 1: FALL DOWN (0.5 to 2.0) ---
-            // Everything falls to y: -8, with random x spread
+            // --- PHASE 1: FALL DOWN ---
 
-            // 1a. Body Falls
-            tl.fromTo(bodyRef.current.position,
-                { x: 0, y: 0, z: 0 },
-                { x: 0, y: -10, z: 0, duration: 1.5, ease: "power2.in" },
-                0.5
-            );
-            tl.fromTo(bodyRef.current.rotation,
-                { x: 0, y: 0, z: 0 },
-                { x: Math.PI / 4, y: 0, z: 0.2, duration: 1.5, ease: "power2.in" },
-                0.5
-            );
+            // 1a. Body Group Falls
+            if (bodyGroupRef.current) {
+                tl.fromTo(bodyGroupRef.current.position,
+                    { x: 0, y: 0, z: 0 },
+                    { x: 0, y: -10, z: 0, duration: 1.5, ease: "power2.in" },
+                    0.5
+                );
+                tl.fromTo(bodyGroupRef.current.rotation,
+                    { x: 0, y: 0, z: 0 },
+                    { x: Math.PI / 4, y: 0, z: 0.2, duration: 1.5, ease: "power2.in" },
+                    0.5
+                );
+            }
 
-            // 1b. Parts Fall
+            // 1b. Parts Fall (partsRefs track the GROUPS or PRIMITIVES)
             partsRefs.current.forEach((part, index) => {
                 if (!part) return;
 
-                // Random scatter floor positions
-                const randomX = (Math.random() - 0.5) * 8; // Spread on floor
+                const randomX = (Math.random() - 0.5) * 8;
                 const randomZ = (Math.random() - 0.5) * 5;
                 const randomRot = Math.random() * Math.PI;
 
                 tl.fromTo(part.position,
                     { x: 0, y: 0, z: 0 },
-                    {
-                        x: randomX,
-                        y: -10, // Floor
-                        z: randomZ,
-                        duration: 1.5,
-                        ease: "power2.in"
-                    },
+                    { x: randomX, y: -10, z: randomZ, duration: 1.5, ease: "power2.in" },
                     0.5
                 );
 
@@ -94,37 +104,30 @@ export default function RobotModel() {
                 );
             });
 
+            // --- PHASE 2: REASSEMBLY ---
 
-            // --- PHASE 2: REASSEMBLY (2.5 onwards) ---
+            // 2a. Body Rises
+            if (bodyGroupRef.current) {
+                tl.to(bodyGroupRef.current.position, { x: 0, y: 0, z: 0, duration: 1.5, ease: "back.out(1.2)" }, 2.5);
+                tl.to(bodyGroupRef.current.rotation, { x: 0, y: 0, z: 0, duration: 1.5, ease: "power2.out" }, 2.5);
+            }
 
-            // 2a. Body Rises First (2.5 -> 4.0)
-            tl.to(bodyRef.current.position, { x: 0, y: 0, z: 0, duration: 1.5, ease: "back.out(1.2)" }, 2.5);
-            tl.to(bodyRef.current.rotation, { x: 0, y: 0, z: 0, duration: 1.5, ease: "power2.out" }, 2.5);
-
-            // 2b. Limbs Rise (4.0 -> 8.0)
-            // Filter out Head (index 0 in partsList is Head)
-            // Or strictly check name if possible, but we know index 0 is Head from partsList definition
-
+            // 2b. Parts Rise
             partsRefs.current.forEach((part, index) => {
                 if (!part) return;
+                const isHead = index === 0; // Check partsList order, index 0 is Head
+                if (isHead) return;
 
-                // Check if this is the Head (index 0 based on partsList)
-                // partsList[0] is Head.
-                const isHead = index === 0;
-
-                if (isHead) return; // Skip head for now
-
-                const staggerTime = 4.0 + (index * 0.3); // Start after body
-
+                const staggerTime = 4.0 + (index * 0.3);
                 tl.to(part.position, { x: 0, y: 0, z: 0, duration: 1.5, ease: "back.out(1.7)" }, staggerTime);
                 tl.to(part.rotation, { x: 0, y: 0, z: 0, duration: 1.5, ease: "power2.out" }, staggerTime);
             });
 
-            // 2c. Head Rises Last (8.0 -> 9.5)
-            const headRef = partsRefs.current[0];
-            if (headRef) {
-                tl.to(headRef.position, { x: 0, y: 0, z: 0, duration: 1.5, ease: "elastic.out(1, 0.5)" }, 8.0);
-                tl.to(headRef.rotation, { x: 0, y: 0, z: 0, duration: 1.5, ease: "power2.out" }, 8.0);
+            // 2c. Head Rises Last
+            const headGroup = partsRefs.current[0];
+            if (headGroup) {
+                tl.to(headGroup.position, { x: 0, y: 0, z: 0, duration: 1.5, ease: "elastic.out(1, 0.5)" }, 8.0);
+                tl.to(headGroup.rotation, { x: 0, y: 0, z: 0, duration: 1.5, ease: "power2.out" }, 8.0);
             }
 
         }, scene);
@@ -134,20 +137,36 @@ export default function RobotModel() {
 
     return (
         <group ref={group} dispose={null} position={[4, -2.5, 0]} rotation={[0, -0.5, 0]} scale={0.5}>
-            {/* Body - Always visible */}
-            <primitive
-                ref={bodyRef}
-                object={bodyScene}
-            />
+            {/* Body Wrapper - Controlled by GSAP */}
+            <group ref={bodyGroupRef}>
+                {/* Body Inner - Controlled by Idle Animation */}
+                <primitive
+                    object={bodyScene}
+                />
+            </group>
 
             {/* Parts - Animated */}
-            {parts.map((part, i) => (
-                <primitive
-                    key={part.name}
-                    ref={(el) => (partsRefs.current[i] = el)}
-                    object={part.scene}
-                />
-            ))}
+            {parts.map((part, i) => {
+                // SPECIAL HANDLINGS
+
+                // HEAD
+                if (part.name === 'Head') {
+                    return (
+                        <group key={part.name} ref={(el) => (partsRefs.current[i] = el)}>
+                            <primitive object={part.scene} ref={headInnerRef} />
+                        </group>
+                    );
+                }
+
+                // DEFAULT PART
+                return (
+                    <primitive
+                        key={part.name}
+                        ref={(el) => (partsRefs.current[i] = el)}
+                        object={part.scene}
+                    />
+                );
+            })}
         </group>
     );
 }
