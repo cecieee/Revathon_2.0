@@ -23,6 +23,44 @@ const partsList = [
     { name: 'R_Thigh', file: '/models/r_thigh.glb' },
 ];
 
+// Helper to center the rotation pivot
+const PivotControls = ({ children, rotationRef, offset = [0, 0, 0] }) => {
+    const group = useRef();
+    const [position, setPosition] = React.useState([0, 0, 0]);
+
+    useLayoutEffect(() => {
+        if (group.current) {
+            const box = new THREE.Box3().setFromObject(group.current);
+            const center = new THREE.Vector3();
+            box.getCenter(center);
+            setPosition([
+                center.x + offset[0],
+                center.y + offset[1],
+                center.z + offset[2]
+            ]);
+        }
+    }, [offset]);
+
+    // We render the children once to measure them (in the group),
+    // then we wrap them in the pivot logic using the calculated center.
+    // Actually, simpler: Wrap the content in a group shifted by -center, 
+    // and put that inside a group shifted by +center (which we rotate).
+
+    // However, since we can't unmount/remount easily without flickering,
+    // let's try a stable approach.
+    // The "children" is the primitive. It's already loaded.
+
+    return (
+        <group position={position} ref={rotationRef}>
+            <group position={[-position[0], -position[1], -position[2]]}>
+                <group ref={group}>
+                    {children}
+                </group>
+            </group>
+        </group>
+    );
+};
+
 export default function RobotModel() {
     const group = useRef();
     const bodyGroupRef = useRef(); // GSAP moves this
@@ -153,7 +191,9 @@ export default function RobotModel() {
                 if (part.name === 'Head') {
                     return (
                         <group key={part.name} ref={(el) => (partsRefs.current[i] = el)}>
-                            <primitive object={part.scene} ref={headInnerRef} />
+                            <PivotControls rotationRef={headInnerRef} offset={[0, -1, 0]}>
+                                <primitive object={part.scene} position={[-0.05, 0, 0]} />
+                            </PivotControls>
                         </group>
                     );
                 }
