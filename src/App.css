@@ -1,11 +1,29 @@
 @import "tailwindcss";
 
-/* Smooth scrolling for the entire site */
+@font-face {
+  font-family: "Mechsuit";
+  src: url("/font/Mechsuit.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --primary: #ff7046;
+  --secondary: #3abfbc;
+  --background: #0b0b0b;
+  --font-primary: "Mechsuit", sans-serif;
+}
+
+body {
+  background-color: var(--background);
+  color: #ffffff;
+  font-family: var(--font-primary);
+}
+
 html {
   scroll-behavior: smooth;
 }
 
-/* Optional: Custom scrollbar for a more polished look */
 ::-webkit-scrollbar {
   width: 8px;
 }
