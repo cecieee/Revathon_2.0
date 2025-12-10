@@ -4,7 +4,7 @@ import Robot3D from "../../components/Robot3D";
 const Hero = () => {
     return (
         <>
-            {/* <Robot3D /> */}
+            <Robot3D />
             <section
                 id="hero"
                 className="min-h-screen flex items-center justify-center text-black relative overflow-hidden"
