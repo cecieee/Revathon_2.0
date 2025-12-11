@@ -1,1 +1,20 @@
 @import 'tailwindcss';
+
+@theme{
+    --color-primary: #3ABFBC;
+    --color-secondary: #FF7046;
+}
+
+@font-face {
+  font-family: 'Mechsuit';
+  src: url('/assets/fonts/mechsuit/Mechsuit.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  font-family: 'Mechsuit', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+  color: #ffffff;
+}
