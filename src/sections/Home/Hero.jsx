@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Canvas } from "@react-three/fiber";
+import { Sparkles } from "@react-three/drei";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -28,6 +30,26 @@ const Hero = () => {
       id="hero"
       className="min-h-screen flex items-center relative overflow-hidden bg-transparent"
     >
+      <div className="absolute inset-0 -z-20">
+        <Canvas camera={{ position: [0, 0, 1] }}>
+          <Sparkles
+            count={25}
+            scale={1}
+            size={4}
+            speed={0.4}
+            opacity={0.5}
+            color="#3abfbc"
+          /><Sparkles
+            count={25}
+            scale={1}
+            size={4}
+            speed={0.4}
+            opacity={0.5}
+            color="#ff7046"
+          />
+        </Canvas>
+      </div>
+
       <div className="absolute top-20 right-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
       <div className="absolute bottom-20 left-20 w-96 h-96 bg-secondary/10 rounded-full blur-3xl -z-10 animate-pulse delay-700"></div>
 
