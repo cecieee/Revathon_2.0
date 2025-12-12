@@ -49,7 +49,7 @@ const Navbar = () => {
             <button
               key={link.name}
               onClick={() => handleScrollTo(link.target)}
-              className="relative text-white opacity-80 hover:opacity-100 hover:text-primary transition-all duration-300 group text-sm uppercase tracking-wider"
+              className="relative text-white opacity-80 hover:opacity-100 hover:text-primary transition-all duration-300 group text-sm uppercase tracking-wider cursor-pointer"
             >
               {link.name}
               <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-secondary transition-all duration-300 group-hover:w-full"></span>
