@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from 'react';
+import React, { useLayoutEffect, useRef, useState, useEffect } from 'react';
 import { useGLTF } from '@react-three/drei';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -23,8 +23,9 @@ const partsList = [
     { name: 'R_Thigh', file: '/models/r_thigh.glb' },
 ];
 
-// Helper to center the rotation pivot
-const PivotControls = ({ children, rotationRef, offset = [0, 0, 0] }) => {
+const HEAD_OFFSET = [0, -1, 0];
+
+const PivotControls = ({ children, rotationRef, offset = HEAD_OFFSET }) => {
     const group = useRef();
     const [position, setPosition] = React.useState([0, 0, 0]);
 
@@ -41,15 +42,6 @@ const PivotControls = ({ children, rotationRef, offset = [0, 0, 0] }) => {
         }
     }, [offset]);
 
-    // We render the children once to measure them (in the group),
-    // then we wrap them in the pivot logic using the calculated center.
-    // Actually, simpler: Wrap the content in a group shifted by -center, 
-    // and put that inside a group shifted by +center (which we rotate).
-
-    // However, since we can't unmount/remount easily without flickering,
-    // let's try a stable approach.
-    // The "children" is the primitive. It's already loaded.
-
     return (
         <group position={position} ref={rotationRef}>
             <group position={[-position[0], -position[1], -position[2]]}>
@@ -62,27 +54,39 @@ const PivotControls = ({ children, rotationRef, offset = [0, 0, 0] }) => {
 };
 
 export default function RobotModel() {
+    // Load Cubes Model
+    const { scene: cubesScene } = useGLTF('/models/robot_cubes.glb');
+
+    // Refs for animation
+    const cubesRef = useRef([]);
+    const robotCubesRef = useRef([]); // Array of top-level objects
     const group = useRef();
     const bodyGroupRef = useRef();
     const partsRefs = useRef([]);
     const headInnerRef = useRef();
     const { scene } = useThree();
 
-    useFrame((state, delta) => {
 
-        // 1. Head Tracking
-        if (headInnerRef.current) {
-            const mouseX = state.pointer.x;
-            const mouseY = state.pointer.y;
-            const targetRotationY = mouseX * 0.8;
-            const targetRotationX = -mouseY * 0.5;
-            headInnerRef.current.rotation.y = THREE.MathUtils.lerp(headInnerRef.current.rotation.y, targetRotationY, 0.1);
-            headInnerRef.current.rotation.x = THREE.MathUtils.lerp(headInnerRef.current.rotation.x, targetRotationX, 0.1);
+    useLayoutEffect(() => {
+        if (cubesScene) {
+            // Traverse and identify parts
+            const foundCubes = [];
+            const foundRobot = [];
+
+            // Iterate only top-level children to avoid double-transforms on hierarchies
+            cubesScene.children.forEach((child) => {
+                if (child.name.toLowerCase().includes('cube')) {
+                    foundCubes.push(child);
+                } else {
+                    // Treat all non-cube top-level nodes as part of the robot group
+                    foundRobot.push(child);
+                }
+            });
+
+            cubesRef.current = foundCubes;
+            robotCubesRef.current = foundRobot;
         }
-
-
-
-    });
+    }, [cubesScene]);
 
     // Load Body
     const { scene: bodyScene } = useGLTF('/models/body.glb');
@@ -93,8 +97,33 @@ export default function RobotModel() {
         return { ...part, scene: scene.clone() };
     });
 
+    useFrame((state, delta) => {
+        // 1. Head Tracking
+        if (headInnerRef.current) {
+            const mouseX = state.pointer.x;
+            const mouseY = state.pointer.y;
+            const targetRotationY = mouseX * 0.8;
+            const targetRotationX = -mouseY * 0.5;
+            headInnerRef.current.rotation.y = THREE.MathUtils.lerp(headInnerRef.current.rotation.y, targetRotationY, 0.1);
+            headInnerRef.current.rotation.x = THREE.MathUtils.lerp(headInnerRef.current.rotation.x, targetRotationX, 0.1);
+        }
+    });
+
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
+            // Initial Setups for Parts (Hide them in void)
+            if (bodyGroupRef.current) {
+                gsap.set(bodyGroupRef.current.position, { y: -20 });
+                gsap.set(bodyGroupRef.current.rotation, { y: Math.PI * 2 });
+            }
+            partsRefs.current.forEach(part => {
+                if (part) {
+                    gsap.set(part.position, { y: -20, x: (Math.random() - 0.5) * 10, z: (Math.random() - 0.5) * 10 });
+                    gsap.set(part.rotation, { x: Math.random() * Math.PI, z: Math.random() * Math.PI });
+                }
+            });
+
+
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: 'body',
@@ -104,104 +133,83 @@ export default function RobotModel() {
                 },
             });
 
-            // --- PHASE 1: FALL DOWN ---
+            // PHASE 1: CUBES & LEANING SCENE FALL
 
-            // Body Group Falls
-            if (bodyGroupRef.current) {
-                tl.fromTo(bodyGroupRef.current.position,
-                    { x: 0, y: 0, z: 0 },
-                    { x: 0, y: -10, z: 0, duration: 1.5, ease: "power2.in" },
-                    0.5
-                );
-                tl.fromTo(bodyGroupRef.current.rotation,
-                    { x: 0, y: 0, z: 0 },
-                    { x: Math.PI / 4, y: 0, z: 0.2, duration: 1.5, ease: "power2.in" },
-                    0.5
-                );
+            // Cubes Fall
+            if (cubesRef.current.length > 0) {
+                cubesRef.current.forEach((cube) => {
+                    tl.to(cube.position, { y: -20, duration: 2, ease: "power2.in" }, 0);
+                });
             }
 
-            // Parts Fall
-            partsRefs.current.forEach((part, index) => {
-                if (!part) return;
+            // Robot (from Cubes model) Falls
+            if (robotCubesRef.current && robotCubesRef.current.length > 0) {
+                robotCubesRef.current.forEach((obj) => {
+                    // Animate top-level objects ONLY
+                    tl.to(obj.position, { y: -20, duration: 2, ease: "power2.in" }, 0.2);
+                });
+            }
 
-                const randomX = (Math.random() - 0.5) * 8;
-                const randomZ = (Math.random() - 0.5) * 5;
-                const randomRot = Math.random() * Math.PI;
 
-                tl.fromTo(part.position,
-                    { x: 0, y: 0, z: 0 },
-                    { x: randomX, y: -10, z: randomZ, duration: 1.5, ease: "power2.in" },
-                    0.5
-                );
+            // --- PHASE 2: REASSEMBLY (Come from Void) ---
+            // 15% - 100%
 
-                tl.fromTo(part.rotation,
-                    { x: 0, y: 0, z: 0 },
-                    { x: randomRot, y: randomRot, z: randomRot, duration: 1.5, ease: "power1.in" },
-                    0.5
-                );
+            // 1. Body Center Arrives (15% - 30%)
+            if (bodyGroupRef.current) {
+                tl.to(bodyGroupRef.current.position, { x: 0, y: 0, z: 0, duration: 2, ease: "back.out(1.2)" }, 3);
+                tl.to(bodyGroupRef.current.rotation, { x: 0, y: 0, z: 0, duration: 2, ease: "power2.out" }, 3);
+            }
+
+            // 2. Limbs Arrive (30% - 85%)
+            // Filter Head out
+            const limbs = partsList.map((p, i) => ({ ...p, index: i })).filter(p => p.name !== 'Head');
+
+            limbs.forEach((limb, i) => {
+                const partRef = partsRefs.current[limb.index];
+                if (!partRef) return;
+
+                // Stagger them
+                const startTime = 5 + (i * 0.5);
+
+                tl.to(partRef.position, { x: 0, y: 0, z: 0, duration: 2, ease: "back.out(1.5)" }, startTime);
+                tl.to(partRef.rotation, { x: 0, y: 0, z: 0, duration: 2, ease: "power2.out" }, startTime);
             });
 
-            // --- PHASE 2: REASSEMBLY ---
-
-            // Body Rises
-            if (bodyGroupRef.current) {
-                tl.to(bodyGroupRef.current.position, { x: 0, y: 0, z: 0, duration: 1.5, ease: "back.out(1.2)" }, 2.5);
-                tl.to(bodyGroupRef.current.rotation, { x: 0, y: 0, z: 0, duration: 1.5, ease: "power2.out" }, 2.5);
+            // 3. Head Arrives (85% - 95%)
+            const headIndex = partsList.findIndex(p => p.name === 'Head');
+            const headRef = partsRefs.current[headIndex];
+            if (headRef) {
+                tl.to(headRef.position, { x: 0, y: 0, z: 0, duration: 2, ease: "elastic.out(1, 0.5)" }, 12);
+                tl.to(headRef.rotation, { x: 0, y: 0, z: 0, duration: 2, ease: "power2.out" }, 12);
             }
 
-            // Parts Rise
-            partsRefs.current.forEach((part, index) => {
-                if (!part) return;
-                const isHead = index === 0;
-                if (isHead) return;
-
-                const staggerTime = 4.0 + (index * 0.3);
-                tl.to(part.position, { x: 0, y: 0, z: 0, duration: 1.5, ease: "back.out(1.7)" }, staggerTime);
-                tl.to(part.rotation, { x: 0, y: 0, z: 0, duration: 1.5, ease: "power2.out" }, staggerTime);
-            });
-
-            // Head Rises Last
-            const headGroup = partsRefs.current[0];
-            if (headGroup) {
-                tl.to(headGroup.position, { x: 0, y: 0, z: 0, duration: 1.5, ease: "elastic.out(1, 0.5)" }, 8.0);
-                tl.to(headGroup.rotation, { x: 0, y: 0, z: 0, duration: 1.5, ease: "power2.out" }, 8.0);
-            }
-
-        }, scene);
+        });
 
         return () => ctx.revert();
-    }, [scene]);
+    }, [scene, cubesScene]);
 
     return (
         <group ref={group} dispose={null} position={[4, -2.5, 0]} rotation={[0, -0.5, 0]} scale={0.5}>
-            <group ref={bodyGroupRef}>
-                <primitive
-                    object={bodyScene}
-                />
-            </group>
 
-            {parts.map((part, i) => {
+            {/* MODEL 1: Cubes Leaning Robot (Always rendered, falls down) */}
+            <primitive object={cubesScene} />
 
-                // HEAD
-                if (part.name === 'Head') {
-                    return (
-                        <group key={part.name} ref={(el) => (partsRefs.current[i] = el)}>
-                            <PivotControls rotationRef={headInnerRef} offset={[0, -1, 0]}>
+            {/* MODEL 2: Assembling Robot (Always rendered, starts in void) */}
+            <group>
+                <group ref={bodyGroupRef}>
+                    <primitive object={bodyScene} />
+                </group>
+                {parts.map((part, i) => {
+                    if (part.name === 'Head') {
+                        return <group key={part.name} ref={el => partsRefs.current[i] = el}>
+                            <PivotControls rotationRef={headInnerRef} offset={HEAD_OFFSET}>
                                 <primitive object={part.scene} position={[-0.05, 0, 0]} />
                             </PivotControls>
                         </group>
-                    );
-                }
-
-                // DEFAULT PART
-                return (
-                    <primitive
-                        key={part.name}
-                        ref={(el) => (partsRefs.current[i] = el)}
-                        object={part.scene}
-                    />
-                );
-            })}
+                    }
+                    return <primitive key={part.name} ref={el => partsRefs.current[i] = el} object={part.scene} />
+                })}
+            </group>
         </group>
     );
 }
