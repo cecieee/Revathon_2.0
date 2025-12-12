@@ -60,6 +60,7 @@ export default function RobotModel() {
     // Refs for animation
     const cubesRef = useRef([]);
     const robotCubesRef = useRef([]); // Array of top-level objects
+    const cubeRobotHeadRef = useRef(); // Ref for the head in the cubes model
     const group = useRef();
     const bodyGroupRef = useRef();
     const partsRefs = useRef([]);
@@ -80,11 +81,36 @@ export default function RobotModel() {
                 } else {
                     // Treat all non-cube top-level nodes as part of the robot group
                     foundRobot.push(child);
+                    // Identify Head
+                    if (child.name.toLowerCase().includes('head')) {
+                        cubeRobotHeadRef.current = child;
+                    }
                 }
             });
 
             cubesRef.current = foundCubes;
             robotCubesRef.current = foundRobot;
+        }
+    }, [cubesScene]);
+
+    // Animate Head in Hero Section
+    useEffect(() => {
+        if (cubeRobotHeadRef.current) {
+            const tl = gsap.timeline({ repeat: -1, repeatDelay: 3 });
+
+            // Rotate RIGHT (Opposite direction)
+            tl.to(cubeRobotHeadRef.current.rotation, {
+                y: "-=0.5",
+                duration: 1,
+                ease: "power2.inOut"
+            })
+                .to(cubeRobotHeadRef.current.rotation, {
+                    y: "+=0.5",
+                    duration: 1,
+                    ease: "power2.inOut"
+                }, "+=0.5"); // Wait 0.5s before rotating back
+
+            return () => tl.kill();
         }
     }, [cubesScene]);
 
@@ -98,7 +124,7 @@ export default function RobotModel() {
     });
 
     useFrame((state, delta) => {
-        // 1. Head Tracking
+        // 1. Head Tracking (For the assembled robot)
         if (headInnerRef.current) {
             const mouseX = state.pointer.x;
             const mouseY = state.pointer.y;
