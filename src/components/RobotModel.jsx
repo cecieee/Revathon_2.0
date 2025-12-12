@@ -188,8 +188,13 @@ export default function RobotModel() {
         return () => ctx.revert();
     }, [scene, cubesScene]);
 
+    // Safe Responsive Logic
+    const isMobile = window.innerWidth < 768;
+    const position = isMobile ? [0.75, -3.0, 0] : [4, -2.5, 0];
+    const scale = isMobile ? 0.35 : 0.5;
+
     return (
-        <group ref={group} dispose={null} position={[4, -2.5, 0]} rotation={[0, -0.5, 0]} scale={0.5}>
+        <group ref={group} dispose={null} position={position} rotation={[0, -0.2, 0]} scale={scale}>
 
             {/* MODEL 1: Cubes Leaning Robot (Always rendered, falls down) */}
             <primitive object={cubesScene} />
