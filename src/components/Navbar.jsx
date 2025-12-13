@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -12,6 +15,22 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Handle scroll to section if state is passed from another route
+  useEffect(() => {
+    if (location.pathname === '/' && location.state?.scrollTo) {
+      const element = document.getElementById(location.state.scrollTo);
+      if (element) {
+        // wrapper to ensure page is loaded
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+      // Clear state to prevent re-scrolling on refresh/update
+      navigate(location.pathname, { replace: true, state: {} });
+    }
+  }, [location, navigate]);
+
+
   const navLinks = [
     { name: "Home", target: "hero" },
     { name: "About", target: "about" },
@@ -20,11 +39,24 @@ const Navbar = () => {
     { name: "Register", target: "register" },
   ];
 
-  const handleScrollTo = (targetId) => {
-    const element = document.getElementById(targetId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+  const handleNavigation = (link) => {
+    if (link.path) {
+      navigate(link.path);
       setIsOpen(false);
+      return;
+    }
+
+    if (link.target) {
+      if (location.pathname === '/') {
+        const element = document.getElementById(link.target);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+          setIsOpen(false);
+        }
+      } else {
+        navigate('/', { state: { scrollTo: link.target } });
+        setIsOpen(false);
+      }
     }
   };
 
@@ -38,7 +70,7 @@ const Navbar = () => {
         <div
           className="text-2xl font-bold tracking-widest cursor-pointer text-white hover:text-primary transition-colors duration-300"
           style={{ fontFamily: "Mechsuit" }}
-          onClick={() => handleScrollTo("hero")}
+          onClick={() => handleNavigation({ target: "hero" })}
         >
           REVATHON <span className="text-primary">2.0</span>
         </div>
@@ -48,7 +80,7 @@ const Navbar = () => {
           {navLinks.map((link) => (
             <button
               key={link.name}
-              onClick={() => handleScrollTo(link.target)}
+              onClick={() => handleNavigation(link)}
               className="relative text-white opacity-80 hover:opacity-100 hover:text-primary transition-all duration-300 group text-sm uppercase tracking-wider cursor-pointer"
             >
               {link.name}
@@ -87,7 +119,7 @@ const Navbar = () => {
         {navLinks.map((link) => (
           <button
             key={link.name}
-            onClick={() => handleScrollTo(link.target)}
+            onClick={() => handleNavigation(link)}
             className="text-2xl text-white font-bold hover:text-primary transition-colors duration-300 tracking-widest uppercase"
           >
             {link.name}
