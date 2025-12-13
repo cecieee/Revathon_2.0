@@ -4,7 +4,7 @@ const BehindTheScenes = () => {
   return (
     <section className="py-20 ">
       <div className="container w-[90vw] m-auto mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-16 text-white">Behind The <span className="text-primary">Scenes</span></h2>
+        <h2 className="text-4xl font-bold text-center mb-16 text-white">Behind The <span className="text-[#3abfbc]">Scenes</span></h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 h-96 md:h-[600px]">
             {/* Large Image */}
             <div className="col-span-2 row-span-2 bg-zinc-800 rounded-lg overflow-hidden relative group">

@@ -1,12 +1,12 @@
 import React from "react";
 
-const WinnerFrame = ({ children, className = "", color = "primary" }) => {
+const WinnerFrame = ({ children, className = "", color = "#3ABFBC" }) => {
   const getColor = (c) => {
     switch(c) {
         case "primary": return "#3ABFBC";
         case "secondary": return "#FF7046";
         case "white": return "#FFFFFF";
-        default: return "#3ABFBC";
+        default: return c;
     }
   };
 

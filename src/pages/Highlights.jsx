@@ -15,7 +15,7 @@ function Highlights() {
     return(
         <>
             <Navbar />
-            <main>
+            <main className="highlights-page">
                 <Hero />
                 <Stats />
                 <About />

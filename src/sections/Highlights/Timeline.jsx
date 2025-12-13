@@ -75,7 +75,7 @@ const Timeline = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <h2 className="text-4xl font-bold text-center mb-20 text-white">
-          Event <span className="text-secondary">Timeline</span>
+          Event <span className="text-[#ff7046]">Timeline</span>
         </h2>
         
         <div ref={timelineRef} className="relative max-w-5xl mx-auto">
@@ -92,7 +92,7 @@ const Timeline = () => {
 
               {/* Center Node */}
               <div className="absolute left-5 top-1/2 -translate-y-1/2 md:left-1/2 transform md:-translate-x-1/2 flex items-center justify-center">
-                <div className="timeline-dot w-4 h-4 md:w-6 md:h-6 bg-white/80 border-2 border-secondary rounded-full z-20 shadow-[0_0_10px_#3ABFBC] relative">
+                <div className="timeline-dot w-4 h-4 md:w-6 md:h-6 bg-white/80 border-2 border-[#ff7046] rounded-full z-20 shadow-[0_0_10px_#3ABFBC] relative">
                     <div className="absolute inset-0 bg-white opacity-100 rounded-full animate-pulse"></div>
                 </div>
               </div>
@@ -102,15 +102,15 @@ const Timeline = () => {
                 
                 {/* Connector Trace (Desktop) */}
                 <div 
-                    className={`timeline-connector hidden md:block absolute top-1/2 h-0.5 bg-primary w-12 origin-left ${index % 2 === 0 ? 'right-0 origin-right' : 'left-0'}`}
+                    className={`timeline-connector hidden md:block absolute top-1/2 h-0.5 bg-[#3abfbc] w-12 origin-left ${index % 2 === 0 ? 'right-0 origin-right' : 'left-0'}`}
                     style={{ [index % 2 === 0 ? 'marginRight' : 'marginLeft']: '-3rem' }}
                 >
                     {/* Decorative end of trace */}
-                    <div className={`absolute top-1/2 -translate-y-1/2 w-2 h-2 bg-primary rounded-full ${index % 2 === 0 ? 'left-0' : 'right-0'}`}></div>
+                    <div className={`absolute top-1/2 -translate-y-1/2 w-2 h-2 bg-[#3abfbc] rounded-full ${index % 2 === 0 ? 'left-0' : 'right-0'}`}></div>
                 </div>
                 
                 {/* Connector Trace (Mobile) */}
-                 <div className="timeline-connector-mobile md:hidden absolute top-1/2 transform -translate-y-1/2 left-7 w-10 h-1 bg-primary origin-left"></div>
+                 <div className="timeline-connector-mobile md:hidden absolute top-1/2 transform -translate-y-1/2 left-7 w-10 h-1 bg-[#3abfbc] origin-left"></div>
 
                 <div 
                     className={`timeline-content w-full group relative cursor-pointer ${activeIndex === index ? 'active' : ''}`}
@@ -146,10 +146,10 @@ const Timeline = () => {
                         {/* Content */}
                         <div className="relative z-10">
                             <div className="flex items-center justify-between mb-2 md:mb-3">
-                                <span className="text-secondary font-mono font-bold text-sm md:text-lg tracking-wider">{event.time}</span>
+                                <span className="text-[#ff7046] font-mono font-bold text-sm md:text-lg tracking-wider">{event.time}</span>
                                 <div className={`h-px grow mx-4 bg-zinc-800 group-hover:bg-white/20 group-[.active]:bg-white/20 transition-colors`}></div>
                             </div>
-                            <h3 className="text-[12px] md:text-2xl font-bold text-white mb-2 group-hover:text-primary group-[.active]:text-primary transition-colors">{event.title}</h3>
+                            <h3 className="text-[12px] md:text-2xl font-bold text-white mb-2 group-hover:text-[#3abfbc] group-[.active]:text-[#3abfbc] transition-colors">{event.title}</h3>
                             <p className="text-gray-400 text-xs md:text-sm font-mono leading-relaxed">{event.description}</p>
                         </div>
                     </div>

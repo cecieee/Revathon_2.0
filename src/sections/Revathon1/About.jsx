@@ -49,7 +49,7 @@ const About = () => {
     <section
       ref={sectionRef}
       id="about-revathon1"
-      className="min-h-screen flex items-cente text-white py-20 relative overflow-hidden"
+      className="min-h-screen flex items-center text-white py-20 relative overflow-hidden"
     >
       {/* Circuit Border Top Left */}
       <div className="absolute top-0 left-0 w-32 h-32 md:w-64 md:h-64 text-white pointer-events-none opacity-80">
@@ -79,19 +79,19 @@ const About = () => {
           {/* Text Section */}
           <div className="w-full md:w-1/2">
             <div className="max-w-xl">
-              <h2 className="text-xl md:text-4xl font-bold text-primary mb-12 about-title tracking-tighter">
+              <h2 className="text-xl md:text-4xl font-bold text-[#3abfbc] mb-12 about-title tracking-tighter">
                 ABOUT <br />
                 <span className="text-white text-2xl tracking-wide">REV-A-THON 2.0</span>
               </h2>
               
               <div ref={textRef} className="about-text font-sans space-y-6 text-lg md:text-xl text-gray-300 leading-relaxed">
                 <p>
-                  India's First <span className="text-secondary font-semibold">Reverse Engineering Hackathon</span> is a unique 24-hour competition that
+                  India's First <span className="text-[#ff7046] font-semibold">Reverse Engineering Hackathon</span> is a unique 24-hour competition that
                   goes beyond typical hackathons by focusing on the art of reverse engineering.
                 </p>
                 <p>
                   The event is structured around three key stages:{" "}
-                  <span className="text-primary font-bold">Breakdown, Analysis, and Reconstruction</span>.
+                  <span className="text-[#3abfbc] font-bold">Breakdown, Analysis, and Reconstruction</span>.
                 </p>
                 <p>
                   Participants are given a product—whether it’s hardware or a system—to
@@ -125,8 +125,8 @@ const About = () => {
       </div>
       
       {/* Background decorative elements */}
-      <div className="absolute top-20 right-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl -z-10"></div>
-      <div className="absolute bottom-20 left-20 w-96 h-96 bg-secondary/10 rounded-full blur-3xl -z-10"></div>
+      <div className="absolute top-20 right-20 w-64 h-64 bg-[#3abfbc]/10 rounded-full blur-3xl -z-10"></div>
+      <div className="absolute bottom-20 left-20 w-96 h-96 bg-[#ff7046]/10 rounded-full blur-3xl -z-10"></div>
     </section>
   );
 };

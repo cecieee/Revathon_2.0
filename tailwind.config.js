@@ -7,6 +7,8 @@ module.exports = {
         mechsuit: ["Mechsuit"],
       },
       colors: {
+        primary: "#FF7046",
+        secondary: "#3ABFBC",
         orangeBrand: "#FF7046",
         blueBrand: "#3ABFBC",
       },

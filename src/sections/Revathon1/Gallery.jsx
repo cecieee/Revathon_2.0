@@ -42,8 +42,8 @@ const Gallery = () => {
     <section ref={sectionRef} id="gallery" className="py-20 text-white">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-bold text-secondary mb-4">EVENT MEMORIES</h2>
-            <div className="w-24 h-1 bg-primary rounded-full"></div>
+            <h2 className="text-4xl md:text-6xl font-bold text-[#ff7046] mb-4">EVENT MEMORIES</h2>
+            <div className="w-24 h-1 bg-[#3abfbc] rounded-full"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[250px]">
@@ -54,7 +54,7 @@ const Gallery = () => {
                 index === 0 || index === 5 ? "md:col-span-2" : ""
               } ${index === 2 ? "md:row-span-2 h-full" : ""}`}
             >
-              <TechFrame color={index % 2 !== 0 ? "secondary" : "primary"} reversed={index % 2 !== 0} className="h-full w-full p-0">
+              <TechFrame color={index % 2 !== 0 ? "#ff7046" : "#3abfbc"} reversed={index % 2 !== 0} className="h-full w-full p-0">
                 <img
                     src={src}
                     alt={`Revathon Event ${index + 1}`}

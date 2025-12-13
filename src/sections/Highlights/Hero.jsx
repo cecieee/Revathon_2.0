@@ -19,7 +19,7 @@ const Hero = () => {
           REV-A-THON 1.0
         </h1>
         <p ref={subtitleRef} className="text-xl md:text-2xl font-sans uppercase font-bold text-gray-300 max-w-2xl mx-auto">
-          Reliving the <span className='text-primary'>Innovation</span>, <span className='text-secondary'>Code</span>, and <span className='text-primary'>Chaos</span>.
+          Reliving the <span className='text-[#3abfbc]'>Innovation</span>, <span className='text-[#ff7046]'>Code</span>, and <span className='text-[#3abfbc]'>Chaos</span>.
         </p>
       </div>
     </section>

@@ -13,7 +13,7 @@ function hexToRgba(hex, alpha = 1) {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
-const ElectricBorder = ({ children, color = '#5227FF', speed = 1, chaos = 1, thickness = 2, className, style, layerClassName }) => {
+const ElectricBorder = ({ children, color = '#3ABFBC', speed = 1, chaos = 1, thickness = 2, className, style, layerClassName }) => {
   const rawId = useId().replace(/[:]/g, '');
   const filterId = `turbulent-displace-${rawId}`;
   const svgRef = useRef(null);

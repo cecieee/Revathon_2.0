@@ -1,4 +1,5 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useState } from "react";
+import GlitchLoader from "../sections/Home/loader";
 import Countdown from "../sections/Home/Countdown";
 import EventDetails from "../sections/Home/EventDetails";
 import Organizers from "../sections/Home/Organizers";
@@ -7,29 +8,22 @@ import Training from "../sections/Home/Training";
 import Register from "../sections/Home/Register";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import About from "../sections/Revathon1/About";
+import About from "../sections/Home/About";
+import HighlightsPreview from "../sections/Home/HighlightsPreview";
+// Direct import for Robot3D to avoid lazy loading issues with WebGL
+import Robot3D from "../components/Robot3D";
 
-// Lazy load heavy 3D components to reduce initial bundle size
-const Robot3D = lazy(() => import("../components/Robot3D"));
+// Lazy load Hero component only
 const Hero = lazy(() => import("../sections/Home/Hero"));
 
-// Minimal loading fallback - no external dependencies
-const LoadingFallback = () => (
-  <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
-    <div className="flex flex-col items-center gap-4">
-      <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
-      <p className="text-white font-mono text-sm tracking-wider">Loading...</p>
-    </div>
-  </div>
-);
-
 const Home = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
     <>
-      <Navbar />
-      <Suspense fallback={<LoadingFallback />}>
-        <Robot3D />
-      </Suspense>
+      {isLoading && <GlitchLoader onComplete={() => setIsLoading(false)} />}
+      {!isLoading && <Navbar />}
+      <Robot3D />
       <main>
         <Suspense fallback={null}>
           <Hero />
@@ -37,10 +31,9 @@ const Home = () => {
         <Countdown />
         <About />
         <EventDetails />
+        <HighlightsPreview />
         <Organizers />
         <Sponsors />
-        <About1 />
-        <HighlightsPreview />
         <Training />
         <Register />
       </main>
