@@ -8,6 +8,8 @@ import Training from "../sections/Home/Training";
 import Register from "../sections/Home/Register";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import About1 from "../sections/Revathon1/About";
+import HighlightsPreview from "../sections/Home/HighlightsPreview";
 
 const Home = () => {
   return (
@@ -19,6 +21,9 @@ const Home = () => {
         <EventDetails />
         <Organizers />
         <Sponsors />
+        <About1 />
+        <HighlightsPreview />
+        <div className="h-20"></div>
         <Training />
         <Register />
       </main>

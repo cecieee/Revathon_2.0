@@ -1,14 +1,132 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
+  const sectionRef = useRef(null);
+  const textRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(".about-image", {
+        x: 50,
+        opacity: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+      });
+
+      gsap.from(".about-title", {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+      });
+
+      gsap.from(".about-text p", {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: textRef.current,
+          start: "top 85%",
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="about-revathon1" className="py-10">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-6">
-          About Revathon 1.0
-        </h2>
-        <p className="text-center">Revathon 1.0 was a huge success...</p>
+    <section
+      ref={sectionRef}
+      id="about-revathon1"
+      className="min-h-screen flex items-cente text-white py-20 relative overflow-hidden"
+    >
+      {/* Circuit Border Top Left */}
+      <div className="absolute top-0 left-0 w-32 h-32 md:w-64 md:h-64 text-white pointer-events-none opacity-80">
+        <svg viewBox="0 0 100 100" fill="none" className="w-full h-full">
+          <path d="M0 2 H30 L45 17 V45" stroke="currentColor" strokeWidth="1" />
+          <circle cx="45" cy="45" r="2" fill="currentColor" />
+          <path d="M0 12 H15 L25 22 V60" stroke="currentColor" strokeWidth="0.5" opacity="0.5" />
+          <circle cx="25" cy="60" r="1.5" fill="currentColor" opacity="0.5" />
+          <rect x="2" y="2" width="4" height="4" fill="currentColor" opacity="0.3" />
+        </svg>
       </div>
+
+      {/* Circuit Border Bottom Right */}
+      <div className="absolute bottom-0 right-0 w-32 h-32 md:w-64 md:h-64 text-white pointer-events-none rotate-180 opacity-80">
+        <svg viewBox="0 0 100 100" fill="none" className="w-full h-full">
+          <path d="M0 2 H30 L45 17 V45" stroke="currentColor" strokeWidth="1" />
+          <circle cx="45" cy="45" r="2" fill="currentColor" />
+          <path d="M0 12 H15 L25 22 V60" stroke="currentColor" strokeWidth="0.5" opacity="0.5" />
+          <circle cx="25" cy="60" r="1.5" fill="currentColor" opacity="0.5" />
+          <rect x="2" y="2" width="4" height="4" fill="currentColor" opacity="0.3" />
+        </svg>
+      </div>
+
+      <div className="container mx-auto px-6 md:px-12 relative z-10">
+        <div className="flex flex-col md:flex-row items-center gap-12">
+          
+          {/* Text Section */}
+          <div className="w-full md:w-1/2">
+            <div className="max-w-xl">
+              <h2 className="text-xl md:text-4xl font-bold text-primary mb-12 about-title tracking-tighter">
+                ABOUT <br />
+                <span className="text-white text-2xl tracking-wide">REV-A-THON 2.0</span>
+              </h2>
+              
+              <div ref={textRef} className="about-text font-sans space-y-6 text-lg md:text-xl text-gray-300 leading-relaxed">
+                <p>
+                  India's First <span className="text-secondary font-semibold">Reverse Engineering Hackathon</span> is a unique 24-hour competition that
+                  goes beyond typical hackathons by focusing on the art of reverse engineering.
+                </p>
+                <p>
+                  The event is structured around three key stages:{" "}
+                  <span className="text-primary font-bold">Breakdown, Analysis, and Reconstruction</span>.
+                </p>
+                <p>
+                  Participants are given a product—whether it’s hardware or a system—to
+                  deconstruct, understand its underlying mechanics, and then reconstruct it,
+                  enhancing or reimagining it with innovative solutions.
+                </p>
+                <p>
+                    It is a perfect platform for curious minds passionate about taking things apart to uncover their inner workings.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Image Section */}
+          <div className="w-full md:w-1/2 about-image flex justify-center md:justify-end pb-10 md:pb-20 md:pr-10">
+             <div className="relative rounded-xl overflow-hidden max-w-md">
+                <img 
+                  src="/assets/images/About-rev1.png" 
+                  alt="Revathon Event" 
+                  className="w-full h-auto object-cover"
+                />
+             </div>
+          </div>
+
+        </div>
+      </div>
+
+      {/* Reserved space for 3D component - Bottom Right */}
+      <div className="absolute bottom-0 right-0 w-full md:w-1/2 h-1/2 md:h-full pointer-events-none z-0 flex items-end justify-end p-10">
+        {/* This area is kept visually clear of text for the 3D element */}
+      </div>
+      
+      {/* Background decorative elements */}
+      <div className="absolute top-20 right-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl -z-10"></div>
+      <div className="absolute bottom-20 left-20 w-96 h-96 bg-secondary/10 rounded-full blur-3xl -z-10"></div>
     </section>
   );
 };
