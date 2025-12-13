@@ -5,7 +5,7 @@ import RobotModel from "./RobotModel";
 
 const Robot3D = () => {
     return (
-        <div className="fixed inset-0 pointer-events-none z-0">
+        <div className="fixed inset-0 pointer-events-none z-50">
             <Canvas
                 onContextMenu={(e) => e.preventDefault()}
                 camera={{ position: [0, 0, 8], fov: 45 }}
