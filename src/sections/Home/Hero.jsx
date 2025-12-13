@@ -94,7 +94,7 @@ const Hero = () => {
       </div>
 
       {/* Main content container */}
-      <div className="container mx-auto px-4 sm:px-6 md:px-12 relative z-20 flex flex-col md:flex-row items-center justify-center md:justify-start">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 pt-20 sm:pt-16 md:pt-0 relative z-20 flex flex-col md:flex-row items-center justify-center md:justify-start">
         <div className="w-full md:w-1/2 text-center md:text-left">
           <div ref={textRef}>
             <h2 className="text-sm sm:text-lg md:text-xl lg:text-2xl font-mono text-secondary tracking-widest mb-2 sm:mb-3">
