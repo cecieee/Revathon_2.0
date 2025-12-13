@@ -232,8 +232,6 @@ export default function RobotModel() {
             if (scrollTriggerInstance) {
                 scrollTriggerInstance.kill();
             }
-            // Kill all ScrollTriggers created by this component
-            ScrollTrigger.getAll().forEach(st => st.kill());
         };
     }, [cubesScene]);
 
@@ -249,8 +247,8 @@ export default function RobotModel() {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const position = isMobile ? [0.75, -3.0, 0] : [4, -2.5, 0];
-    const scale = isMobile ? 0.35 : 0.5;
+    const position = isMobile ? [0.9, -2.8, 0] : [4.5, -2.5, 0];
+    const scale = isMobile ? 0.25 : 0.5;
 
     return (
         <group ref={group} dispose={null} position={position} rotation={[0, -0.2, 0]} scale={scale}>
