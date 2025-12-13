@@ -10,6 +10,16 @@ const About = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      gsap.from(".about-image", {
+        x: 50,
+        opacity: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+      });
+
       gsap.from(".about-title", {
         y: 50,
         opacity: 0,
@@ -64,30 +74,48 @@ const About = () => {
       </div>
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="max-w-4xl">
-          <h2 className="text-5xl md:text-4xl font-bold text-primary mb-12 about-title tracking-tighter">
-            ABOUT <br />
-            <span className="text-white tracking-wide">REV-A-THON 1.0</span>
-          </h2>
+        <div className="flex flex-col md:flex-row items-center gap-12">
           
-          <div ref={textRef} className="about-text font-sans space-y-6 text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl">
-            <p>
-              India's First <span className="text-secondary font-semibold">Reverse Engineering Hackathon</span> is a unique 24-hour competition that
-              goes beyond typical hackathons by focusing on the art of reverse engineering.
-            </p>
-            <p>
-              The event is structured around three key stages:{" "}
-              <span className="text-primary font-bold">Breakdown, Analysis, and Reconstruction</span>.
-            </p>
-            <p>
-              Participants are given a product—whether it’s hardware or a system—to
-              deconstruct, understand its underlying mechanics, and then reconstruct it,
-              enhancing or reimagining it with innovative solutions.
-            </p>
-            <p>
-                It is a perfect platform for curious minds passionate about taking things apart to uncover their inner workings.
-            </p>
+          {/* Text Section */}
+          <div className="w-full md:w-1/2">
+            <div className="max-w-xl">
+              <h2 className="text-xl md:text-4xl font-bold text-primary mb-12 about-title tracking-tighter">
+                ABOUT <br />
+                <span className="text-white text-2xl tracking-wide">REV-A-THON 2.0</span>
+              </h2>
+              
+              <div ref={textRef} className="about-text font-sans space-y-6 text-lg md:text-xl text-gray-300 leading-relaxed">
+                <p>
+                  India's First <span className="text-secondary font-semibold">Reverse Engineering Hackathon</span> is a unique 24-hour competition that
+                  goes beyond typical hackathons by focusing on the art of reverse engineering.
+                </p>
+                <p>
+                  The event is structured around three key stages:{" "}
+                  <span className="text-primary font-bold">Breakdown, Analysis, and Reconstruction</span>.
+                </p>
+                <p>
+                  Participants are given a product—whether it’s hardware or a system—to
+                  deconstruct, understand its underlying mechanics, and then reconstruct it,
+                  enhancing or reimagining it with innovative solutions.
+                </p>
+                <p>
+                    It is a perfect platform for curious minds passionate about taking things apart to uncover their inner workings.
+                </p>
+              </div>
+            </div>
           </div>
+
+          {/* Image Section */}
+          <div className="w-full md:w-1/2 about-image flex justify-center md:justify-end pb-10 md:pb-20 md:pr-10">
+             <div className="relative rounded-xl overflow-hidden max-w-md">
+                <img 
+                  src="/assets/images/About-rev1.png" 
+                  alt="Revathon Event" 
+                  className="w-full h-auto object-cover"
+                />
+             </div>
+          </div>
+
         </div>
       </div>
 

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export default function Navbar() {
   return (
-    <nav className="p-4 bg-gray-800 text-white">
+    <nav className="p-4 bg-gray-800 font-sans text-white">
       <ul className="flex gap-4">
         <li>
           <Link to="/">Home</Link>

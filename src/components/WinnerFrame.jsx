@@ -16,7 +16,7 @@ const WinnerFrame = ({ children, className = "", color = "primary" }) => {
     <div className={`relative p-4 group ${className}`}>
       {/* Hover Glow */}
       <div 
-        className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-xl"
+        className="absolute inset-0 opacity-0 group-hover:opacity-20 group-active:opacity-20 transition-opacity duration-500 blur-xl"
         style={{ backgroundColor: colorHex }}
       ></div>
 
