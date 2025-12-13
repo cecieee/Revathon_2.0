@@ -22,7 +22,7 @@ const Home = () => {
   return (
     <>
       {isLoading && <GlitchLoader onComplete={() => setIsLoading(false)} />}
-      <Navbar />
+      {!isLoading && <Navbar />}
       <Robot3D />
       <main>
         <Suspense fallback={null}>

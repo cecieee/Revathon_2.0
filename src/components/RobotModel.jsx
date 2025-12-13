@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, useLayoutEffect } from 'react';
+import React, { useRef, useEffect, useState, useLayoutEffect, useMemo } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import gsap from 'gsap';
@@ -68,11 +68,37 @@ export default function RobotModel() {
     // Load body
     const { scene: bodyScene } = useGLTF('/models/body.glb');
 
-    // Load all parts
-    const parts = partsList.map((part) => {
-        const { scene } = useGLTF(part.file);
-        return { ...part, scene: scene.clone() };
-    });
+    // Load all parts - each useGLTF call is at the top level (not in a callback)
+    const headGLTF = useGLTF('/models/Head.glb');
+    const lFootGLTF = useGLTF('/models/l_foot.001.glb');
+    const lHandGLTF = useGLTF('/models/l_hand.glb');
+    const lLegGLTF = useGLTF('/models/l_leg.glb');
+    const lPalmGLTF = useGLTF('/models/l_palm.glb');
+    const lShoulderGLTF = useGLTF('/models/l_shoulder.glb');
+    const lThighGLTF = useGLTF('/models/l_thigh.glb');
+    const rFootGLTF = useGLTF('/models/r_foot.001.glb');
+    const rHandGLTF = useGLTF('/models/r_hand.glb');
+    const rLegGLTF = useGLTF('/models/r_leg.glb');
+    const rPalmGLTF = useGLTF('/models/r_palm.glb');
+    const rShoulderGLTF = useGLTF('/models/r_shoulder.glb');
+    const rThighGLTF = useGLTF('/models/r_thigh.glb');
+
+    // Memoize parts to avoid recreating clones on every render
+    const parts = useMemo(() => [
+        { name: 'Head', scene: headGLTF.scene.clone() },
+        { name: 'L_Foot', scene: lFootGLTF.scene.clone() },
+        { name: 'L_Hand', scene: lHandGLTF.scene.clone() },
+        { name: 'L_Leg', scene: lLegGLTF.scene.clone() },
+        { name: 'L_Palm', scene: lPalmGLTF.scene.clone() },
+        { name: 'L_Shoulder', scene: lShoulderGLTF.scene.clone() },
+        { name: 'L_Thigh', scene: lThighGLTF.scene.clone() },
+        { name: 'R_Foot', scene: rFootGLTF.scene.clone() },
+        { name: 'R_Hand', scene: rHandGLTF.scene.clone() },
+        { name: 'R_Leg', scene: rLegGLTF.scene.clone() },
+        { name: 'R_Palm', scene: rPalmGLTF.scene.clone() },
+        { name: 'R_Shoulder', scene: rShoulderGLTF.scene.clone() },
+        { name: 'R_Thigh', scene: rThighGLTF.scene.clone() },
+    ], [headGLTF, lFootGLTF, lHandGLTF, lLegGLTF, lPalmGLTF, lShoulderGLTF, lThighGLTF, rFootGLTF, rHandGLTF, rLegGLTF, rPalmGLTF, rShoulderGLTF, rThighGLTF]);
 
     // Identify cubes and robot parts
     useLayoutEffect(() => {
