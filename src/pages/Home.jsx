@@ -1,4 +1,5 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useState } from "react";
+import GlitchLoader from "../sections/Home/loader";
 import Countdown from "../sections/Home/Countdown";
 import EventDetails from "../sections/Home/EventDetails";
 import Organizers from "../sections/Home/Organizers";
@@ -16,8 +17,11 @@ import Robot3D from "../components/Robot3D";
 const Hero = lazy(() => import("../sections/Home/Hero"));
 
 const Home = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
     <>
+      {isLoading && <GlitchLoader onComplete={() => setIsLoading(false)} />}
       <Navbar />
       <Robot3D />
       <main>
