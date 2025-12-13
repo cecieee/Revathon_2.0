@@ -96,12 +96,12 @@ export default function Organizers() {
                     <img
                       src={organizer.logo}
                       alt={organizer.alt}
+                      width={112}
+                      height={112}
                       className="h-12 xs:h-14 sm:h-16 md:h-20 lg:h-24 xl:h-28 object-contain rounded-lg max-w-full
                                 brightness-125 contrast-125
                                 drop-shadow-[0_0_8px_rgba(58,191,188,0.6)]"
                       loading="lazy"
-                      width="auto"
-                      height="auto"
                     />
                   </div>
                 </div>

@@ -5,6 +5,7 @@
   src: url("/font/Mechsuit.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 :root {

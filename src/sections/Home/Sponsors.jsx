@@ -56,6 +56,8 @@ export default function Sponsors() {
                 <img
                   src={sponsor.logo}
                   alt={sponsor.alt}
+                  width={128}
+                  height={128}
                   className="h-16 xs:h-20 sm:h-24 md:h-28 lg:h-32 object-contain rounded-lg max-w-full
                              brightness-125 contrast-125
                              drop-shadow-[0_0_8px_rgba(58,191,188,0.6)]"
