@@ -1,22 +1,45 @@
-@import 'tailwindcss';
-
-@theme{
-    --color-primary: #3ABFBC;
-    --color-secondary: #FF7046;
-}
+@import "tailwindcss";
 
 @font-face {
-  font-family: 'Mechsuit';
-  src: url('/assets/fonts/mechsuit/Mechsuit.otf') format('opentype');
+  font-family: "Mechsuit";
+  src: url("/font/Mechsuit.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
+
+:root {
+  --primary: #ff7046;
+  --secondary: #3abfbc;
+  --background: #0b0b0b;
+  --font-primary: "Mechsuit", sans-serif;
+}
+
 body {
-  font-family: 'Mechsuit', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #121212;
+  background-color: var(--background);
   color: #ffffff;
+  font-family: var(--font-primary);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 /* Animated Button Styles */
