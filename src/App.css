@@ -145,3 +145,21 @@ body {
   pointer-events: none;
 }
 
+
+@font-face {
+  font-family: "Mechsuit";
+  src: url("/font/Mechsuit.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --primary: #ff7046;
+  --secondary: #3abfbc;
+  --background: #0b0b0b;
+  --font-primary: "Mechsuit", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
