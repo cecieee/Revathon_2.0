@@ -50,10 +50,12 @@ const Hero = () => {
         </Canvas>
       </div>
 
-      <div className="absolute top-20 right-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
-      <div className="absolute bottom-20 left-20 w-96 h-96 bg-secondary/10 rounded-full blur-3xl -z-10 animate-pulse delay-700"></div>
+      {/* Decorative blur circles - responsive positioning */}
+      <div className="absolute top-10 right-5 sm:top-20 sm:right-20 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-primary/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
+      <div className="absolute bottom-10 left-5 sm:bottom-20 sm:left-20 w-48 h-48 sm:w-72 sm:h-72 md:w-96 md:h-96 bg-secondary/10 rounded-full blur-3xl -z-10 animate-pulse delay-700"></div>
 
-      <div className="absolute top-0 left-0 w-32 h-32 md:w-64 md:h-64 text-white pointer-events-none opacity-60">
+      {/* Corner decorative SVGs */}
+      <div className="absolute top-0 left-0 w-20 h-20 sm:w-32 sm:h-32 md:w-64 md:h-64 text-white pointer-events-none opacity-40 sm:opacity-60">
         <svg viewBox="0 0 100 100" fill="none" className="w-full h-full">
           <path d="M0 2 H30 L45 17 V45" stroke="currentColor" strokeWidth="1" />
           <circle cx="45" cy="45" r="2" fill="currentColor" />
@@ -67,7 +69,7 @@ const Hero = () => {
         </svg>
       </div>
 
-      <div className="absolute bottom-0 right-0 w-32 h-32 md:w-64 md:h-64 text-white pointer-events-none opacity-60 rotate-180">
+      <div className="absolute bottom-0 right-0 w-20 h-20 sm:w-32 sm:h-32 md:w-64 md:h-64 text-white pointer-events-none opacity-40 sm:opacity-60 rotate-180">
         <svg viewBox="0 0 100 100" fill="none" className="w-full h-full">
           <path d="M0 2 H30 L45 17 V45" stroke="currentColor" strokeWidth="1" />
           <circle cx="45" cy="45" r="2" fill="currentColor" />
@@ -81,13 +83,14 @@ const Hero = () => {
         </svg>
       </div>
 
-      <div className="container mx-auto px-6 md:px-12 relative z-10 flex flex-col md:flex-row items-center">
-        <div ref={textRef} className="w-full md:w-1/2 text-left">
-          <h2 className="text-xl md:text-2xl font-mono text-secondary tracking-widest mb-2">
+      {/* Main content container */}
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 relative z-10 flex flex-col md:flex-row items-center justify-center md:justify-start">
+        <div ref={textRef} className="w-full md:w-1/2 text-center md:text-left">
+          <h2 className="text-sm sm:text-lg md:text-xl lg:text-2xl font-mono text-secondary tracking-widest mb-2 sm:mb-3">
             IEEE SB CEC PRESENTS
           </h2>
           <h1
-            className="text-6xl md:text-8xl lg:text-9xl font-bold mb-6 tracking-tighter leading-none"
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-4 sm:mb-6 tracking-tighter leading-none"
             style={{ fontFamily: "Mechsuit" }}
           >
             REVATHON <br />
@@ -95,7 +98,7 @@ const Hero = () => {
               2.0
             </span>
           </h1>
-          <p className="text-lg md:text-xl text-gray-300 max-w-lg mb-8 border-l-4 border-primary pl-4">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-lg mx-auto md:mx-0 mb-6 sm:mb-8 border-l-4 border-primary pl-3 sm:pl-4">
             The Ultimate Innovation Challenge. <br />
             <span className="text-primary font-bold">
               Reverse Engineering Hackathon
@@ -108,9 +111,9 @@ const Hero = () => {
                 .getElementById("register")
                 ?.scrollIntoView({ behavior: "smooth" })
             }
-            className="group relative px-8 py-3 bg-transparent border border-white/20 overflow-hidden cursor-pointer hover:bg-white hover:border-white transition-all duration-300"
+            className="group relative px-6 sm:px-8 py-2.5 sm:py-3 bg-transparent border border-white/20 overflow-hidden cursor-pointer hover:bg-white hover:border-white transition-all duration-300"
           >
-            <span className="relative text-white font-mono tracking-widest uppercase group-hover:text-black transition-colors duration-300">
+            <span className="relative text-sm sm:text-base text-white font-mono tracking-widest uppercase group-hover:text-black transition-colors duration-300">
               Register Now
             </span>
             <div className="absolute top-0 right-0 p-1">
