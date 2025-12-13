@@ -217,7 +217,10 @@ export default function ProcessWorkflow() {
             WHY REVERSE HACKATHON?
           </h3>
 
-          <p className="max-w-3xl mx-auto text-center text-sm md:text-base leading-relaxed opacity-90 text-white">
+          <p className="max-w-4xl mx-auto text-center text-lg md:text-xl leading-8 md:leading-9 opacity-90 text-white" style={{
+      fontFamily:
+        "Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
+    }}>
             Participants gain hands-on experience in understanding how systems
             work by deconstructing them, enhancing their technical skills, and
             developing analytical thinking. A reverse engineering hackathon is
@@ -226,20 +229,23 @@ export default function ProcessWorkflow() {
         </div>
       </div>
 
-      {/* FIXED SECOND SECTION */}
-      <div className="w-full mt-20">
+      {/* FIXED SECOND SECTION – Reduced Size */}
+      <div className="w-full mt-12">
         {/* Title outside the box */}
         <h3
-          className="text-center text-3xl md:text-4xl font-extrabold tracking-wide mb-8"
+          className="text-center text-xl md:text-2xl font-extrabold tracking-wide mb-6"
           style={{ color: "#FF7046" }}
         >
           HOW <span style={{ color: "#3ABFBC" }}>REVERSE HACKATHON?</span>
         </h3>
 
         {/* Main container box */}
-        <div className="border-2 border-[#3ABFBC] rounded-xl p-6 md:p-8 max-w-4xl mx-auto bg-gradient-to-br from-gray-900/50 to-gray-800/30 backdrop-blur-sm">
+        <div className="border-2 border-[#3ABFBC] rounded-lg p-4 md:p-5
+                        max-w-3xl mx-auto
+                        bg-gradient-to-br from-gray-900/50 to-gray-800/30 backdrop-blur-sm">
+          
           {/* Grid of individual content boxes */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
             {[
               ["OBSERVE & ANALYZE", "Study the product closely"],
               ["DECOMPOSE", "Disassemble to identify components"],
@@ -250,44 +256,58 @@ export default function ProcessWorkflow() {
             ].map(([title, text], i) => (
               <div
                 key={i}
-                className="border border-gray-700 rounded-lg p-5 bg-gray-900/40 hover:bg-gray-800/40 transition-all duration-300 hover:border-[#3ABFBC]/50"
+                className="border border-gray-700 rounded-md p-4
+                          bg-gray-900/40 hover:bg-gray-800/40
+                          transition-all duration-300
+                          hover:border-[#3ABFBC]/50"
               >
-                <div className="flex items-center gap-4 mb-3">
+                <div className="flex items-center gap-3 mb-2">
                   <div
-                    className="flex items-center justify-center w-10 h-10 rounded-full text-white font-bold text-lg"
+                    className="flex items-center justify-center
+                              w-8 h-8 rounded-full
+                              text-white font-bold text-sm"
                     style={{ backgroundColor: "#3ABFBC" }}
                   >
                     {i + 1}
                   </div>
+
                   <h4
-                    className="text-lg md:text-xl font-bold tracking-wide"
+                    className="text-sm md:text-base font-bold tracking-wide"
                     style={{ color: "#3ABFBC" }}
                   >
                     {title}
                   </h4>
                 </div>
-                <p className="text-sm md:text-base opacity-80 text-white pl-14">{text}</p>
+
+                <p className="text-xs md:text-sm opacity-80 text-white pl-11">
+                  {text}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </div>
 
+
       {/* NORMAL VS REVERSE */}
-      <div className="text-center space-y-4 mb-16 mt-16">
+      {/* Title Section */}
+      <div className="text-center space-y-2 mb-8 mt-8">
         <h2
-          className="text-3xl md:text-5xl tracking-wider"
+          className="text-xl md:text-3xl tracking-wide"
           style={{ color: "#FF7046" }}
         >
           NORMAL HACKATHON
         </h2>
+
         <h3
-          className="text-2xl md:text-4xl text-[#FF7046] tracking-wider"
+          className="text-lg md:text-2xl tracking-wide"
+          style={{ color: "#FF7046" }}
         >
           VS
         </h3>
+
         <h2
-          className="text-3xl md:text-5xl tracking-wider"
+          className="text-xl md:text-3xl tracking-wide"
           style={{ color: "#3ABFBC" }}
         >
           REVERSE HACKATHON
@@ -295,19 +315,19 @@ export default function ProcessWorkflow() {
       </div>
 
       {/* Comparison Boxes */}
-      {/* Comparison Boxes */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-y-2 max-w-6xl pr-20 md:pr-32 font-sans text-lg md:text-xl leading-relaxed font-semibold">
+      <div className="grid grid-cols-1 md:grid-cols-2 max-w-5xl pr-20 md:pr-40
+                      font-sans text-sm md:text-base leading-relaxed font-medium">
 
         {/* Row 1 */}
         <div
-          className="border-2 rounded-xl py-6 px-4 text-center md:w-5/6"
+          className="border-2 rounded-md py-3 px-2 text-center border-r-0 md:border-r-2"
           style={{ borderColor: "#FF7046", color: "#FF7046" }}
         >
           Normal Hackathon
         </div>
 
         <div
-          className="border-2 rounded-xl py-6 px-4 text-center "
+          className="border-2 rounded-md py-3 px-2 text-center"
           style={{ borderColor: "#3ABFBC", color: "#3ABFBC" }}
         >
           Reverse Hackathon
@@ -315,14 +335,14 @@ export default function ProcessWorkflow() {
 
         {/* Row 2 */}
         <div
-          className="border-2 rounded-xl py-6 px-4 text-center md:w-5/6"
+          className="border-2 rounded-md py-3 px-2 text-center border-r-0 md:border-r-2 border-t-0"
           style={{ borderColor: "#FF7046", color: "#FF7046" }}
         >
           Creating new solutions from scratch.
         </div>
 
         <div
-          className="border-2 rounded-xl py-6 px-4 text-center"
+          className="border-2 rounded-md py-3 px-2 text-center border-t-0"
           style={{ borderColor: "#3ABFBC", color: "#3ABFBC" }}
         >
           Enhancing and optimizing existing systems and products.
@@ -330,14 +350,14 @@ export default function ProcessWorkflow() {
 
         {/* Row 3 */}
         <div
-          className="border-2 rounded-xl py-6 px-4 text-center md:w-5/6"
+          className="border-2 rounded-md py-3 px-2 text-center border-r-0 md:border-r-2 border-t-0"
           style={{ borderColor: "#FF7046", color: "#FF7046" }}
         >
           Developing new ideas, apps, or features.
         </div>
 
         <div
-          className="border-2 rounded-xl py-6 px-4 text-center"
+          className="border-2 rounded-md py-3 px-2 text-center border-t-0"
           style={{ borderColor: "#3ABFBC", color: "#3ABFBC" }}
         >
           Analyzing, reverse-engineering, debugging, and improving quality.
@@ -345,14 +365,14 @@ export default function ProcessWorkflow() {
 
         {/* Row 4 */}
         <div
-          className="border-2 rounded-xl py-6 px-4 text-center md:w-5/6"
+          className="border-2 rounded-md py-3 px-2 text-center border-r-0 md:border-r-2 border-t-0"
           style={{ borderColor: "#FF7046", color: "#FF7046" }}
         >
           Start from zero to create innovative solutions.
         </div>
 
         <div
-          className="border-2 rounded-xl py-6 px-4 text-center"
+          className="border-2 rounded-md py-3 px-2 text-center border-t-0"
           style={{ borderColor: "#3ABFBC", color: "#3ABFBC" }}
         >
           Break down and refine existing systems to identify flaws and optimize them.
@@ -360,19 +380,21 @@ export default function ProcessWorkflow() {
 
         {/* Row 5 */}
         <div
-          className="border-2 rounded-xl py-6 px-4 text-center md:w-5/6"
+          className="border-2 rounded-md py-3 px-2 text-center border-r-0 md:border-r-2 border-t-0"
           style={{ borderColor: "#FF7046", color: "#FF7046" }}
         >
           A brand-new product or app ready for launch.
         </div>
 
         <div
-          className="border-2 rounded-xl py-6 px-4 text-center"
+          className="border-2 rounded-md py-3 px-2 text-center border-t-0"
           style={{ borderColor: "#3ABFBC", color: "#3ABFBC" }}
         >
           A refined, optimized, and more secure version of an existing product.
         </div>
       </div>
+
+
     </section>
   );
 }
