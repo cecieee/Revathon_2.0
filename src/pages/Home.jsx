@@ -9,27 +9,17 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import About from "../sections/Home/About";
 import HighlightsPreview from "../sections/Home/HighlightsPreview";
-// Lazy load heavy 3D components to reduce initial bundle size
-const Robot3D = lazy(() => import("../components/Robot3D"));
-const Hero = lazy(() => import("../sections/Home/Hero"));
+// Direct import for Robot3D to avoid lazy loading issues with WebGL
+import Robot3D from "../components/Robot3D";
 
-// Minimal loading fallback - no external dependencies
-const LoadingFallback = () => (
-  <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
-    <div className="flex flex-col items-center gap-4">
-      <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
-      <p className="text-white font-mono text-sm tracking-wider">Loading...</p>
-    </div>
-  </div>
-);
+// Lazy load Hero component only
+const Hero = lazy(() => import("../sections/Home/Hero"));
 
 const Home = () => {
   return (
     <>
       <Navbar />
-      <Suspense fallback={<LoadingFallback />}>
-        <Robot3D />
-      </Suspense>
+      <Robot3D />
       <main>
         <Suspense fallback={null}>
           <Hero />

@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import { Environment, OrbitControls } from "@react-three/drei";
+import { Environment } from "@react-three/drei";
 import RobotModel from "./RobotModel";
 
 const Robot3D = () => {

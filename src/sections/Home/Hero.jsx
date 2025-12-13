@@ -1,8 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Canvas } from "@react-three/fiber";
-import { Sparkles } from "@react-three/drei";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -42,24 +40,24 @@ const Hero = () => {
       id="hero"
       className="min-h-screen flex items-center relative overflow-hidden bg-transparent"
     >
-      <div className="absolute inset-0 -z-20">
-        <Canvas camera={{ position: [0, 0, 1] }}>
-          <Sparkles
-            count={25}
-            scale={1}
-            size={4}
-            speed={0.4}
-            opacity={0.5}
-            color="#3abfbc"
-          /><Sparkles
-            count={25}
-            scale={1}
-            size={4}
-            speed={0.4}
-            opacity={0.5}
-            color="#ff7046"
+      {/* CSS-based sparkle particles - replaces Three.js Canvas to avoid WebGL context conflicts */}
+      <div className="absolute inset-0 -z-20 overflow-hidden">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full animate-pulse"
+            style={{
+              width: `${Math.random() * 4 + 2}px`,
+              height: `${Math.random() * 4 + 2}px`,
+              background: i % 2 === 0 ? '#3abfbc' : '#ff7046',
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              opacity: 0.5,
+              animationDelay: `${Math.random() * 2}s`,
+              animationDuration: `${Math.random() * 2 + 1}s`,
+            }}
           />
-        </Canvas>
+        ))}
       </div>
 
       {/* Decorative blur circles - responsive positioning */}

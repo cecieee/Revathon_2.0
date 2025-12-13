@@ -20,10 +20,10 @@ const Navbar = () => {
     if (location.pathname === '/' && location.state?.scrollTo) {
       const element = document.getElementById(location.state.scrollTo);
       if (element) {
-        // wrapper to ensure page is loaded
+        // wrapper to ensure page is loaded (300ms to allow lazy-loaded components to render)
         setTimeout(() => {
           element.scrollIntoView({ behavior: "smooth" });
-        }, 100);
+        }, 300);
       }
       // Clear state to prevent re-scrolling on refresh/update
       navigate(location.pathname, { replace: true, state: {} });
@@ -123,8 +123,8 @@ const Navbar = () => {
             key={link.name}
             onClick={() => handleNavigation(link)}
             className={`text-2xl text-white font-bold hover:text-primary transition-all duration-300 tracking-widest uppercase transform ${isOpen
-                ? "translate-x-0 opacity-100"
-                : "translate-x-full opacity-0"
+              ? "translate-x-0 opacity-100"
+              : "translate-x-full opacity-0"
               }`}
             style={{
               transitionDelay: isOpen ? `${index * 100}ms` : "0ms",
