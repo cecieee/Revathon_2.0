@@ -1,9 +1,9 @@
 import React from "react";
-import About from "../sections/Revathon1/About";
-import Winners from "../sections/Revathon1/Winners";
-import Gallery from "../sections/Revathon1/Gallery";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import About from "../sections/Revathon1/About.jsx";
+import Winners from "../sections/Revathon1/Winners.jsx";
+import Gallery from "../sections/Revathon1/Gallery.jsx";
+import Navbar from "../components/Navbar.jsx";
+import Footer from "../components/Footer.jsx";
 
 const Revathon1 = () => {
   return (
