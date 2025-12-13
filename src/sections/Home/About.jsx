@@ -48,7 +48,7 @@ const About = () => {
   return (
     <section
       ref={sectionRef}
-      id="about-home"
+      id="about"
       className="min-h-screen flex items-center text-white py-20 relative overflow-hidden"
     >
       {/* Circuit Border Top Left */}
@@ -75,7 +75,7 @@ const About = () => {
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="flex flex-col md:flex-row items-center gap-12">
-          
+
           {/* Text Section */}
           <div className="w-full md:w-1/2">
             <div className="max-w-xl">
@@ -83,7 +83,7 @@ const About = () => {
                 ABOUT <br />
                 <span className="text-white text-2xl tracking-wide">REV-A-THON 2.0</span>
               </h2>
-              
+
               <div ref={textRef} className="about-text font-sans space-y-6 text-lg md:text-xl text-gray-300 leading-relaxed">
                 <p>
                   India's First <span className="text-[#ff7046] font-semibold">Reverse Engineering Hackathon</span> is a unique 24-hour competition that
@@ -99,7 +99,7 @@ const About = () => {
                   enhancing or reimagining it with innovative solutions.
                 </p>
                 <p>
-                    It is a perfect platform for curious minds passionate about taking things apart to uncover their inner workings.
+                  It is a perfect platform for curious minds passionate about taking things apart to uncover their inner workings.
                 </p>
               </div>
             </div>
@@ -107,13 +107,13 @@ const About = () => {
 
           {/* Image Section */}
           <div className="w-full md:w-1/2 about-image flex justify-center md:justify-end pb-10 md:pb-20 md:pr-10">
-             <div className="relative rounded-xl overflow-hidden max-w-md">
-                <img 
-                  src="/assets/images/About-rev1.png" 
-                  alt="Revathon Event" 
-                  className="w-full h-auto object-cover"
-                />
-             </div>
+            <div className="relative rounded-xl overflow-hidden max-w-md">
+              <img
+                src="/assets/images/About-rev1.png"
+                alt="Revathon Event"
+                className="w-full h-auto object-cover"
+              />
+            </div>
           </div>
 
         </div>
@@ -123,7 +123,7 @@ const About = () => {
       <div className="absolute bottom-0 right-0 w-full md:w-1/2 h-1/2 md:h-full pointer-events-none z-0 flex items-end justify-end p-10">
         {/* This area is kept visually clear of text for the 3D element */}
       </div>
-      
+
       {/* Background decorative elements */}
       <div className="absolute top-20 right-20 w-64 h-64 bg-[#3abfbc]/10 rounded-full blur-3xl -z-10"></div>
       <div className="absolute bottom-20 left-20 w-96 h-96 bg-[#ff7046]/10 rounded-full blur-3xl -z-10"></div>

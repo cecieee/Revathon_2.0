@@ -75,9 +75,8 @@ const DecorativeStroke = ({ theme, position = "top" }) => {
   const isTop = position === "top";
   return (
     <div
-      className={`absolute left-0 right-0 hidden md:block pointer-events-none ${
-        isTop ? "-top-2" : "-bottom-5"
-      }`}
+      className={`absolute left-0 right-0 hidden md:block pointer-events-none ${isTop ? "-top-2" : "-bottom-5"
+        }`}
       aria-hidden="true"
     >
       <div
@@ -191,7 +190,7 @@ const ProcessCard = ({ title, description, variant = "neutral", index }) => {
 
 export default function ProcessWorkflow() {
   return (
-    <section className="min-h-screen bg-black p-6 md:p-12 flex flex-col items-center">
+    <section id="event-details" className="min-h-screen bg-black p-6 md:p-12 flex flex-col items-center">
       <div className="w-full max-w-3xl flex flex-col gap-10">
         <h2
           className="text-center text-2xl md:text-4xl font-extrabold tracking-wide"
@@ -249,12 +248,12 @@ export default function ProcessWorkflow() {
               ["TEST & VALIDATE", "Simulate and verify your findings"],
               ["REBUILD OR INNOVATE", "Recreate with improvements"],
             ].map(([title, text], i) => (
-              <div 
-                key={i} 
+              <div
+                key={i}
                 className="border border-gray-700 rounded-lg p-5 bg-gray-900/40 hover:bg-gray-800/40 transition-all duration-300 hover:border-[#3ABFBC]/50"
               >
                 <div className="flex items-center gap-4 mb-3">
-                  <div 
+                  <div
                     className="flex items-center justify-center w-10 h-10 rounded-full text-white font-bold text-lg"
                     style={{ backgroundColor: "#3ABFBC" }}
                   >
@@ -302,14 +301,14 @@ export default function ProcessWorkflow() {
         {/* Row 1 */}
         <div
           className="border-2 rounded-xl py-6 px-4 text-center md:w-5/6"
-          style={{ borderColor: "#FF7046",color: "#FF7046" }}
+          style={{ borderColor: "#FF7046", color: "#FF7046" }}
         >
           Normal Hackathon
         </div>
 
         <div
           className="border-2 rounded-xl py-6 px-4 text-center "
-          style={{ borderColor: "#3ABFBC",color: "#3ABFBC" }}
+          style={{ borderColor: "#3ABFBC", color: "#3ABFBC" }}
         >
           Reverse Hackathon
         </div>
@@ -317,14 +316,14 @@ export default function ProcessWorkflow() {
         {/* Row 2 */}
         <div
           className="border-2 rounded-xl py-6 px-4 text-center md:w-5/6"
-          style={{ borderColor: "#FF7046",color: "#FF7046" }}
+          style={{ borderColor: "#FF7046", color: "#FF7046" }}
         >
           Creating new solutions from scratch.
         </div>
 
         <div
           className="border-2 rounded-xl py-6 px-4 text-center"
-          style={{ borderColor: "#3ABFBC",color: "#3ABFBC" }}
+          style={{ borderColor: "#3ABFBC", color: "#3ABFBC" }}
         >
           Enhancing and optimizing existing systems and products.
         </div>
@@ -332,14 +331,14 @@ export default function ProcessWorkflow() {
         {/* Row 3 */}
         <div
           className="border-2 rounded-xl py-6 px-4 text-center md:w-5/6"
-          style={{ borderColor: "#FF7046",color: "#FF7046" }}
+          style={{ borderColor: "#FF7046", color: "#FF7046" }}
         >
           Developing new ideas, apps, or features.
         </div>
 
         <div
           className="border-2 rounded-xl py-6 px-4 text-center"
-          style={{ borderColor: "#3ABFBC",color: "#3ABFBC" }}
+          style={{ borderColor: "#3ABFBC", color: "#3ABFBC" }}
         >
           Analyzing, reverse-engineering, debugging, and improving quality.
         </div>
@@ -347,14 +346,14 @@ export default function ProcessWorkflow() {
         {/* Row 4 */}
         <div
           className="border-2 rounded-xl py-6 px-4 text-center md:w-5/6"
-          style={{ borderColor: "#FF7046",color: "#FF7046" }}
+          style={{ borderColor: "#FF7046", color: "#FF7046" }}
         >
           Start from zero to create innovative solutions.
         </div>
 
         <div
           className="border-2 rounded-xl py-6 px-4 text-center"
-          style={{ borderColor: "#3ABFBC",color: "#3ABFBC" }}
+          style={{ borderColor: "#3ABFBC", color: "#3ABFBC" }}
         >
           Break down and refine existing systems to identify flaws and optimize them.
         </div>
@@ -362,14 +361,14 @@ export default function ProcessWorkflow() {
         {/* Row 5 */}
         <div
           className="border-2 rounded-xl py-6 px-4 text-center md:w-5/6"
-          style={{ borderColor: "#FF7046",color: "#FF7046" }}
+          style={{ borderColor: "#FF7046", color: "#FF7046" }}
         >
           A brand-new product or app ready for launch.
         </div>
 
         <div
           className="border-2 rounded-xl py-6 px-4 text-center"
-          style={{ borderColor: "#3ABFBC",color: "#3ABFBC" }}
+          style={{ borderColor: "#3ABFBC", color: "#3ABFBC" }}
         >
           A refined, optimized, and more secure version of an existing product.
         </div>
