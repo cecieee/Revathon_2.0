@@ -2,7 +2,6 @@ import React from "react";
 import Robot3D from "../components/Robot3D";
 import Hero from "../sections/Home/Hero";
 import Countdown from "../sections/Home/Countdown";
-import About from "../sections/Home/About";
 import EventDetails from "../sections/Home/EventDetails";
 import Organizers from "../sections/Home/Organizers";
 import Sponsors from "../sections/Home/Sponsors";
@@ -10,7 +9,7 @@ import Training from "../sections/Home/Training";
 import Register from "../sections/Home/Register";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import About1 from "../sections/Revathon1/About";
+import About from "../sections/Revathon1/About";
 
 const Home = () => {
   return (
@@ -24,7 +23,6 @@ const Home = () => {
         <EventDetails />
         <Organizers />
         <Sponsors />
-        <About1 />
         <Training />
         <Register />
       </main>
