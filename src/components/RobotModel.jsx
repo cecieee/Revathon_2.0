@@ -234,7 +234,7 @@ export default function RobotModel() {
                     if (part.name === 'Head') {
                         return <group key={part.name} ref={el => partsRefs.current[i] = el}>
                             <PivotControls rotationRef={headInnerRef} offset={HEAD_OFFSET}>
-                                <primitive object={part.scene} position={[-0.05, 0, 0]} />
+                                <primitive object={part.scene} position={[-0.05, 0.0, 0.2]} />
                             </PivotControls>
                         </group>
                     }
