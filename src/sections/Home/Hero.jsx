@@ -12,11 +12,23 @@ const Hero = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(textRef.current.children, {
-        y: 50,
+      // Animate text elements
+      if (textRef.current) {
+        gsap.from(textRef.current.children, {
+          y: 50,
+          opacity: 0,
+          duration: 1,
+          stagger: 0.2,
+          ease: "power3.out",
+        });
+      }
+
+      // Animate button separately
+      gsap.from(".button-wrapper", {
+        y: 30,
         opacity: 0,
-        duration: 1,
-        stagger: 0.2,
+        duration: 0.8,
+        delay: 0.8,
         ease: "power3.out",
       });
     }, sectionRef);
@@ -84,45 +96,45 @@ const Hero = () => {
       </div>
 
       {/* Main content container */}
-      <div className="container mx-auto px-4 sm:px-6 md:px-12 relative z-10 flex flex-col md:flex-row items-center justify-center md:justify-start">
-        <div ref={textRef} className="w-full md:w-1/2 text-center md:text-left">
-          <h2 className="text-sm sm:text-lg md:text-xl lg:text-2xl font-mono text-secondary tracking-widest mb-2 sm:mb-3">
-            IEEE SB CEC PRESENTS
-          </h2>
-          <h1
-            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-4 sm:mb-6 tracking-tighter leading-none"
-            style={{ fontFamily: "Mechsuit" }}
-          >
-            REVATHON <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-white">
-              2.0
-            </span>
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-lg mx-auto md:mx-0 mb-6 sm:mb-8 border-l-4 border-primary pl-3 sm:pl-4">
-            The Ultimate Innovation Challenge. <br />
-            <span className="text-primary font-bold">
-              Reverse Engineering Hackathon
-            </span>
-          </p>
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 relative z-20 flex flex-col md:flex-row items-center justify-center md:justify-start">
+        <div className="w-full md:w-1/2 text-center md:text-left">
+          <div ref={textRef}>
+            <h2 className="text-sm sm:text-lg md:text-xl lg:text-2xl font-mono text-secondary tracking-widest mb-2 sm:mb-3">
+              IEEE SB CEC PRESENTS
+            </h2>
+            <h1
+              className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-4 sm:mb-6 tracking-tighter leading-none"
+              style={{ fontFamily: "Mechsuit" }}
+            >
+              REVATHON <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-white">
+                2.0
+              </span>
+            </h1>
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-lg mx-auto md:mx-0 mb-6 sm:mb-8 border-l-4 border-primary pl-3 sm:pl-4">
+              The Ultimate Innovation Challenge. <br />
+              <span className="text-primary font-bold">
+                Reverse Engineering Hackathon
+              </span>
+            </p>
+          </div>
 
-          <button
-            onClick={() =>
-              document
-                .getElementById("register")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-            className="group relative px-6 sm:px-8 py-2.5 sm:py-3 bg-transparent border border-white/20 overflow-hidden cursor-pointer hover:bg-white hover:border-white transition-all duration-300"
-          >
-            <span className="relative text-sm sm:text-base text-white font-mono tracking-widest uppercase group-hover:text-black transition-colors duration-300">
+          <div className="button-wrapper">
+            <button
+              onClick={() =>
+                document
+                  .getElementById("register")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+              className="animated-button relative z-50"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
               Register Now
-            </span>
-            <div className="absolute top-0 right-0 p-1">
-              <div className="w-1 h-1 bg-white group-hover:bg-black transition-colors duration-300"></div>
-            </div>
-            <div className="absolute bottom-0 left-0 p-1">
-              <div className="w-1 h-1 bg-white group-hover:bg-black transition-colors duration-300"></div>
-            </div>
-          </button>
+            </button>
+          </div>
         </div>
       </div>
     </section>
