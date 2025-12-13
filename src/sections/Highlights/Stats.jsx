@@ -73,12 +73,12 @@ const StatCard = ({ label, value, prefix = "", suffix = "" }) => {
 
                 {/* Content */}
                 <div className="relative z-10 flex flex-col items-center justify-center h-full text-center">
-                    <h3 className="text-4xl md:text-6xl font-bold text-white mb-2 tracking-tighter group-hover:text-primary transition-colors duration-300">
-                        <span className="text-primary text-3xl align-top mr-1">{prefix}</span>
+                    <h3 className="text-4xl md:text-6xl font-bold text-white mb-2 tracking-tighter group-hover:text-[#3abfbc] transition-colors duration-300">
+                        <span className="text-[#3abfbc] text-3xl align-top mr-1">{prefix}</span>
                         {displayValue}
-                        <span className="text-secondary text-3xl md:text-4xl align-top ml-1">{suffix}</span>
+                        <span className="text-[#ff7046] text-3xl md:text-4xl align-top ml-1">{suffix}</span>
                     </h3>
-                    <div className="h-1px w-12 bg-zinc-800 my-4 group-hover:w-24 group-hover:bg-primary transition-all duration-300"></div>
+                    <div className="h-1px w-12 bg-zinc-800 my-4 group-hover:w-24 group-hover:bg-[#3abfbc] transition-all duration-300"></div>
                     <p className="text-gray-400 text-lg font-mono uppercase tracking-widest group-hover:text-white transition-colors">{label}</p>
                 </div>
             </div>

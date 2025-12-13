@@ -1,13 +1,13 @@
 import React from "react";
 
-const TechFrame = ({ children, className = "", color = "primary", reversed = false }) => {
+const TechFrame = ({ children, className = "", color = "#3ABFBC", reversed = false }) => {
   // Use inline styles for colors to ensure they work regardless of Tailwind class generation
   const getColor = (c) => {
     switch(c) {
         case "primary": return "#3ABFBC";
         case "secondary": return "#FF7046";
         case "white": return "#FFFFFF";
-        default: return "#3ABFBC";
+        default: return c;
     }
   };
 

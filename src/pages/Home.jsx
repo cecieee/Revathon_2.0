@@ -7,8 +7,8 @@ import Training from "../sections/Home/Training";
 import Register from "../sections/Home/Register";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import About from "../sections/Revathon1/About";
-
+import About from "../sections/Home/About";
+import HighlightsPreview from "../sections/Home/HighlightsPreview";
 // Lazy load heavy 3D components to reduce initial bundle size
 const Robot3D = lazy(() => import("../components/Robot3D"));
 const Hero = lazy(() => import("../sections/Home/Hero"));
@@ -37,10 +37,9 @@ const Home = () => {
         <Countdown />
         <About />
         <EventDetails />
+        <HighlightsPreview />
         <Organizers />
         <Sponsors />
-        <About1 />
-        <HighlightsPreview />
         <Training />
         <Register />
       </main>

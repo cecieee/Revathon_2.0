@@ -37,11 +37,13 @@ const Navbar = () => {
     { name: "Events", target: "event-details" },
     { name: "Training", target: "training" },
     { name: "Register", target: "register" },
+    { name: "Highlights", path: "/highlights" },
   ];
 
   const handleNavigation = (link) => {
     if (link.path) {
       navigate(link.path);
+      window.scrollTo(0, 0);
       setIsOpen(false);
       return;
     }

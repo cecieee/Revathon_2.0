@@ -14,8 +14,8 @@ const Winners = () => {
       place: "2nd",
       names: ["Arun A", "Alimtiyas S"],
       img: "https://revathon.cecieee.org/assets/2nd-BwbC_KRx.webp",
-      color: "secondary",
-      textColor: "text-secondary",
+      color: "#ff7046",
+      textColor: "text-[#ff7046]",
       delay: 0.2,
       height: "h-[32rem] md:h-[28rem]",
       mbClass: "md:mb-12",
@@ -26,8 +26,8 @@ const Winners = () => {
       place: "1st",
       names: ["Abhiram Chandrasenan", "Amil Mether", "Sabin K Santhosh", "Chris James Antony"],
       img: "https://revathon.cecieee.org/assets/1st-D-HZEbzd.webp",
-      color: "primary",
-      textColor: "text-primary",
+      color: "#3abfbc",
+      textColor: "text-[#3abfbc]",
       delay: 0,
       height: "h-[32rem] md:h-[32rem]",
       mbClass: "md:mb-24",
@@ -84,8 +84,8 @@ const Winners = () => {
   return (
     <section ref={sectionRef} id="winners" className="py-20 bg-black text-white relative">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-secondary">
-          <span className="text-primary">WINNERS</span><span className="text-white"> OF</span> REVATHON 1.0
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-[#ff7046]">
+          <span className="text-[#3abfbc]">WINNERS</span><span className="text-white"> OF</span> REVATHON 1.0
         </h2>
 
         <div className="flex flex-col md:flex-row justify-center items-center md:items-end gap-10 md:gap-8 w-[80vw] mx-auto">
@@ -95,7 +95,7 @@ const Winners = () => {
               className={`winner-card group relative w-full md:w-1/3 flex flex-col ${winner.height} ${winner.mbClass} ${index === 1 ? 'order-first md:order-0 z-10' : ''} hover:-translate-y-2 active:-translate-y-2 transition-transform duration-300`}
             >
               <ElectricBorder 
-                color={winner.color === 'primary' ? '#3ABFBC' : winner.color === 'secondary' ? '#FF7046' : '#FFFFFF'} 
+                color={winner.color === '#3abfbc' ? '#3ABFBC' : winner.color === '#ff7046' ? '#FF7046' : '#FFFFFF'} 
                 className="h-full w-full"
                 layerClassName="opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500"
               >
