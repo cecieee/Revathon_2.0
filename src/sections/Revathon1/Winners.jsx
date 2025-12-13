@@ -17,8 +17,8 @@ const Winners = () => {
       color: "secondary",
       textColor: "text-secondary",
       delay: 0.2,
-      height: "h-80 md:h-[28rem]",
-      mbClass: "md:mb-10",
+      height: "h-[32rem] md:h-[28rem]",
+      mbClass: "md:mb-12",
       paddingTop: "3rem",
       margin: "",
     },
@@ -29,7 +29,7 @@ const Winners = () => {
       color: "primary",
       textColor: "text-primary",
       delay: 0,
-      height: "h-96 md:h-[32rem]",
+      height: "h-[32rem] md:h-[32rem]",
       mbClass: "md:mb-24",
       crown: true,
       paddingTop: "6rem",
@@ -42,9 +42,9 @@ const Winners = () => {
       color: "white", // We'll handle white in TechFrame or default
       textColor: "text-white",
       delay: 0.4,
-      height: "h-72 md:h-[26rem]",
-      mbClass: "md:mb-20",
-      paddingTop: "100px",
+      height: "h-[32rem] md:h-[26rem]",
+      mbClass: "md:mb-10",
+      paddingTop: "60px",
       margin: "",
     },
   ];
@@ -88,17 +88,16 @@ const Winners = () => {
           <span className="text-primary">WINNERS</span><span className="text-white"> OF</span> REVATHON 1.0
         </h2>
 
-        <div className="flex flex-col md:flex-row justify-center items-end gap-6 md:gap-8 max-w-6xl mx-auto">
+        <div className="flex flex-col md:flex-row justify-center items-center md:items-end gap-10 md:gap-8 w-[80vw] mx-auto">
           {winnersData.map((winner, index) => (
             <div
               key={index}
-              className={`winner-card group relative w-full md:w-1/3 flex flex-col ${winner.height} ${winner.margin || ''} ${winner.mbClass} ${index === 1 ? 'order-first md:order-none z-10' : ''} hover:-translate-y-2 transition-transform duration-300`}
-              style={{ marginBottom: winner.paddingTop }}
+              className={`winner-card group relative w-full md:w-1/3 flex flex-col ${winner.height} ${winner.mbClass} ${index === 1 ? 'order-first md:order-0 z-10' : ''} hover:-translate-y-2 active:-translate-y-2 transition-transform duration-300`}
             >
               <ElectricBorder 
                 color={winner.color === 'primary' ? '#3ABFBC' : winner.color === 'secondary' ? '#FF7046' : '#FFFFFF'} 
                 className="h-full w-full"
-                layerClassName="opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                layerClassName="opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500"
               >
               <WinnerFrame color={winner.color} reversed={index % 2 !== 0} className="h-full flex flex-col">
                 <div className="relative w-full h-full flex flex-col overflow-hidden">
@@ -114,9 +113,9 @@ const Winners = () => {
                     <img
                     src={winner.img}
                     alt={`${winner.place} Place Winners`}
-                    className="w-full h-full object-cover block transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-cover block transition-transform duration-500 group-hover:scale-110 group-active:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60  z-10"></div>
+                    <div className="absolute inset-0 bg-linear-to-b from-transparent to-black/60  z-10"></div>
                     <div className={`absolute bottom-4 left-1/2 -translate-x-1/2 text-2xl font-black ${winner.textColor} z-20`}>
                         {winner.place}
                     </div>
