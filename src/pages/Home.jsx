@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import GlitchLoader from "../sections/Home/loader";
 import Countdown from "../sections/Home/Countdown";
 import About from "../sections/Home/About";
 import EventDetails from "../sections/Home/EventDetails";
@@ -10,8 +11,11 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 const Home = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
     <>
+      {isLoading && <GlitchLoader onComplete={() => setIsLoading(false)} />}
       <Navbar />
       <main>
         <Countdown />
