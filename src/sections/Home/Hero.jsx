@@ -94,14 +94,14 @@ const Hero = () => {
       </div>
 
       {/* Main content container */}
-      <div className="container mx-auto px-4 sm:px-6 md:px-12 pt-20 sm:pt-16 md:pt-0 relative z-20 flex flex-col md:flex-row items-center justify-center md:justify-start">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 pt-32 sm:pt-32 md:pt-0 relative z-20 flex flex-col md:flex-row items-center justify-center md:justify-start h-full">
         <div className="w-full md:w-1/2 text-center md:text-left">
           <div ref={textRef}>
-            <h2 className="text-sm sm:text-lg md:text-xl lg:text-2xl font-mono text-secondary tracking-widest mb-2 sm:mb-3">
+            <h2 className="text-[10px] sm:text-base md:text-xl lg:text-2xl font-mono text-secondary tracking-widest mb-2">
               IEEE SB CEC PRESENTS
             </h2>
             <h1
-              className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-4 sm:mb-6 tracking-tighter leading-none"
+              className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-4 sm:mb-6 tracking-tighter leading-tight sm:leading-none"
               style={{ fontFamily: "Mechsuit" }}
             >
               REVATHON <br />
@@ -109,7 +109,7 @@ const Hero = () => {
                 2.0
               </span>
             </h1>
-            <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-lg mx-auto md:mx-0 mb-6 sm:mb-8 border-l-4 border-primary pl-3 sm:pl-4">
+            <p className="text-xs sm:text-base md:text-xl text-gray-300 max-w-lg mx-auto md:mx-0 mb-6 sm:mb-8 border-l-0 md:border-l-4 border-primary pl-0 md:pl-4 mt-2 md:mt-0 leading-relaxed">
               The Ultimate Innovation Challenge. <br />
               <span className="text-primary font-bold">
                 Reverse Engineering Hackathon
