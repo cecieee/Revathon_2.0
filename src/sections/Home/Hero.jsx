@@ -10,7 +10,6 @@ const Hero = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Animate text elements
       if (textRef.current) {
         gsap.from(textRef.current.children, {
           y: 50,
@@ -21,7 +20,6 @@ const Hero = () => {
         });
       }
 
-      // Animate button separately
       gsap.from(".button-wrapper", {
         y: 30,
         opacity: 0,
@@ -40,7 +38,6 @@ const Hero = () => {
       id="hero"
       className="min-h-screen flex items-center relative overflow-hidden bg-transparent"
     >
-      {/* CSS-based sparkle particles - replaces Three.js Canvas to avoid WebGL context conflicts */}
       <div className="absolute inset-0 -z-20 overflow-hidden">
         {[...Array(20)].map((_, i) => (
           <div
@@ -60,11 +57,9 @@ const Hero = () => {
         ))}
       </div>
 
-      {/* Decorative blur circles - responsive positioning */}
       <div className="absolute top-10 right-5 sm:top-20 sm:right-20 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-primary/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
       <div className="absolute bottom-10 left-5 sm:bottom-20 sm:left-20 w-48 h-48 sm:w-72 sm:h-72 md:w-96 md:h-96 bg-secondary/10 rounded-full blur-3xl -z-10 animate-pulse delay-700"></div>
 
-      {/* Corner decorative SVGs */}
       <div className="absolute top-0 left-0 w-20 h-20 sm:w-32 sm:h-32 md:w-64 md:h-64 text-white pointer-events-none opacity-40 sm:opacity-60">
         <svg viewBox="0 0 100 100" fill="none" className="w-full h-full">
           <path d="M0 2 H30 L45 17 V45" stroke="currentColor" strokeWidth="1" />
@@ -105,7 +100,7 @@ const Hero = () => {
               style={{ fontFamily: "Mechsuit" }}
             >
               REVATHON <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-white">
+              <span className="text-white font-bold">
                 2.0
               </span>
             </h1>
