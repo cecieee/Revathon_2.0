@@ -194,7 +194,7 @@ export default function ProcessWorkflow() {
       <div className="w-full max-w-3xl flex flex-col gap-10">
         <h2
           className="text-center text-2xl md:text-4xl font-extrabold tracking-wide"
-          style={{ color: "#3ABFBC" }}
+          style={{ color: "white" }}
         >
           WHAT IS <span style={{ color: "#FF7046" }}>REVERSE ENGINEERING ?</span>
         </h2>
@@ -211,16 +211,15 @@ export default function ProcessWorkflow() {
 
         <div className="w-full mt-6">
           <h3
-            className="text-center text-2xl md:text-3xl font-bold tracking-wide mb-4"
-            style={{ color: "#FF7046" }}
+            className="text-center text-secondary text-2xl md:text-3xl font-bold tracking-wide mb-4"
           >
             WHY REVERSE HACKATHON?
           </h3>
 
           <p className="max-w-4xl mx-auto text-center text-lg md:text-xl leading-8 md:leading-9 opacity-90 text-white" style={{
-      fontFamily:
-        "Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
-    }}>
+            fontFamily:
+              "Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
+          }}>
             Participants gain hands-on experience in understanding how systems
             work by deconstructing them, enhancing their technical skills, and
             developing analytical thinking. A reverse engineering hackathon is
@@ -233,17 +232,16 @@ export default function ProcessWorkflow() {
       <div className="w-full mt-12">
         {/* Title outside the box */}
         <h3
-          className="text-center text-xl md:text-2xl font-extrabold tracking-wide mb-6"
-          style={{ color: "#FF7046" }}
+          className="text-center text-secondary text-xl md:text-2xl font-extrabold tracking-wide mb-6"
         >
-          HOW <span style={{ color: "#3ABFBC" }}>REVERSE HACKATHON?</span>
+          HOW REVERSE HACKATHON?
         </h3>
 
         {/* Main container box */}
         <div className="border-2 border-[#3ABFBC] rounded-lg p-4 md:p-5
                         max-w-3xl mx-auto
                         bg-gradient-to-br from-gray-900/50 to-gray-800/30 backdrop-blur-sm">
-          
+
           {/* Grid of individual content boxes */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
             {[

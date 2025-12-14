@@ -43,15 +43,14 @@ export default function Organizers() {
         aria-labelledby="organizers-heading"
       >
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
-          
+
           {/* Smaller heading */}
           <h2
             id="organizers-heading"
             className="font-mechsuit text-2xl sm:text-3xl md:text-4xl
                        tracking-[0.08em] sm:tracking-[0.1em] md:tracking-[0.12em]
                        uppercase mb-6 sm:mb-8 md:mb-10
-                       bg-gradient-to-r from-[#FF7046] via-[#3abfbc] to-[#FF7046]
-                       bg-clip-text text-transparent
+                       text-white
                        drop-shadow-[0_0_4px_rgba(58,191,188,0.35)]
                        animate-soft-pulse"
           >
@@ -68,8 +67,7 @@ export default function Organizers() {
                 className="relative"
               >
                 {/* Gradient border */}
-                <div className="rounded-lg bg-gradient-to-r
-                                from-[#FF7046] via-[#3abfbc] to-[#FF7046] p-0.5">
+                <div className="rounded-lg bg-secondary p-0.5">
                   {/* Smaller inner container */}
                   <div className="rounded-lg bg-black p-3
                                   flex items-center justify-center

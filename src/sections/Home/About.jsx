@@ -106,7 +106,7 @@ const About = () => {
           </div>
 
           {/* Image Section */}
-          <div className="w-full md:w-1/2 about-image flex justify-center md:justify-end pb-10 md:pb-20 md:pr-10">
+          {/* <div className="w-full md:w-1/2 about-image flex justify-center md:justify-end pb-10 md:pb-20 md:pr-10">
             <div className="relative rounded-xl overflow-hidden max-w-md">
               <img
                 src="/assets/images/About-rev1.png"
@@ -114,7 +114,7 @@ const About = () => {
                 className="w-full h-auto object-cover"
               />
             </div>
-          </div>
+          </div> */}
 
         </div>
       </div>
