@@ -4,8 +4,8 @@ export default function Sponsors() {
 
   const sponsor = {
     name: "Official Sponsor",
-    logo: "/organisers-sponsors/ieee-logo.png",
-    alt: "Sponsor Logo",
+    logo: "/organisers-sponsors/quadratech.png",
+    alt: "Partner Logo",
   };
 
   return (
@@ -23,14 +23,14 @@ export default function Sponsors() {
         <h2
           id="sponsors-heading"
           className="font-mechsuit text-3xl xs:text-4xl sm:text-5xl md:text-6xl 
-                     tracking-[0.05em] xs:tracking-[0.1em] sm:tracking-[0.15em] md:tracking-[0.25em] 
+                     tracking-[0.01em] xs:tracking-[0.02em] sm:tracking-[0.03em] md:tracking-[0.04em] 
                      uppercase mb-8 sm:mb-12 md:mb-16 
                      bg-gradient-to-r from-[#FF7046] via-[#3abfbc] to-[#FF7046] 
                      bg-clip-text text-transparent
                      drop-shadow-[0_0_10px_rgba(58,191,188,0.7)]
                      animate-pulse"
         >
-          SPONSORS
+          TECHNICAL PARTNER
         </h2>
 
         <div className="flex justify-center items-center">
@@ -58,7 +58,7 @@ export default function Sponsors() {
                   alt={sponsor.alt}
                   width={128}
                   height={128}
-                  className="h-16 xs:h-20 sm:h-24 md:h-28 lg:h-32 object-contain rounded-lg max-w-full
+                  className="h-4 xs:h-8 sm:h-12 md:h-16 lg:h-20 object-contain rounded-lg max-w-full
                              brightness-125 contrast-125
                              drop-shadow-[0_0_8px_rgba(58,191,188,0.6)]"
                   loading="lazy"

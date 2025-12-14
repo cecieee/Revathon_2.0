@@ -1,8 +1,8 @@
-import React, { useLayoutEffect, useRef, useState, useEffect } from 'react';
+import React, { useRef, useEffect, useState, useLayoutEffect, useMemo } from 'react';
 import { useGLTF } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useThree, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -54,34 +54,63 @@ const PivotControls = ({ children, rotationRef, offset = HEAD_OFFSET }) => {
 };
 
 export default function RobotModel() {
-    // Load Cubes Model
-    const { scene: cubesScene } = useGLTF('/models/robot_cubes.glb');
-
-    // Refs for animation
-    const cubesRef = useRef([]);
-    const robotCubesRef = useRef([]); // Array of top-level objects
-    const cubeRobotHeadRef = useRef(); // Ref for the head in the cubes model
     const group = useRef();
+    const cubeRobotHeadRef = useRef();
+    const cubesRef = useRef([]);
+    const robotCubesRef = useRef([]);
     const bodyGroupRef = useRef();
     const partsRefs = useRef([]);
     const headInnerRef = useRef();
-    const { scene } = useThree();
 
+    // Load cubes model
+    const { scene: cubesScene } = useGLTF('/models/robot_cubes.glb');
 
+    // Load body
+    const { scene: bodyScene } = useGLTF('/models/body.glb');
+
+    // Load all parts - each useGLTF call is at the top level (not in a callback)
+    const headGLTF = useGLTF('/models/Head.glb');
+    const lFootGLTF = useGLTF('/models/l_foot.001.glb');
+    const lHandGLTF = useGLTF('/models/l_hand.glb');
+    const lLegGLTF = useGLTF('/models/l_leg.glb');
+    const lPalmGLTF = useGLTF('/models/l_palm.glb');
+    const lShoulderGLTF = useGLTF('/models/l_shoulder.glb');
+    const lThighGLTF = useGLTF('/models/l_thigh.glb');
+    const rFootGLTF = useGLTF('/models/r_foot.001.glb');
+    const rHandGLTF = useGLTF('/models/r_hand.glb');
+    const rLegGLTF = useGLTF('/models/r_leg.glb');
+    const rPalmGLTF = useGLTF('/models/r_palm.glb');
+    const rShoulderGLTF = useGLTF('/models/r_shoulder.glb');
+    const rThighGLTF = useGLTF('/models/r_thigh.glb');
+
+    // Memoize parts to avoid recreating clones on every render
+    const parts = useMemo(() => [
+        { name: 'Head', scene: headGLTF.scene.clone() },
+        { name: 'L_Foot', scene: lFootGLTF.scene.clone() },
+        { name: 'L_Hand', scene: lHandGLTF.scene.clone() },
+        { name: 'L_Leg', scene: lLegGLTF.scene.clone() },
+        { name: 'L_Palm', scene: lPalmGLTF.scene.clone() },
+        { name: 'L_Shoulder', scene: lShoulderGLTF.scene.clone() },
+        { name: 'L_Thigh', scene: lThighGLTF.scene.clone() },
+        { name: 'R_Foot', scene: rFootGLTF.scene.clone() },
+        { name: 'R_Hand', scene: rHandGLTF.scene.clone() },
+        { name: 'R_Leg', scene: rLegGLTF.scene.clone() },
+        { name: 'R_Palm', scene: rPalmGLTF.scene.clone() },
+        { name: 'R_Shoulder', scene: rShoulderGLTF.scene.clone() },
+        { name: 'R_Thigh', scene: rThighGLTF.scene.clone() },
+    ], [headGLTF, lFootGLTF, lHandGLTF, lLegGLTF, lPalmGLTF, lShoulderGLTF, lThighGLTF, rFootGLTF, rHandGLTF, rLegGLTF, rPalmGLTF, rShoulderGLTF, rThighGLTF]);
+
+    // Identify cubes and robot parts
     useLayoutEffect(() => {
         if (cubesScene) {
-            // Traverse and identify parts
             const foundCubes = [];
             const foundRobot = [];
 
-            // Iterate only top-level children to avoid double-transforms on hierarchies
             cubesScene.children.forEach((child) => {
                 if (child.name.toLowerCase().includes('cube')) {
                     foundCubes.push(child);
                 } else {
-                    // Treat all non-cube top-level nodes as part of the robot group
                     foundRobot.push(child);
-                    // Identify Head
                     if (child.name.toLowerCase().includes('head')) {
                         cubeRobotHeadRef.current = child;
                     }
@@ -93,12 +122,11 @@ export default function RobotModel() {
         }
     }, [cubesScene]);
 
-    // Animate Head in Hero Section
+    // Head rotation animation
     useEffect(() => {
         if (cubeRobotHeadRef.current) {
             const tl = gsap.timeline({ repeat: -1, repeatDelay: 3 });
 
-            // Rotate RIGHT (Opposite direction)
             tl.to(cubeRobotHeadRef.current.rotation, {
                 y: "-=0.5",
                 duration: 1,
@@ -108,23 +136,14 @@ export default function RobotModel() {
                     y: "+=0.5",
                     duration: 1,
                     ease: "power2.inOut"
-                }, "+=0.5"); // Wait 0.5s before rotating back
+                }, "+=0.5");
 
             return () => tl.kill();
         }
     }, [cubesScene]);
 
-    // Load Body
-    const { scene: bodyScene } = useGLTF('/models/body.glb');
-
-    // Load Parts
-    const parts = partsList.map((part) => {
-        const { scene } = useGLTF(part.file);
-        return { ...part, scene: scene.clone() };
-    });
-
-    useFrame((state, delta) => {
-        // 1. Head Tracking (For the assembled robot)
+    // Head tracking - follows mouse cursor
+    useFrame((state) => {
         if (headInnerRef.current) {
             const mouseX = state.pointer.x;
             const mouseY = state.pointer.y;
@@ -135,116 +154,148 @@ export default function RobotModel() {
         }
     });
 
+    // ScrollTrigger animations - with proper cleanup
     useLayoutEffect(() => {
-        const ctx = gsap.context(() => {
-            // Initial Setups for Parts (Hide them in void)
-            if (bodyGroupRef.current) {
-                gsap.set(bodyGroupRef.current.position, { y: -20 });
-                gsap.set(bodyGroupRef.current.rotation, { y: Math.PI * 2 });
+        // Store the ScrollTrigger instance to clean up properly
+        let scrollTriggerInstance = null;
+        let timeline = null;
+
+        // Initial positions for reassembling parts
+        if (bodyGroupRef.current) {
+            gsap.set(bodyGroupRef.current.position, { y: -20 });
+            gsap.set(bodyGroupRef.current.rotation, { y: Math.PI * 2 });
+        }
+        partsRefs.current.forEach(part => {
+            if (part) {
+                gsap.set(part.position, { y: -20, x: (Math.random() - 0.5) * 10, z: (Math.random() - 0.5) * 10 });
+                gsap.set(part.rotation, { x: Math.random() * Math.PI, z: Math.random() * Math.PI });
             }
-            partsRefs.current.forEach(part => {
-                if (part) {
-                    gsap.set(part.position, { y: -20, x: (Math.random() - 0.5) * 10, z: (Math.random() - 0.5) * 10 });
-                    gsap.set(part.rotation, { x: Math.random() * Math.PI, z: Math.random() * Math.PI });
-                }
-            });
-
-
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: 'body',
-                    start: 'top top',
-                    end: 'bottom bottom',
-                    scrub: 1,
-                },
-            });
-
-            // PHASE 1: CUBES & LEANING SCENE FALL
-
-            // Cubes Fall
-            if (cubesRef.current.length > 0) {
-                cubesRef.current.forEach((cube) => {
-                    tl.to(cube.position, { y: -20, duration: 2, ease: "power2.in" }, 0);
-                });
-            }
-
-            // Robot (from Cubes model) Falls
-            if (robotCubesRef.current && robotCubesRef.current.length > 0) {
-                robotCubesRef.current.forEach((obj) => {
-                    // Animate top-level objects ONLY
-                    tl.to(obj.position, { y: -20, duration: 2, ease: "power2.in" }, 0.2);
-                });
-            }
-
-
-            // --- PHASE 2: REASSEMBLY (Come from Void) ---
-            // 15% - 100%
-
-            // 1. Body Center Arrives (15% - 30%)
-            if (bodyGroupRef.current) {
-                tl.to(bodyGroupRef.current.position, { x: 0, y: 0, z: 0, duration: 2, ease: "back.out(1.2)" }, 3);
-                tl.to(bodyGroupRef.current.rotation, { x: 0, y: 0, z: 0, duration: 2, ease: "power2.out" }, 3);
-            }
-
-            // 2. Limbs Arrive (30% - 85%)
-            // Filter Head out
-            const limbs = partsList.map((p, i) => ({ ...p, index: i })).filter(p => p.name !== 'Head');
-
-            limbs.forEach((limb, i) => {
-                const partRef = partsRefs.current[limb.index];
-                if (!partRef) return;
-
-                // Stagger them
-                const startTime = 5 + (i * 0.5);
-
-                tl.to(partRef.position, { x: 0, y: 0, z: 0, duration: 2, ease: "back.out(1.5)" }, startTime);
-                tl.to(partRef.rotation, { x: 0, y: 0, z: 0, duration: 2, ease: "power2.out" }, startTime);
-            });
-
-            // 3. Head Arrives (85% - 95%)
-            const headIndex = partsList.findIndex(p => p.name === 'Head');
-            const headRef = partsRefs.current[headIndex];
-            if (headRef) {
-                tl.to(headRef.position, { x: 0, y: 0, z: 0, duration: 2, ease: "elastic.out(1, 0.5)" }, 12);
-                tl.to(headRef.rotation, { x: 0, y: 0, z: 0, duration: 2, ease: "power2.out" }, 12);
-            }
-
         });
 
-        return () => ctx.revert();
-    }, [scene, cubesScene]);
+        // Create ScrollTrigger timeline
+        timeline = gsap.timeline({
+            scrollTrigger: {
+                trigger: 'body',
+                start: 'top top',
+                end: 'bottom bottom',
+                scrub: 1,
+                onInit: (self) => {
+                    scrollTriggerInstance = self;
+                }
+            },
+        });
 
-    // Safe Responsive Logic
-    const isMobile = window.innerWidth < 768;
-    const position = isMobile ? [0.75, -3.0, 0] : [4, -2.5, 0];
-    const scale = isMobile ? 0.35 : 0.5;
+        // Hide robot when footer comes into view
+        if (group.current) {
+            gsap.to(group.current.position, {
+                y: -10, // Move down out of view
+                opacity: 0,
+                scrollTrigger: {
+                    trigger: 'footer',
+                    start: 'top bottom', // Start hiding when top of footer hits bottom of viewport
+                    end: 'center bottom', // Fully hidden when footer is halfway up
+                    scrub: 1,
+                    id: 'footerHide'
+                }
+            });
+        }
+
+        // PHASE 1: Cubes fall
+        if (cubesRef.current.length > 0) {
+            cubesRef.current.forEach((cube) => {
+                timeline.to(cube.position, { y: -20, duration: 2, ease: "power2.in" }, 0);
+            });
+        }
+
+        // Robot from cubes falls
+        if (robotCubesRef.current && robotCubesRef.current.length > 0) {
+            robotCubesRef.current.forEach((obj) => {
+                timeline.to(obj.position, { y: -20, duration: 2, ease: "power2.in" }, 0.2);
+            });
+        }
+
+        // PHASE 2: Reassembly
+        if (bodyGroupRef.current) {
+            timeline.to(bodyGroupRef.current.position, { x: 0, y: 0, z: 0, duration: 2, ease: "back.out(1.2)" }, 3);
+            timeline.to(bodyGroupRef.current.rotation, { x: 0, y: 0, z: 0, duration: 2, ease: "power2.out" }, 3);
+        }
+
+        // Limbs arrive
+        const limbs = partsList.map((p, i) => ({ ...p, index: i })).filter(p => p.name !== 'Head');
+        limbs.forEach((limb, i) => {
+            const partRef = partsRefs.current[limb.index];
+            if (!partRef) return;
+
+            const startTime = 5 + (i * 0.5);
+            timeline.to(partRef.position, { x: 0, y: 0, z: 0, duration: 2, ease: "back.out(1.5)" }, startTime);
+            timeline.to(partRef.rotation, { x: 0, y: 0, z: 0, duration: 2, ease: "power2.out" }, startTime);
+        });
+
+        // Head arrives
+        const headIndex = partsList.findIndex(p => p.name === 'Head');
+        const headRef = partsRefs.current[headIndex];
+        if (headRef) {
+            timeline.to(headRef.position, { x: 0, y: 0, z: 0, duration: 2, ease: "elastic.out(1, 0.5)" }, 12);
+            timeline.to(headRef.rotation, { x: 0, y: 0, z: 0, duration: 2, ease: "power2.out" }, 12);
+        }
+
+        // CRITICAL: Proper cleanup on unmount
+        return () => {
+            if (timeline) {
+                timeline.kill();
+            }
+            if (scrollTriggerInstance) {
+                scrollTriggerInstance.kill();
+            }
+        };
+    }, [cubesScene]);
+
+    // Responsive positioning
+    const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth < 768 : false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const position = isMobile ? [0.9, -2.8, 0] : [4.5, -2.5, 0];
+    const scale = isMobile ? 0.25 : 0.5;
 
     return (
         <group ref={group} dispose={null} position={position} rotation={[0, -0.2, 0]} scale={scale}>
-
-            {/* MODEL 1: Cubes Leaning Robot (Always rendered, falls down) */}
             <primitive object={cubesScene} />
 
-            {/* MODEL 2: Assembling Robot (Always rendered, starts in void) */}
-            <group>
-                <group ref={bodyGroupRef}>
-                    <primitive object={bodyScene} />
-                </group>
-                {parts.map((part, i) => {
-                    if (part.name === 'Head') {
-                        return <group key={part.name} ref={el => partsRefs.current[i] = el}>
+            <group ref={bodyGroupRef}>
+                <primitive object={bodyScene} />
+            </group>
+
+            {parts.map((part, i) => {
+                if (part.name === 'Head') {
+                    return (
+                        <group key={part.name} ref={el => partsRefs.current[i] = el}>
                             <PivotControls rotationRef={headInnerRef} offset={HEAD_OFFSET}>
                                 <primitive object={part.scene} position={[-0.05, 0.0, 0.2]} />
                             </PivotControls>
                         </group>
-                    }
-                    return <primitive key={part.name} ref={el => partsRefs.current[i] = el} object={part.scene} />
-                })}
-            </group>
+                    );
+                }
+                return (
+                    <primitive
+                        key={part.name}
+                        ref={el => partsRefs.current[i] = el}
+                        object={part.scene}
+                    />
+                );
+            })}
         </group>
     );
 }
 
-// Preload to avoid pop-in
+// Preload all models
+useGLTF.preload('/models/robot_cubes.glb');
 useGLTF.preload('/models/body.glb');
 partsList.forEach(p => useGLTF.preload(p.file));

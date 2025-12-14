@@ -5,19 +5,19 @@ export default function Organizers() {
     {
       id: 1,
       name: "IEEE",
-      logo: "/organisers-sponsors/ieee-logo.png",
+      logo: "/organisers-sponsors/IEEE-logo-WHITE.png",
       alt: "IEEE Logo"
     },
     {
       id: 2,
       name: "IEEE Student Branch",
-      logo: "/organisers-sponsors/ieee-logo.png",
+      logo: "/organisers-sponsors/ieee_sb_cec_logo_white.png",
       alt: "IEEE Student Branch Logo"
     },
     {
       id: 3,
       name: "Robotics and Automation Society",
-      logo: "/organisers-sponsors/ieee-logo.png",
+      logo: "/organisers-sponsors/RAS-white.png",
       alt: "IEEE RAS Logo"
     }
   ];
@@ -78,7 +78,7 @@ export default function Organizers() {
             ORGANIZERS
           </h2>
 
-          <div className="flex flex-row justify-center items-center gap-4 xs:gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-20 flex-wrap">
+          <div className="flex flex-row justify-center items-center gap-2 xs:gap-4 sm:gap-6 md:gap-10 lg:gap-12 xl:gap-16 flex-wrap">
             {organizers.map((organizer) => (
               <div
                 key={organizer.id}
@@ -98,7 +98,7 @@ export default function Organizers() {
                       alt={organizer.alt}
                       width={112}
                       height={112}
-                      className="h-12 xs:h-14 sm:h-16 md:h-20 lg:h-24 xl:h-28 object-contain rounded-lg max-w-full
+                      className="h-4 xs:h-6 sm:h-8 md:h-10 lg:h-14 xl:h-14 object-contain rounded-lg max-w-full
                                 brightness-125 contrast-125
                                 drop-shadow-[0_0_8px_rgba(58,191,188,0.6)]"
                       loading="lazy"

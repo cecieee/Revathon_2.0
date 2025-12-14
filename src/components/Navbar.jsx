@@ -20,10 +20,10 @@ const Navbar = () => {
     if (location.pathname === '/' && location.state?.scrollTo) {
       const element = document.getElementById(location.state.scrollTo);
       if (element) {
-        // wrapper to ensure page is loaded
+        // wrapper to ensure page is loaded (300ms to allow lazy-loaded components to render)
         setTimeout(() => {
           element.scrollIntoView({ behavior: "smooth" });
-        }, 100);
+        }, 300);
       }
       // Clear state to prevent re-scrolling on refresh/update
       navigate(location.pathname, { replace: true, state: {} });
@@ -93,7 +93,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-white focus:outline-none"
+          className="md:hidden text-white focus:outline-none z-50 relative"
           onClick={() => setIsOpen(!isOpen)}
         >
           <div className="w-8 h-6 flex flex-col justify-between">
@@ -118,11 +118,17 @@ const Navbar = () => {
         className={`fixed inset-0 bg-black/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center space-y-8 transition-transform duration-500 ease-in-out md:hidden ${isOpen ? "translate-x-0" : "translate-x-full"
           }`}
       >
-        {navLinks.map((link) => (
+        {navLinks.map((link, index) => (
           <button
             key={link.name}
             onClick={() => handleNavigation(link)}
-            className="text-2xl text-white font-bold hover:text-primary transition-colors duration-300 tracking-widest uppercase"
+            className={`text-2xl text-white font-bold hover:text-primary transition-all duration-300 tracking-widest uppercase transform ${isOpen
+              ? "translate-x-0 opacity-100"
+              : "translate-x-full opacity-0"
+              }`}
+            style={{
+              transitionDelay: isOpen ? `${index * 100}ms` : "0ms",
+            }}
           >
             {link.name}
           </button>
