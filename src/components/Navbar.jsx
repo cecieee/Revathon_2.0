@@ -63,59 +63,61 @@ const Navbar = () => {
   };
 
   return (
-    <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-black/80 backdrop-blur-md border-b border-primary/20" : "bg-transparent"
-        }`}
-    >
-      <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-        {/* Logo */}
-        <div
-          className="text-2xl font-bold tracking-widest cursor-pointer text-white hover:text-primary transition-colors duration-300"
-          style={{ fontFamily: "Mechsuit" }}
-          onClick={() => handleNavigation({ target: "hero" })}
-        >
-          REVATHON <span className="text-primary">2.0</span>
-        </div>
-
-        {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-8">
-          {navLinks.map((link) => (
-            <button
-              key={link.name}
-              onClick={() => handleNavigation(link)}
-              className="relative text-white opacity-80 hover:opacity-100 hover:text-primary transition-all duration-300 group text-sm uppercase tracking-wider cursor-pointer"
-            >
-              {link.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-secondary transition-all duration-300 group-hover:w-full"></span>
-            </button>
-          ))}
-        </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden text-white focus:outline-none z-50 relative"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          <div className="w-8 h-6 flex flex-col justify-between">
-            <span
-              className={`block w-full h-[2px] bg-primary transition-transform duration-300 ${isOpen ? "rotate-45 translate-y-2.5" : ""
-                }`}
-            ></span>
-            <span
-              className={`block w-full h-[2px] bg-secondary transition-opacity duration-300 ${isOpen ? "opacity-0" : ""
-                }`}
-            ></span>
-            <span
-              className={`block w-full h-[2px] bg-primary transition-transform duration-300 ${isOpen ? "-rotate-45 -translate-y-2.5" : ""
-                }`}
-            ></span>
+    <>
+      <nav
+        className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${scrolled ? "bg-black/80 backdrop-blur-md border-b border-primary/20" : "bg-transparent"
+          }`}
+      >
+        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+          {/* Logo */}
+          <div
+            className="text-2xl font-bold tracking-widest cursor-pointer text-white hover:text-primary transition-colors duration-300 relative z-[110]"
+            style={{ fontFamily: "Mechsuit" }}
+            onClick={() => handleNavigation({ target: "hero" })}
+          >
+            REVATHON <span className="text-primary">2.0</span>
           </div>
-        </button>
-      </div>
+
+          {/* Desktop Menu */}
+          <div className="hidden md:flex space-x-8">
+            {navLinks.map((link) => (
+              <button
+                key={link.name}
+                onClick={() => handleNavigation(link)}
+                className="relative text-white opacity-80 hover:opacity-100 hover:text-primary transition-all duration-300 group text-sm uppercase tracking-wider cursor-pointer"
+              >
+                {link.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-secondary transition-all duration-300 group-hover:w-full"></span>
+              </button>
+            ))}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden text-white focus:outline-none z-[110] relative"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <div className="w-8 h-6 flex flex-col justify-between">
+              <span
+                className={`block w-full h-[2px] bg-primary transition-transform duration-300 ${isOpen ? "rotate-45 translate-y-2.5" : ""
+                  }`}
+              ></span>
+              <span
+                className={`block w-full h-[2px] bg-secondary transition-opacity duration-300 ${isOpen ? "opacity-0" : ""
+                  }`}
+              ></span>
+              <span
+                className={`block w-full h-[2px] bg-primary transition-transform duration-300 ${isOpen ? "-rotate-45 -translate-y-2.5" : ""
+                  }`}
+              ></span>
+            </div>
+          </button>
+        </div>
+      </nav>
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 bg-black/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center space-y-8 transition-transform duration-500 ease-in-out md:hidden ${isOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed inset-0 bg-black/95 backdrop-blur-xl z-[90] flex flex-col items-center justify-center space-y-8 transition-transform duration-500 ease-in-out md:hidden ${isOpen ? "translate-x-0" : "translate-x-full"
           }`}
       >
         {navLinks.map((link, index) => (
@@ -134,7 +136,7 @@ const Navbar = () => {
           </button>
         ))}
       </div>
-    </nav>
+    </>
   );
 };
 
