@@ -51,7 +51,20 @@ const Footer = () => {
                 </a>
               </div>
             </div>
+
+            {/* Coordinators */}
+            <div className="flex flex-col items-center gap-1.5 mt-4 text-[11px] font-sans tracking-wide">
+              <div className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors cursor-default">
+                <span className="text-primary font-bold">CO-ORDINATOR 1</span>
+                <span>+12345 67890</span>
+              </div>
+              <div className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors cursor-default">
+                <span className="text-primary font-bold">CO-ORDINATOR 2</span>
+                <span>+12345 67890</span>
+              </div>
+            </div>
           </div>
+
 
           <div className="relative min-h-[120px] flex items-end justify-center md:justify-end">
             <RobotFooter />
@@ -65,7 +78,7 @@ const Footer = () => {
           </p>
         </div>
       </div>
-    </footer>
+    </footer >
   );
 };
 
