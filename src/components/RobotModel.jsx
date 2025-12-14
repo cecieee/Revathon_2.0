@@ -185,6 +185,21 @@ export default function RobotModel() {
             },
         });
 
+        // Hide robot when footer comes into view
+        if (group.current) {
+            gsap.to(group.current.position, {
+                y: -10, // Move down out of view
+                opacity: 0,
+                scrollTrigger: {
+                    trigger: 'footer',
+                    start: 'top bottom', // Start hiding when top of footer hits bottom of viewport
+                    end: 'center bottom', // Fully hidden when footer is halfway up
+                    scrub: 1,
+                    id: 'footerHide'
+                }
+            });
+        }
+
         // PHASE 1: Cubes fall
         if (cubesRef.current.length > 0) {
             cubesRef.current.forEach((cube) => {
