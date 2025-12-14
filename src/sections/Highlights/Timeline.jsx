@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import DotGrid from '../../components/DotGrid';
@@ -19,45 +19,49 @@ const Timeline = () => {
   const lineRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(null);
 
-  useEffect(() => {
-    const items = timelineRef.current.querySelectorAll('.timeline-item');
-    
-    // Animate the central line
-    gsap.fromTo(lineRef.current, 
-      { height: '0%' },
-      {
-        height: '100%',
-        ease: 'none',
-        scrollTrigger: {
-          trigger: timelineRef.current,
-          start: "top center",
-          end: "bottom center",
-          scrub: 1,
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const items = timelineRef.current.querySelectorAll('.timeline-item');
+      
+      // Animate the central line
+      gsap.fromTo(lineRef.current, 
+        { height: '0%' },
+        {
+          height: '100%',
+          ease: 'none',
+          scrollTrigger: {
+            trigger: timelineRef.current,
+            start: "top center",
+            end: "bottom center",
+            scrub: 1,
+          }
         }
-      }
-    );
+      );
 
-    items.forEach((item, index) => {
-      const content = item.querySelector('.timeline-content');
-      const dot = item.querySelector('.timeline-dot');
-      const connector = item.querySelector('.timeline-connector');
-      const mobileConnector = item.querySelector('.timeline-connector-mobile');
+      items.forEach((item, index) => {
+        const content = item.querySelector('.timeline-content');
+        const dot = item.querySelector('.timeline-dot');
+        const connector = item.querySelector('.timeline-connector');
+        const mobileConnector = item.querySelector('.timeline-connector-mobile');
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: item,
-          start: "top 80%",
-        }
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: item,
+            start: "top 80%",
+          }
+        });
+
+        tl.fromTo(dot, 
+          { opacity: 0.2, scale: 1, borderColor: 'rgba(255,255,255,0.2)', boxShadow: 'none' }, 
+          { opacity: 1, scale: 1, borderColor: '#FF7046', boxShadow: '0 0 10px #3ABFBC', duration: 0.3 }
+        )
+          .fromTo(connector, { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.3 })
+          .fromTo(mobileConnector, { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.3 }, "<")
+          .fromTo(content, { opacity: 0, x: index % 2 === 0 ? -20 : 20 }, { opacity: 1, x: 0, duration: 0.5 });
       });
+    }, timelineRef);
 
-      tl.fromTo(dot, 
-        { opacity: 0.2, scale: 1, borderColor: 'rgba(255,255,255,0.2)', boxShadow: 'none' }, 
-        { opacity: 1, scale: 1, borderColor: '#FF7046', boxShadow: '0 0 10px #3ABFBC', duration: 0.3 }
-      )
-        .fromTo(connector, { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.3 })
-        .fromTo(mobileConnector, { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.3 }, "<")
-        .fromTo(content, { opacity: 0, x: index % 2 === 0 ? -20 : 20 }, { opacity: 1, x: 0, duration: 0.5 });
-    });
+    return () => ctx.revert();
   }, []);
 
   return (

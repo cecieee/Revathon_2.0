@@ -84,7 +84,7 @@ const Winners = () => {
   return (
     <section ref={sectionRef} id="winners" className="py-20 bg-black text-white relative">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-[#ff7046]">
+        <h2 className="text-3xl flex flex-col md:flex-row gap-3 justify-center items-center md:text-5xl font-bold text-center mb-16 text-[#ff7046]">
           <span className="text-[#3abfbc]">WINNERS</span><span className="text-white"> OF</span> REVATHON 1.0
         </h2>
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import DotGrid from '../../components/DotGrid';
 
 const Hero = () => {
   const titleRef = useRef(null);
@@ -13,8 +14,16 @@ const Hero = () => {
 
   return (
     <section id="hero" className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 opacity-20"></div>
-      <div className="z-10 text-center flex flex-col gap-4 px-4">
+      <div className="absolute inset-0 z-0 opacity-30">
+        <DotGrid 
+            dotSize={2} 
+            gap={30} 
+            baseColor="#e0e0e0" 
+            activeColor="#ffffff" 
+            proximity={150}
+        />
+      </div>
+      <div className="relative z-10 text-center flex flex-col gap-4 px-4">
         <h1 ref={titleRef} className="hero-title text-3xl md:text-6xl lg:text-8xl font-medium text-white mb-4 tracking-tighter" data-text="REV-A-THON 1.0">
           REV-A-THON 1.0
         </h1>

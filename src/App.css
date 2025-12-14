@@ -22,9 +22,9 @@ body {
   font-family: var(--font-primary);
 }
 
-html {
+/* html {
   scroll-behavior: smooth;
-}
+} */
 
 ::-webkit-scrollbar {
   width: 8px;
