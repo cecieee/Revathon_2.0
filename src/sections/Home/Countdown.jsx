@@ -40,19 +40,19 @@ export default function Countdown() {
   ];
 
   return (
-    <section id="countdown" className="relative py-24 min-h-[60vh] flex items-center justify-center overflow-hidden">
+    <section id="countdown" className="relative py-12 md:py-24 min-h-[60vh] flex items-center justify-center overflow-hidden">
 
       <div className="absolute inset-0 bg-transparent z-0">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[radial-gradient(circle_at_center,_var(--color-primary)_0%,_transparent_70%)] opacity-5 blur-[100px]"></div>
       </div>
 
-      <div className="absolute top-0 left-0 w-32 h-32 md:w-48 md:h-48 opacity-20 pointer-events-none">
+      <div className="absolute top-0 left-0 w-20 h-20 md:w-48 md:h-48 opacity-20 pointer-events-none">
         <svg viewBox="0 0 100 100" fill="none" className="w-full h-full text-secondary">
           <path d="M0 0 H40 L60 20 V60" stroke="currentColor" strokeWidth="1" fill="none" />
           <rect x="58" y="58" width="4" height="4" fill="currentColor" />
         </svg>
       </div>
-      <div className="absolute bottom-0 right-0 w-32 h-32 md:w-48 md:h-48 opacity-20 pointer-events-none rotate-180">
+      <div className="absolute bottom-0 right-0 w-20 h-20 md:w-48 md:h-48 opacity-20 pointer-events-none rotate-180">
         <svg viewBox="0 0 100 100" fill="none" className="w-full h-full text-primary">
           <path d="M0 0 H40 L60 20 V60" stroke="currentColor" strokeWidth="1" fill="none" />
           <rect x="58" y="58" width="4" height="4" fill="currentColor" />
@@ -61,9 +61,9 @@ export default function Countdown() {
 
       <div className="container mx-auto px-4 relative z-10 flex flex-col items-center">
 
-        <div className="mb-16 relative group">
+        <div className="mb-10 md:mb-16 relative group">
           <h2
-            className="text-5xl md:text-7xl font-bold tracking-tighter text-transparent bg-clip-text text-white  relative z-10"
+            className="text-4xl md:text-7xl font-bold tracking-tighter text-transparent bg-clip-text text-white  relative z-10"
             style={{ fontFamily: 'Mechsuit', textShadow: '0 0 20px rgba(58, 191, 188, 0.3)' }}
           >
             STARTS
@@ -71,11 +71,11 @@ export default function Countdown() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 w-full max-w-5xl">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 w-full max-w-5xl">
           {timeUnits.map((unit, index) => (
             <div key={index} className="relative group">
               {/* Card Container */}
-              <div className="relative bg-black/40 backdrop-blur-sm border border-white/10 rounded-xl p-6 md:p-8 flex flex-col items-center justify-center overflow-hidden transition-all duration-300 hover:border-secondary/50 hover:shadow-[0_0_30px_rgba(58,191,188,0.2)]">
+              <div className="relative bg-black/40 backdrop-blur-sm border border-white/10 rounded-xl p-4 md:p-8 flex flex-col items-center justify-center overflow-hidden transition-all duration-300 hover:border-secondary/50 hover:shadow-[0_0_30px_rgba(58,191,188,0.2)]">
 
                 {/* Decorative Corners */}
                 <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-primary/50 group-hover:border-primary transition-colors"></div>
@@ -87,7 +87,7 @@ export default function Countdown() {
                 <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-secondary to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
 
                 {/* Number */}
-                <span className="text-5xl md:text-7xl lg:text-8xl font-bold text-white font-mono tracking-tighter mb-2 group-hover:text-secondary transition-colors" style={{ textShadow: '0 0 10px rgba(0,0,0,0.5)' }}>
+                <span className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white font-mono tracking-tighter mb-2 group-hover:text-secondary transition-colors" style={{ textShadow: '0 0 10px rgba(0,0,0,0.5)' }}>
                   {unit.value?.toString().padStart(2, '0') || '00'}
                 </span>
 
