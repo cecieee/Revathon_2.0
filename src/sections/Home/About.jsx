@@ -73,7 +73,7 @@ const About = () => {
         </svg>
       </div>
 
-      <div className="container mx-auto px-6 md:px-12 relative z-10">
+      <div className="container mx-auto px-6 md:px-12 relative z-5">
         <div className="flex flex-col-reverse md:flex-row items-center gap-12">
           
           {/* Text Section */}
