@@ -140,10 +140,10 @@ const HighlightsPreview = () => {
     <div ref={containerRef} className="relative w-full" style={{ height: '500vh' }}>
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <section ref={sectionRef} className="relative h-full w-full bg-black flex flex-col items-center justify-center z-10">
-      
+
           {/* Heading & Text */}
-          <div 
-            ref={headingRef} 
+          <div
+            ref={headingRef}
             className="absolute z-20 text-center px-4 flex flex-col items-center w-full"
             style={{ top: '50%', transform: 'translateY(-50%)' }} // Explicit initial centering
           >
@@ -151,11 +151,11 @@ const HighlightsPreview = () => {
               REVATHON <span className="text-primary">1.0</span>
             </h2>
             <p className="text-gray-400 mt-2 text-xl uppercase tracking-widest">Highlights</p>
-            
+
             <p ref={textRef} className="text-gray-300 mt-6 max-w-2xl text-center text-xl md:text-2xl font-sans leading-relaxed opacity-0 translate-y-4">
-                Relive the innovation and energy that defined our first chapter. 
-                From intense coding sessions to breakthrough moments, witness the 
-                journey that started it all.
+              Relive the innovation and energy that defined our first chapter.
+              From intense coding sessions to breakthrough moments, witness the
+              journey that started it all.
             </p>
           </div>
 
@@ -169,11 +169,11 @@ const HighlightsPreview = () => {
             else if (index % 4 === 3) initialClass = "bottom-[-40%] right-[-40%]"; // Bottom-Right
 
             return (
-              <div 
+              <div
                 key={index}
                 ref={addToRefs}
-                className={`absolute w-64 h-40 sm:w-40 sm:h-28 md:w-52 md:h-36 lg:w-72 lg:h-48 xl:w-96 xl:h-64 rounded-lg overflow-hidden border border-primary/40 shadow-[0_0_15px_rgba(58,191,188,0.2)] opacity-0 blur-md ${initialClass}`}
-                style={{ transform: 'translate(0, 0)' }} 
+                className={`absolute z-10 w-64 h-40 sm:w-40 sm:h-28 md:w-52 md:h-36 lg:w-72 lg:h-48 xl:w-96 xl:h-64 rounded-lg overflow-hidden border border-primary/40 shadow-[0_0_15px_rgba(58,191,188,0.2)] opacity-0 blur-md pointer-events-none ${initialClass}`}
+                style={{ transform: 'translate(0, 0)' }}
               >
                 <img src={src} alt={`Highlight ${index + 1}`} className="w-full h-full object-cover" />
               </div>
@@ -181,17 +181,17 @@ const HighlightsPreview = () => {
           })}
 
           {/* Button */}
-          <div ref={buttonRef} className="absolute z-30 left-1/2 -translate-x-1/2 opacity-0 bottom-[10%]">
-            <Link 
-              to="/highlights" 
-              className="animated-button"
+          <div ref={buttonRef} className="absolute z-50 left-1/2 -translate-x-1/2 opacity-0 bottom-[10%] pointer-events-auto">
+            <Link
+              to="/highlights"
+              className="animated-button relative z-50 pointer-events-auto"
               onClick={() => window.scrollTo(0, 0)}
             >
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                View All Memories
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              View All Memories
             </Link>
           </div>
 

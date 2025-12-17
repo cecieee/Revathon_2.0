@@ -48,6 +48,7 @@ const Robot3D = () => {
                 <Canvas
                     onContextMenu={(e) => e.preventDefault()}
                     camera={{ position: [0, 0, 8], fov: 45 }}
+                    style={{ pointerEvents: 'none' }}
                     gl={{
                         alpha: true,
                         antialias: true,
