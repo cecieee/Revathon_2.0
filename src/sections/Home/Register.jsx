@@ -1,4 +1,5 @@
 import React from "react";
+import TechButton from "../../components/Button";
 
 export default function RegisterNow() {
   return (
@@ -62,16 +63,7 @@ export default function RegisterNow() {
         >
           REGISTER <span className="text-primary">NOW</span>
         </h2>
-        <button
-          type="button"
-          className="animated-button animated-button--sm relative z-50"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          Click Here
-        </button>
+        <TechButton size="lg">Click Here</TechButton>
       </div>
     </section>
   );

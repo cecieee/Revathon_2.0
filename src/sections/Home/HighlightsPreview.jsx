@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import TechButton from '../../components/Button';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -182,17 +182,13 @@ const HighlightsPreview = () => {
 
           {/* Button */}
           <div ref={buttonRef} className="absolute z-50 left-1/2 -translate-x-1/2 opacity-0 bottom-[10%] pointer-events-auto">
-            <Link
+            <TechButton
               to="/highlights"
-              className="animated-button relative z-50 pointer-events-auto"
+              size="lg"
               onClick={() => window.scrollTo(0, 0)}
             >
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
               View All Memories
-            </Link>
+            </TechButton>
           </div>
 
         </section>

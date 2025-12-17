@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import TechButton from "../../components/Button";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -113,20 +114,16 @@ const Hero = () => {
           </div>
 
           <div className="button-wrapper">
-            <button
+            <TechButton
+              size="lg"
               onClick={() =>
                 document
                   .getElementById("register")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
-              className="animated-button relative z-50"
             >
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
               Register Now
-            </button>
+            </TechButton>
           </div>
         </div>
       </div>
