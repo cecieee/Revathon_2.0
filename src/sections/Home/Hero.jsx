@@ -105,10 +105,12 @@ const Hero = () => {
                 2.0
               </span>
             </h1>
-            <p className="text-xs sm:text-base md:text-xl text-gray-300 max-w-lg mx-auto md:mx-0 mb-6 sm:mb-8 border-l-0 md:border-l-4 border-primary pl-0 md:pl-4 mt-2 md:mt-0 leading-relaxed">
-              The Ultimate Innovation Challenge. <br />
+            <p className="text-xs sm:text-base md:text-xl text-gray-300 max-w-lg mx-auto md:mx-0 mb-6 sm:mb-8 border-l-0 md:border-l-4 border-primary pl-0 md:pl-4 mt-2 md:mt-0 leading-relaxed font-mono tracking-wider">
+              <span className="inline-block text-secondary" style={{ transform: 'scaleX(-1)', display: 'inline-block' }}>REVERSE</span>{' '}
+              THE FLOW <br />
+              <span className="text-white">REVEAL</span>{' '}
               <span className="text-primary font-bold">
-                Reverse Engineering Hackathon
+                THE LOGIC
               </span>
             </p>
           </div>
