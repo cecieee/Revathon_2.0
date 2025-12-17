@@ -10,7 +10,6 @@ const Hero = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Animate text elements
       if (textRef.current) {
         gsap.from(textRef.current.children, {
           y: 50,
@@ -21,7 +20,6 @@ const Hero = () => {
         });
       }
 
-      // Animate button separately
       gsap.from(".button-wrapper", {
         y: 30,
         opacity: 0,
@@ -40,7 +38,6 @@ const Hero = () => {
       id="hero"
       className="min-h-screen flex items-center relative overflow-hidden bg-transparent"
     >
-      {/* CSS-based sparkle particles - replaces Three.js Canvas to avoid WebGL context conflicts */}
       <div className="absolute inset-0 -z-20 overflow-hidden">
         {[...Array(20)].map((_, i) => (
           <div
@@ -60,11 +57,9 @@ const Hero = () => {
         ))}
       </div>
 
-      {/* Decorative blur circles - responsive positioning */}
       <div className="absolute top-10 right-5 sm:top-20 sm:right-20 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-primary/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
       <div className="absolute bottom-10 left-5 sm:bottom-20 sm:left-20 w-48 h-48 sm:w-72 sm:h-72 md:w-96 md:h-96 bg-secondary/10 rounded-full blur-3xl -z-10 animate-pulse delay-700"></div>
 
-      {/* Corner decorative SVGs */}
       <div className="absolute top-0 left-0 w-20 h-20 sm:w-32 sm:h-32 md:w-64 md:h-64 text-white pointer-events-none opacity-40 sm:opacity-60">
         <svg viewBox="0 0 100 100" fill="none" className="w-full h-full">
           <path d="M0 2 H30 L45 17 V45" stroke="currentColor" strokeWidth="1" />
@@ -94,22 +89,22 @@ const Hero = () => {
       </div>
 
       {/* Main content container */}
-      <div className="container mx-auto px-4 sm:px-6 md:px-12 pt-20 sm:pt-16 md:pt-0 relative z-20 flex flex-col md:flex-row items-center justify-center md:justify-start">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 pt-32 sm:pt-32 md:pt-0 relative z-20 flex flex-col md:flex-row items-center justify-center md:justify-start h-full">
         <div className="w-full md:w-1/2 text-center md:text-left">
           <div ref={textRef}>
-            <h2 className="text-sm sm:text-lg md:text-xl lg:text-2xl font-mono text-secondary tracking-widest mb-2 sm:mb-3">
+            <h2 className="text-[10px] sm:text-base md:text-xl lg:text-2xl font-mono text-secondary tracking-widest mb-2">
               IEEE SB CEC PRESENTS
             </h2>
             <h1
-              className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-4 sm:mb-6 tracking-tighter leading-none"
+              className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-4 sm:mb-6 tracking-tighter leading-tight sm:leading-none"
               style={{ fontFamily: "Mechsuit" }}
             >
               REVATHON <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-white">
+              <span className="text-white font-bold">
                 2.0
               </span>
             </h1>
-            <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-lg mx-auto md:mx-0 mb-6 sm:mb-8 border-l-4 border-primary pl-3 sm:pl-4">
+            <p className="text-xs sm:text-base md:text-xl text-gray-300 max-w-lg mx-auto md:mx-0 mb-6 sm:mb-8 border-l-0 md:border-l-4 border-primary pl-0 md:pl-4 mt-2 md:mt-0 leading-relaxed">
               The Ultimate Innovation Challenge. <br />
               <span className="text-primary font-bold">
                 Reverse Engineering Hackathon

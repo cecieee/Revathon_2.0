@@ -31,12 +31,12 @@ const Training = () => {
 
       <div className="container mx-auto px-4 text-center relative z-10">
         <h2 className="text-5xl md:text-6xl font-bold mb-12 tracking-tighter" style={{ fontFamily: "Mechsuit" }}>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-white">
+          <span className="text-transparent bg-clip-text text-white">
             TRAINING
           </span>
         </h2>
         <div className="max-w-2xl mx-auto border border-white/10 p-8 rounded-xl backdrop-blur-sm bg-black/30">
-          <p className="text-xl text-gray-300">
+          <p className="text-xl text-gray-300 font-mono">
             Training sessions details will be updated here.
           </p>
         </div>

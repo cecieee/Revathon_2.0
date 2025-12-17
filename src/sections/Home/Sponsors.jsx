@@ -1,86 +1,76 @@
-import React from 'react'
+import React from "react";
 
 export default function Sponsors() {
-
   const sponsor = {
     name: "Official Sponsor",
     logo: "/organisers-sponsors/quadratech.png",
-    alt: "Partner Logo",
+    alt: "Quadratech Logo",
   };
 
   return (
-    <section
-      className="bg-black py-16 text-center relative overflow-hidden"
-      aria-labelledby="sponsors-heading"
-    >
-      {/* Holographic scan line animation */}
-      <div className="absolute top-0 left-0 right-0 h-1 
-        bg-gradient-to-r from-transparent via-[#3abfbc] to-transparent 
-        animate-scan">
-      </div>
+    <>
+      {/* Custom pulse animation (same system as Organizers) */}
+      <style>
+        {`
+          @keyframes softPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.9; }
+          }
+          .animate-soft-pulse {
+            animation: softPulse 2.5s ease-in-out infinite;
+          }
+        `}
+      </style>
 
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        <h2
-          id="sponsors-heading"
-          className="font-mechsuit text-3xl xs:text-4xl sm:text-5xl md:text-6xl 
-                     tracking-[0.01em] xs:tracking-[0.02em] sm:tracking-[0.03em] md:tracking-[0.04em] 
-                     uppercase mb-8 sm:mb-12 md:mb-16 
-                     bg-gradient-to-r from-[#FF7046] via-[#3abfbc] to-[#FF7046] 
-                     bg-clip-text text-transparent
-                     drop-shadow-[0_0_10px_rgba(58,191,188,0.7)]
-                     animate-pulse"
-        >
-          TECHNICAL PARTNER
-        </h2>
+      <section
+        className="relative overflow-hidden py-10 sm:py-12 md:py-14
+                   text-center bg-black"
+        aria-labelledby="sponsors-heading"
+      >
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
 
-        <div className="flex justify-center items-center">
-
-          <div
-            className="relative group"
-            role="group"
-            aria-label={sponsor.name}
+          {/* Smaller heading */}
+          <h2
+            id="sponsors-heading"
+            className="font-mechsuit text-2xl sm:text-3xl md:text-4xl
+                       tracking-[0.08em] sm:tracking-[0.1em] md:tracking-[0.12em]
+                       uppercase mb-6 sm:mb-8 md:mb-10
+                       text-white
+                       drop-shadow-[0_0_4px_rgba(58,191,188,0.35)]
+                       animate-soft-pulse"
           >
-            {/* Outer glow effect */}
-            <div className="absolute -inset-2 rounded-xl 
-              bg-gradient-to-r from-[#FF7046] via-[#3abfbc] to-[#FF7046] 
-              opacity-0 group-hover:opacity-40 blur-lg 
-              transition-opacity duration-500">
-            </div>
+            TECHNICAL PARTNER
+          </h2>
 
-            {/* Holographic border */}
-            <div className="relative rounded-xl 
-              bg-gradient-to-r from-[#FF7046] via-[#3abfbc] to-[#FF7046] p-0.5">
+          <div className="flex justify-center items-center">
+            <div
+              role="group"
+              aria-label={sponsor.name}
+              className="relative"
+            >
+              {/* Gradient border */}
+              <div className="rounded-lg bg-secondary p-0.5">
 
-              {/* Inner dark container */}
-              <div className="rounded-xl bg-gray-900/80 backdrop-blur-sm p-2 sm:p-3">
-                <img
-                  src={sponsor.logo}
-                  alt={sponsor.alt}
-                  width={128}
-                  height={128}
-                  className="h-4 xs:h-8 sm:h-12 md:h-16 lg:h-20 object-contain rounded-lg max-w-full
-                             brightness-125 contrast-125
-                             drop-shadow-[0_0_8px_rgba(58,191,188,0.6)]"
-                  loading="lazy"
-                />
+                {/* Smaller inner container */}
+                <div className="rounded-lg bg-black p-3
+                                flex items-center justify-center
+                                h-14 sm:h-16 md:h-20">
+                  <img
+                    src={sponsor.logo}
+                    alt={sponsor.alt}
+                    loading="lazy"
+                    className="max-h-8 sm:max-h-10 md:max-h-12
+                               max-w-full object-contain
+                               brightness-110 contrast-110
+                               drop-shadow-[0_0_4px_rgba(58,191,188,0.3)]"
+                  />
+                </div>
               </div>
             </div>
-
           </div>
-        </div>
-      </div>
 
-      {/* Keyframes for scan */}
-      <style>{`
-        @keyframes scan {
-          0% { transform: translateY(-100%); }
-          100% { transform: translateY(100vh); }
-        }
-        .animate-scan {
-          animation-delay: 3s;
-          animation: scan 3s linear infinite;
-        }
-      `}</style>
-    </section>
-  )
+        </div>
+      </section>
+    </>
+  );
 }

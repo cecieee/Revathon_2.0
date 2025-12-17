@@ -43,7 +43,7 @@ const HighlightsPreview = () => {
         });
 
         // Animation Sequence
-        
+
         // 1. Para appears
         tl.to(textRef.current, {
           opacity: 1,
@@ -51,77 +51,77 @@ const HighlightsPreview = () => {
           duration: 1,
           ease: "power2.out"
         })
-        // 2. Para pauses (hold)
-        .to({}, { duration: 2 }) 
-        
-        // 3. Para moves up and fades out
-        .to(textRef.current, {
-          opacity: 0,
-          y: -100,
-          duration: 1,
-          ease: "power2.in"
-        }, "exit")
-        
-        // Move heading up to make space
-        .to(headingRef.current, {
-          top: "15%", 
-          scale: 0.8, 
-          duration: 1,
-          ease: "power2.inOut"
-        }, "exit")
+          // 2. Para pauses (hold)
+          .to({}, { duration: 2 })
 
-        // 4. Images come from corners
-        .to(imagesRef.current, {
-          top: isMobile ? "40%" : "55%", 
-          left: "50%",
-          xPercent: -50,
-          yPercent: -50,
-          x: (index) => {
+          // 3. Para moves up and fades out
+          .to(textRef.current, {
+            opacity: 0,
+            y: -100,
+            duration: 1,
+            ease: "power2.in"
+          }, "exit")
+
+          // Move heading up to make space
+          .to(headingRef.current, {
+            top: "15%",
+            scale: 0.8,
+            duration: 1,
+            ease: "power2.inOut"
+          }, "exit")
+
+          // 4. Images come from corners
+          .to(imagesRef.current, {
+            top: isMobile ? "40%" : "55%",
+            left: "50%",
+            xPercent: -50,
+            yPercent: -50,
+            x: (index) => {
               if (isMobile) {
-                  return 0;
+                return 0;
               }
-              
+
               // Desktop: 5 images layout
               const row = index < 3 ? 0 : 1;
               const col = index < 3 ? index : index - 3;
-              
+
               // Row 0 (3 items): -110%, 0%, 110%
               if (row === 0) return (col - 1) * 110 + "%";
-              
+
               // Row 1 (2 items): -55%, 55%
               if (row === 1) return (col === 0 ? "-55%" : "55%");
-              
+
               return 0;
-          },
-          y: (index) => {
+            },
+            y: (index) => {
               if (isMobile) {
-                  // Vertical stack for mobile
-                  // Spread them out vertically
-                  return (index - 2) * 60 + "%";
+                // Vertical stack for mobile
+                // Spread them out vertically
+                return (index - 2) * 60 + "%";
               }
 
               const row = index < 3 ? 0 : 1;
               return row === 0 ? "-55%" : "55%";
-          },
-          rotation: (index) => {
-            if (isMobile) {
-               // Slight random rotation for "uneven" feel
-               return (index % 2 === 0 ? -3 : 3) * (index + 1);
-            }
-            return 0;
-          },
-          opacity: 1,
-          filter: "blur(0px)",
-          scale: 1, 
-          duration: 2,
-          ease: "power2.out"
-        }, "exit+=0.5")
-        
-        .fromTo(buttonRef.current, 
-          { opacity: 0, scale: 0.5 },
-          { opacity: 1, scale: 1, duration: 1, ease: "back.out(1.7)" },
-          "-=0.5"
-        );
+            },
+            rotation: (index) => {
+              if (isMobile) {
+                // Slight random rotation for "uneven" feel
+                return (index % 2 === 0 ? -3 : 3) * (index + 1);
+              }
+              return 0;
+            },
+            opacity: 1,
+            filter: "blur(0px)",
+            scale: 1,
+            duration: 2,
+            ease: "power2.out"
+          }, "exit+=0.5")
+
+          .fromTo(buttonRef.current,
+            { opacity: 0, scale: 0.5 },
+            { opacity: 1, scale: 1, duration: 1, ease: "back.out(1.7)" },
+            "-=0.5"
+          );
       });
     }, containerRef);
 
