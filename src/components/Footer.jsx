@@ -4,6 +4,11 @@ import RobotFooter from './RobotFooter';
 const Footer = () => {
   return (
     <footer className="bg-black text-white pt-8 pb-4 border-t border-gray-800 relative z-30">
+      {/* Mobile Robot - Positioned at top of footer (below Register section) */}
+      <div className="md:hidden flex justify-center -mt-32 mb-4">
+        <RobotFooter fromBottom={true} />
+      </div>
+
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
 
@@ -66,7 +71,7 @@ const Footer = () => {
           </div>
 
 
-          <div className="relative min-h-[120px] flex items-end justify-center md:justify-end">
+          <div className="relative min-h-[120px] hidden md:flex items-end justify-center md:justify-end">
             <RobotFooter />
           </div>
 
