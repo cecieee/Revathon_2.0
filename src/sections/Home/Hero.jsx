@@ -93,9 +93,6 @@ const Hero = () => {
       <div className="container mx-auto px-4 sm:px-6 md:px-12 pt-32 sm:pt-32 md:pt-0 relative z-20 flex flex-col md:flex-row items-center justify-center md:justify-start h-full">
         <div className="w-full md:w-1/2 text-center md:text-left">
           <div ref={textRef}>
-            <h2 className="text-[10px] sm:text-base md:text-xl lg:text-2xl font-mono text-secondary tracking-widest mb-2">
-              IEEE SB CEC PRESENTS
-            </h2>
             <h1
               className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-4 sm:mb-6 tracking-tighter leading-tight sm:leading-none"
               style={{ fontFamily: "Mechsuit" }}
