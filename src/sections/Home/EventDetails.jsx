@@ -312,83 +312,57 @@ export default function ProcessWorkflow() {
         </h2>
       </div>
 
-      {/* Comparison Boxes */}
-      <div className="grid grid-cols-1 md:grid-cols-2 max-w-5xl pr-20 md:pr-40 ml-30
-                      font-sans text-sm md:text-base leading-relaxed font-medium">
+      {/* Comparison Section - 2 Column Table */}
+      <div className="w-full max-w-5xl mx-auto px-2 md:px-8">
+        <div className="grid grid-cols-2 gap-2 md:gap-4">
+          {/* Header Row */}
+          <div
+            className="border-2 rounded-t-lg md:rounded-t-xl py-3 md:py-6 px-2 md:px-6 text-center font-bold text-xs md:text-lg"
+            style={{ borderColor: "#FF7046", color: "#FF7046", backgroundColor: "rgba(255,112,70,0.1)" }}
+          >
+            Normal Hackathon
+          </div>
+          <div
+            className="border-2 rounded-t-lg md:rounded-t-xl py-3 md:py-6 px-2 md:px-6 text-center font-bold text-xs md:text-lg"
+            style={{ borderColor: "#3ABFBC", color: "#3ABFBC", backgroundColor: "rgba(58,191,188,0.1)" }}
+          >
+            Reverse Hackathon
+          </div>
 
-        {/* Row 1 */}
-        <div
-          className="border-2 rounded-tl-xl md:rounded-tl-xl rounded-tr-xl md:rounded-tr-none py-6 px-4 text-center border-r-2 md:border-r-2 border-b-0 md:border-b-2"
-          style={{ borderColor: "#FF7046", color: "#FF7046" }}
-        >
-          Normal Hackathon
-        </div>
-
-        <div
-          className="border-2 rounded-tr-none md:rounded-tr-xl rounded-tl-none md:rounded-tl-none py-6 px-4 text-center border-l-0 md:border-l-0 border-b-0 md:border-b-2"
-          style={{ borderColor: "#3ABFBC", color: "#3ABFBC" }}
-        >
-          Reverse Hackathon
-        </div>
-
-        {/* Row 2 */}
-        <div
-          className="border-2 rounded-md py-6 px-4 text-center border-r-2 md:border-r-2 border-t-0"
-          style={{ borderColor: "#FF7046", color: "#FF7046" }}
-        >
-          Creating new solutions from scratch.
-        </div>
-
-        <div
-          className="border-2 rounded-md py-6 px-4 text-center border-t-0 border-l-0 md:border-l-0"
-          style={{ borderColor: "#3ABFBC", color: "#3ABFBC" }}
-        >
-          Enhancing and optimizing existing systems and products.
-        </div>
-
-        {/* Row 3 */}
-        <div
-          className="border-2 rounded-md py-6 px-4 text-center border-r-2 md:border-r-2 border-t-0"
-          style={{ borderColor: "#FF7046", color: "#FF7046" }}
-        >
-          Developing new ideas, apps, or features.
-        </div>
-
-        <div
-          className="border-2 rounded-md py-6 px-4 text-center border-t-0 border-l-0 md:border-l-0"
-          style={{ borderColor: "#3ABFBC", color: "#3ABFBC" }}
-        >
-          Analyzing, reverse-engineering, debugging, and improving quality.
-        </div>
-
-        {/* Row 4 */}
-        <div
-          className="border-2 rounded-md py-6 px-4 text-center border-r-2 md:border-r-2 border-t-0"
-          style={{ borderColor: "#FF7046", color: "#FF7046" }}
-        >
-          Start from zero to create innovative solutions.
-        </div>
-
-        <div
-          className="border-2 rounded-md py-6 px-4 text-center border-t-0 border-l-0 md:border-l-0"
-          style={{ borderColor: "#3ABFBC", color: "#3ABFBC" }}
-        >
-          Break down and refine existing systems to identify flaws and optimize them.
-        </div>
-
-        {/* Row 5 */}
-        <div
-          className="border-2 rounded-bl-xl md:rounded-bl-xl rounded-br-xl md:rounded-br-none py-6 px-4 text-center border-r-2 md:border-r-2 border-t-0"
-          style={{ borderColor: "#FF7046", color: "#FF7046" }}
-        >
-          A brand-new product or app ready for launch.
-        </div>
-
-        <div
-          className="border-2 rounded-br-none md:rounded-br-xl rounded-bl-none md:rounded-bl-none py-6 px-4 text-center border-t-0 border-l-0 md:border-l-0"
-          style={{ borderColor: "#3ABFBC", color: "#3ABFBC" }}
-        >
-          A refined, optimized, and more secure version of an existing product.
+          {/* Comparison Rows */}
+          {[
+            {
+              normal: "Creating new solutions from scratch.",
+              reverse: "Enhancing and optimizing existing systems and products.",
+            },
+            {
+              normal: "Developing new ideas, apps, or features.",
+              reverse: "Analyzing, reverse-engineering, debugging, and improving quality.",
+            },
+            {
+              normal: "Start from zero to create innovative solutions.",
+              reverse: "Break down and refine existing systems to identify flaws and optimize them.",
+            },
+            {
+              normal: "A brand-new product or app ready for launch.",
+              reverse: "A refined, optimized, and more secure version of an existing product.",
+            },
+          ].map((item, i, arr) => (
+            <React.Fragment key={i}>
+              <div
+                className={`border-2 border-t-0 py-3 md:py-5 px-2 md:px-5 text-center text-xs md:text-base ${i === arr.length - 1 ? 'rounded-b-lg md:rounded-b-xl' : ''}`}
+                style={{ borderColor: "#FF7046", color: "#FF7046" }}
+              >
+                {item.normal}
+              </div>
+              <div
+                className={`border-2 border-t-0 py-3 md:py-5 px-2 md:px-5 text-center text-xs md:text-base ${i === arr.length - 1 ? 'rounded-b-lg md:rounded-b-xl' : ''}`}
+                style={{ borderColor: "#3ABFBC", color: "#3ABFBC" }}
+              >
+                {item.reverse}
+              </div>
+            </React.Fragment>
+          ))}
         </div>
       </div>
 
