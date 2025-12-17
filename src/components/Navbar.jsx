@@ -17,7 +17,7 @@ const Navbar = () => {
 
   // Handle scroll to section if state is passed from another route
   useEffect(() => {
-    if (location.pathname === '/' && location.state?.scrollTo) {
+    if (location.pathname === "/" && location.state?.scrollTo) {
       const element = document.getElementById(location.state.scrollTo);
       if (element) {
         // wrapper to ensure page is loaded (300ms to allow lazy-loaded components to render)
@@ -29,7 +29,6 @@ const Navbar = () => {
       navigate(location.pathname, { replace: true, state: {} });
     }
   }, [location, navigate]);
-
 
   const navLinks = [
     { name: "Home", target: "hero" },
@@ -49,14 +48,14 @@ const Navbar = () => {
     }
 
     if (link.target) {
-      if (location.pathname === '/') {
+      if (location.pathname === "/") {
         const element = document.getElementById(link.target);
         if (element) {
           element.scrollIntoView({ behavior: "smooth" });
           setIsOpen(false);
         }
       } else {
-        navigate('/', { state: { scrollTo: link.target } });
+        navigate("/", { state: { scrollTo: link.target } });
         setIsOpen(false);
       }
     }
@@ -65,13 +64,16 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${scrolled ? "bg-black/80 backdrop-blur-md border-b border-primary/20" : "bg-transparent"
-          }`}
+        className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${
+          scrolled
+            ? "bg-black/80 backdrop-blur-md border-b border-primary/20"
+            : "bg-transparent"
+        }`}
       >
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
           {/* Logo */}
           <div
-            className="text-2xl font-bold tracking-widest cursor-pointer text-white hover:text-primary transition-colors duration-300 relative z-[110]"
+            className="text-l md:text-2xl font-bold tracking-widest cursor-pointer text-white hover:text-primary transition-colors duration-300 relative z-[110]"
             style={{ fontFamily: "Mechsuit" }}
             onClick={() => handleNavigation({ target: "hero" })}
           >
@@ -99,16 +101,19 @@ const Navbar = () => {
           >
             <div className="w-8 h-6 flex flex-col justify-between">
               <span
-                className={`block w-full h-[2px] bg-primary transition-transform duration-300 ${isOpen ? "rotate-45 translate-y-2.5" : ""
-                  }`}
+                className={`block w-full h-[2px] bg-primary transition-transform duration-300 ${
+                  isOpen ? "rotate-45 translate-y-2.5" : ""
+                }`}
               ></span>
               <span
-                className={`block w-full h-[2px] bg-secondary transition-opacity duration-300 ${isOpen ? "opacity-0" : ""
-                  }`}
+                className={`block w-full h-[2px] bg-secondary transition-opacity duration-300 ${
+                  isOpen ? "opacity-0" : ""
+                }`}
               ></span>
               <span
-                className={`block w-full h-[2px] bg-primary transition-transform duration-300 ${isOpen ? "-rotate-45 -translate-y-2.5" : ""
-                  }`}
+                className={`block w-full h-[2px] bg-primary transition-transform duration-300 ${
+                  isOpen ? "-rotate-45 -translate-y-2.5" : ""
+                }`}
               ></span>
             </div>
           </button>
@@ -117,17 +122,19 @@ const Navbar = () => {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 bg-black/95 backdrop-blur-xl z-[90] flex flex-col items-center justify-center space-y-8 transition-transform duration-500 ease-in-out md:hidden ${isOpen ? "translate-x-0" : "translate-x-full"
-          }`}
+        className={`fixed inset-0 bg-black/95 backdrop-blur-xl z-[90] flex flex-col items-center justify-center space-y-8 transition-transform duration-500 ease-in-out md:hidden ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        }`}
       >
         {navLinks.map((link, index) => (
           <button
             key={link.name}
             onClick={() => handleNavigation(link)}
-            className={`text-2xl text-white font-bold hover:text-primary transition-all duration-300 tracking-widest uppercase transform ${isOpen
-              ? "translate-x-0 opacity-100"
-              : "translate-x-full opacity-0"
-              }`}
+            className={`text-2xl text-white font-bold hover:text-primary transition-all duration-300 tracking-widest uppercase transform ${
+              isOpen
+                ? "translate-x-0 opacity-100"
+                : "translate-x-full opacity-0"
+            }`}
             style={{
               transitionDelay: isOpen ? `${index * 100}ms` : "0ms",
             }}
