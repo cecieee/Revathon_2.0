@@ -125,9 +125,7 @@ const ProcessCard = ({ title, description, variant = "neutral", index }) => {
           <SlantedBars theme={theme} count={4} />
         </div>
 
-        <div className="absolute bottom-8 left-6 pointer-events-none opacity-50">
-          <SlantedBars theme={theme} count={2} />
-        </div>
+
 
         <DecorativeStroke theme={theme} position="top" />
         <DecorativeStroke theme={theme} position="bottom" />
@@ -199,16 +197,17 @@ export default function ProcessWorkflow() {
           WHAT IS <span style={{ color: "#FF7046" }}>REVERSE ENGINEERING ?</span>
         </h2>
 
-        {PROCESS_STEPS.map((step, index) => (
-          <ProcessCard
-            key={step.id}
-            index={index}
-            title={step.title}
-            description={step.description}
-            variant={step.variant}
-          />
-        ))}
-
+        <div className="flex flex-col gap-10 font-mono">
+          {PROCESS_STEPS.map((step, index) => (
+            <ProcessCard
+              key={step.id}
+              index={index}
+              title={step.title}
+              description={step.description}
+              variant={step.variant}
+            />
+          ))}
+        </div>
         <div className="w-full mt-6">
           <h3
             className="text-center text-secondary text-2xl md:text-3xl font-bold tracking-wide mb-4"
@@ -243,7 +242,7 @@ export default function ProcessWorkflow() {
                         bg-gradient-to-br from-gray-900/50 to-gray-800/30 backdrop-blur-sm">
 
           {/* Grid of individual content boxes */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 font-mono tracking-wider">
             {[
               ["OBSERVE & ANALYZE", "Study the product closely"],
               ["DECOMPOSE", "Disassemble to identify components"],
@@ -350,13 +349,13 @@ export default function ProcessWorkflow() {
           ].map((item, i, arr) => (
             <React.Fragment key={i}>
               <div
-                className={`border-2 border-t-0 py-3 md:py-5 px-2 md:px-5 text-center text-xs md:text-base ${i === arr.length - 1 ? 'rounded-b-lg md:rounded-b-xl' : ''}`}
+                className={`border-2 font-mono tracking-wider border-t-0 py-3 md:py-5 px-2 md:px-5 text-center text-xs md:text-base ${i === arr.length - 1 ? 'rounded-b-lg md:rounded-b-xl' : ''}`}
                 style={{ borderColor: "#FF7046", color: "#FF7046" }}
               >
                 {item.normal}
               </div>
               <div
-                className={`border-2 border-t-0 py-3 md:py-5 px-2 md:px-5 text-center text-xs md:text-base ${i === arr.length - 1 ? 'rounded-b-lg md:rounded-b-xl' : ''}`}
+                className={`border-2 font-mono tracking-wider border-t-0 py-3 md:py-5 px-2 md:px-5 text-center text-xs md:text-base ${i === arr.length - 1 ? 'rounded-b-lg md:rounded-b-xl' : ''}`}
                 style={{ borderColor: "#3ABFBC", color: "#3ABFBC" }}
               >
                 {item.reverse}
