@@ -252,6 +252,7 @@ export default function RobotModel() {
 
     // Responsive positioning
     const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth < 768 : false);
+    const [isVisible, setIsVisible] = useState(true);
 
     useEffect(() => {
         const handleResize = () => {
@@ -262,11 +263,32 @@ export default function RobotModel() {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+    useEffect(() => {
+        if (!isMobile) {
+            setIsVisible(true);
+            return;
+        }
+
+        const handleScroll = () => {
+            const heroSection = document.getElementById('hero');
+            if (heroSection) {
+                const heroRect = heroSection.getBoundingClientRect();
+                setIsVisible(heroRect.bottom > 100);
+            } else {
+                setIsVisible(window.scrollY < window.innerHeight * 0.5);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [isMobile]);
+
     const position = isMobile ? [0.9, -2.8, 0] : [4.5, -2.5, 0];
     const scale = isMobile ? 0.25 : 0.5;
 
     return (
-        <group ref={group} dispose={null} position={position} rotation={[0, -0.2, 0]} scale={scale}>
+        <group ref={group} dispose={null} position={position} rotation={[0, -0.2, 0]} scale={scale} visible={isVisible}>
             <primitive object={cubesScene} />
 
             <group ref={bodyGroupRef}>
