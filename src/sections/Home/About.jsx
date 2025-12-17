@@ -73,11 +73,11 @@ const About = () => {
         </svg>
       </div>
 
-      <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="flex flex-col md:flex-row items-center gap-12">
-
+      <div className="container mx-auto px-6 md:px-12 relative z-5">
+        <div className="flex flex-col-reverse md:flex-row items-center gap-12">
+          
           {/* Text Section */}
-          <div className="w-full md:w-1/2">
+          <div className="w-full md:w-1/2 justify-center flex md:pr-10">
             <div className="max-w-xl">
               <h2 className="text-xl md:text-4xl font-bold text-[#3abfbc] mb-12 about-title tracking-tighter">
                 ABOUT <br />
@@ -106,15 +106,19 @@ const About = () => {
           </div>
 
           {/* Image Section */}
-          {/* <div className="w-full md:w-1/2 about-image flex justify-center md:justify-end pb-10 md:pb-20 md:pr-10">
-            <div className="relative rounded-xl overflow-hidden max-w-md">
-              <img
-                src="/assets/images/About-rev1.png"
-                alt="Revathon Event"
-                className="w-full h-auto object-cover"
-              />
-            </div>
-          </div> */}
+          <div className="w-full md:w-1/2 about-image flex justify-center md:justify-end pb-10 md:pb-20 md:pr-10">
+             <div className="relative rounded-xl overflow-hidden flex items-center justify-center max-w-md">
+                <video 
+                  src="/assets/images/video1.mp4" 
+                  autoPlay
+                  loop
+                  muted
+                  controls={0}
+                  playsInline
+                  className="w-full md:h-[90vh] object-cover md:mt-20 mt-0"
+                />
+             </div>
+          </div>
 
         </div>
       </div>

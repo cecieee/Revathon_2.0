@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const HighlightsPreview = () => {
+  const containerRef = useRef(null);
   const sectionRef = useRef(null);
   const headingRef = useRef(null);
   const textRef = useRef(null);
@@ -21,7 +22,7 @@ const HighlightsPreview = () => {
 
   ];
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
 
@@ -33,12 +34,11 @@ const HighlightsPreview = () => {
 
         const tl = gsap.timeline({
           scrollTrigger: {
-            trigger: sectionRef.current,
+            trigger: containerRef.current,
             start: "top top",
-            end: "+=400%", // Increased scroll distance for distinct phases
+            end: "bottom bottom",
             scrub: 1,
-            pin: true,
-            anticipatePin: 1,
+            invalidateOnRefresh: true,
           }
         });
 
@@ -123,7 +123,9 @@ const HighlightsPreview = () => {
             "-=0.5"
           );
       });
-    }, sectionRef);
+    }, containerRef);
+
+    ScrollTrigger.refresh();
 
     return () => ctx.revert();
   }, []);
@@ -135,63 +137,67 @@ const HighlightsPreview = () => {
   };
 
   return (
-    <section ref={sectionRef} className="relative h-screen w-full bg-transparent z-20 overflow-hidden flex flex-col items-center justify-center mb-20">
-
-      {/* Heading & Text */}
-      <div
-        ref={headingRef}
-        className="absolute z-20 text-center px-4 flex flex-col items-center w-full pointer-events-none"
-        style={{ top: '50%', transform: 'translateY(-50%)' }} // Explicit initial centering
-      >
-        <h2 className="text-2xl md:text-7xl font-bold text-white tracking-wider">
-          REVATHON <span className="text-primary">1.0</span>
-        </h2>
-        <p className="text-gray-400 mt-2 text-xl uppercase tracking-widest">Highlights</p>
-
-        <p ref={textRef} className="text-gray-300 mt-6 max-w-2xl text-center text-xl md:text-2xl font-sans leading-relaxed opacity-0 translate-y-4">
-          Relive the innovation and energy that defined our first chapter.
-          From intense coding sessions to breakthrough moments, witness the
-          journey that started it all.
-        </p>
-      </div>
-
-      {/* Images */}
-      {images.map((src, index) => {
-        // Determine initial scattered positions (Corners)
-        let initialClass = "";
-        if (index % 4 === 0) initialClass = "top-[-40%] left-[-40%]"; // Top-Left
-        else if (index % 4 === 1) initialClass = "top-[-40%] right-[-40%]"; // Top-Right
-        else if (index % 4 === 2) initialClass = "bottom-[-40%] left-[-40%]"; // Bottom-Left
-        else if (index % 4 === 3) initialClass = "bottom-[-40%] right-[-40%]"; // Bottom-Right
-
-        return (
-          <div
-            key={index}
-            ref={addToRefs}
-            className={`absolute z-10 w-[90vw] h-48 sm:w-40 sm:h-28 md:w-52 md:h-36 lg:w-72 lg:h-48 xl:w-96 xl:h-64 rounded-lg overflow-hidden border border-primary/40 shadow-[0_0_15px_rgba(58,191,188,0.2)] opacity-0 blur-md pointer-events-none ${initialClass}`}
-            style={{ transform: 'translate(0, 0)' }}
+    <div ref={containerRef} className="relative w-full" style={{ height: '500vh' }}>
+      <div className="sticky top-0 h-screen w-full overflow-hidden">
+        <section ref={sectionRef} className="relative h-full w-full bg-black flex flex-col items-center justify-center z-10">
+      
+          {/* Heading & Text */}
+          <div 
+            ref={headingRef} 
+            className="absolute z-20 text-center px-4 flex flex-col items-center w-full"
+            style={{ top: '50%', transform: 'translateY(-50%)' }} // Explicit initial centering
           >
-            <img src={src} alt={`Highlight ${index + 1}`} className="w-full h-full object-cover" />
+            <h2 className="text-2xl md:text-7xl font-bold text-white tracking-wider">
+              REVATHON <span className="text-primary">1.0</span>
+            </h2>
+            <p className="text-gray-400 mt-2 text-xl uppercase tracking-widest">Highlights</p>
+            
+            <p ref={textRef} className="text-gray-300 mt-6 max-w-2xl text-center text-xl md:text-2xl font-sans leading-relaxed opacity-0 translate-y-4">
+                Relive the innovation and energy that defined our first chapter. 
+                From intense coding sessions to breakthrough moments, witness the 
+                journey that started it all.
+            </p>
           </div>
-        );
-      })}
 
-      {/* Button */}
-      <div ref={buttonRef} className="absolute z-50 left-1/2 -translate-x-1/2 opacity-0 bottom-[10%] pointer-events-auto">
-        <Link
-          to="/highlights"
-          className="animated-button"
-          onClick={() => window.scrollTo(0, 0)}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          View All Memories
-        </Link>
+          {/* Images */}
+          {images.map((src, index) => {
+            // Determine initial scattered positions (Corners)
+            let initialClass = "";
+            if (index % 4 === 0) initialClass = "top-[-40%] left-[-40%]"; // Top-Left
+            else if (index % 4 === 1) initialClass = "top-[-40%] right-[-40%]"; // Top-Right
+            else if (index % 4 === 2) initialClass = "bottom-[-40%] left-[-40%]"; // Bottom-Left
+            else if (index % 4 === 3) initialClass = "bottom-[-40%] right-[-40%]"; // Bottom-Right
+
+            return (
+              <div 
+                key={index}
+                ref={addToRefs}
+                className={`absolute w-64 h-40 sm:w-40 sm:h-28 md:w-52 md:h-36 lg:w-72 lg:h-48 xl:w-96 xl:h-64 rounded-lg overflow-hidden border border-primary/40 shadow-[0_0_15px_rgba(58,191,188,0.2)] opacity-0 blur-md ${initialClass}`}
+                style={{ transform: 'translate(0, 0)' }} 
+              >
+                <img src={src} alt={`Highlight ${index + 1}`} className="w-full h-full object-cover" />
+              </div>
+            );
+          })}
+
+          {/* Button */}
+          <div ref={buttonRef} className="absolute z-30 left-1/2 -translate-x-1/2 opacity-0 bottom-[10%]">
+            <Link 
+              to="/highlights" 
+              className="animated-button"
+              onClick={() => window.scrollTo(0, 0)}
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                View All Memories
+            </Link>
+          </div>
+
+        </section>
       </div>
-
-    </section>
+    </div>
   );
 };
 
