@@ -4,7 +4,7 @@ import Countdown from "../sections/Home/Countdown";
 import EventDetails from "../sections/Home/EventDetails";
 import Organizers from "../sections/Home/Organizers";
 import Sponsors from "../sections/Home/Sponsors";
-import Training from "../sections/Home/Training";
+// import Training from "../sections/Home/Training";
 import Register from "../sections/Home/Register";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -34,7 +34,7 @@ const Home = () => {
         <HighlightsPreview />
         <Organizers />
         <Sponsors />
-        <Training />
+        {/* <Training /> */}
         <Register />
       </main>
       <Footer />
