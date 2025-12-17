@@ -32,7 +32,7 @@ const Gallery = () => {
                   trigger: triggerRef.current,
                   start: "top top",
                   end: `+=${scrollWidth}`,
-                  scrub: 1,
+                  scrub: 10,
                   pin: true,
                   anticipatePin: 1,
                   invalidateOnRefresh: true,

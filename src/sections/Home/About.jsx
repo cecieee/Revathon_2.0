@@ -77,11 +77,11 @@ const About = () => {
         <div className="flex flex-col-reverse md:flex-row items-center gap-12">
           
           {/* Text Section */}
-          <div className="w-full md:w-1/2 justify-center flex md:pr-10">
+          <div className="md:w-1/2 justify-center flex md:pr-10 w-[83vw] m-auto p-3">
             <div className="max-w-xl">
               <h2 className="text-xl md:text-4xl font-bold text-[#3abfbc] mb-12 about-title tracking-tighter">
                 ABOUT <br />
-                <span className="text-white text-2xl tracking-wide">REV-A-THON 2.0</span>
+                <span className="text-white text-2xl tracking-wide">REV-A-THON</span> <span className="text-[#ff7046]"> 2.0</span>
               </h2>
 
               <div ref={textRef} className="about-text font-sans space-y-6 text-lg md:text-xl text-gray-300 leading-relaxed">
@@ -106,7 +106,7 @@ const About = () => {
           </div>
 
           {/* Image Section */}
-          <div className="w-full md:w-1/2 about-image flex justify-center md:justify-end pb-10 md:pb-20 md:pr-10">
+          <div className="hidden w-full md:w-1/2 about-image md:flex justify-center md:justify-end pb-10 md:pb-20 md:pr-10">
              <div className="relative rounded-xl overflow-hidden flex items-center justify-center max-w-md">
                 <video 
                   src="/assets/images/video1.mp4" 

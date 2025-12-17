@@ -51,9 +51,6 @@ const HighlightsPreview = () => {
           duration: 1,
           ease: "power2.out"
         })
-          // 2. Para pauses (hold)
-          .to({}, { duration: 2 })
-
           // 3. Para moves up and fades out
           .to(textRef.current, {
             opacity: 0,
@@ -72,7 +69,7 @@ const HighlightsPreview = () => {
 
           // 4. Images come from corners
           .to(imagesRef.current, {
-            top: isMobile ? "40%" : "55%",
+            top: "50%",
             left: "50%",
             xPercent: -50,
             yPercent: -50,
@@ -97,7 +94,7 @@ const HighlightsPreview = () => {
               if (isMobile) {
                 // Vertical stack for mobile
                 // Spread them out vertically
-                return (index - 2) * 60 + "%";
+                return (index - 2) * 40 + "%";
               }
 
               const row = index < 3 ? 0 : 1;
@@ -111,11 +108,11 @@ const HighlightsPreview = () => {
               return 0;
             },
             opacity: 1,
-            filter: "blur(0px)",
+            autoAlpha: 1,
             scale: 1,
             duration: 2,
-            ease: "power2.out"
-          }, "exit+=0.5")
+            ease: "linear"
+          }, "exit")
 
           .fromTo(buttonRef.current,
             { opacity: 0, scale: 0.5 },
@@ -137,7 +134,7 @@ const HighlightsPreview = () => {
   };
 
   return (
-    <div ref={containerRef} className="relative w-full" style={{ height: '500vh' }}>
+    <div ref={containerRef} className="relative w-full h-[220vh] md:h-[250vh]" >
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <section ref={sectionRef} className="relative h-full w-full bg-black flex flex-col items-center justify-center z-10">
 
@@ -172,8 +169,8 @@ const HighlightsPreview = () => {
               <div
                 key={index}
                 ref={addToRefs}
-                className={`absolute z-10 w-64 h-40 sm:w-40 sm:h-28 md:w-52 md:h-36 lg:w-72 lg:h-48 xl:w-96 xl:h-64 rounded-lg overflow-hidden border border-primary/40 shadow-[0_0_15px_rgba(58,191,188,0.2)] opacity-0 blur-md pointer-events-none ${initialClass}`}
-                style={{ transform: 'translate(0, 0)' }}
+                className={`absolute z-10 w-64 h-40 sm:w-40 sm:h-28 md:w-52 md:h-36 lg:w-72 lg:h-48 xl:w-96 xl:h-64 rounded-lg overflow-hidden border border-primary/40 shadow-[0_0_15px_rgba(58,191,188,0.2)] opacity-0 pointer-events-none ${initialClass}`}
+                style={{ transform: 'translate(0, 0)', willChange: 'transform, opacity' }}
               >
                 <img src={src} alt={`Highlight ${index + 1}`} className="w-full h-full object-cover" />
               </div>
@@ -181,7 +178,7 @@ const HighlightsPreview = () => {
           })}
 
           {/* Button */}
-          <div ref={buttonRef} className="absolute z-50 left-1/2 -translate-x-1/2 opacity-0 bottom-[10%] pointer-events-auto">
+          <div ref={buttonRef} className="absolute z-50 translate-[-125.269px,0px] md:-translate-x-1/2 opacity-0 bottom-[10%] pointer-events-auto">
             <TechButton
               to="/highlights"
               size="lg"

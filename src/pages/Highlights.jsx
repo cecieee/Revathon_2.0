@@ -1,9 +1,7 @@
-
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Hero from "../sections/Highlights/Hero";
 import Stats from "../sections/Highlights/Stats";
-import Timeline from "../sections/Highlights/Timeline";
 import Gallery from "../sections/Highlights/Gallery";
 import Winners from "../sections/Revathon1/Winners";
 import About from "../sections/Highlights/About";
@@ -19,7 +17,6 @@ function Highlights() {
                 <Hero />
                 <Stats />
                 <About />
-                <Timeline />
                 <Gallery />
                 <Winners />
                 <BehindTheScenes />
