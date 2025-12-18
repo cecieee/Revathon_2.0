@@ -19,10 +19,10 @@ const CTA = () => {
       <div className="relative z-10 container mx-auto px-4 text-center">
         <h2 className="text-xl md:text-4xl font-bold mb-6 text-[#3abfbc] tracking-wider">
           Ready for <br />  <span className="text-2xl md:text-6xl font-bold text-white mb-4 tracking-tighter">
-            REV-A-THON</span> <span className="text-[#ff7046]">2.0</span> ?
+            REV-A-THON</span> <span className="text-[#ff7046] text-2xl md:text-6xl">2.0</span> ?
         </h2>
 
-        <p className="text-xl text-gray-400 mb-12 font-sans max-w-2xl mx-auto font-light tracking-wide">
+        <p className="text-xl text-gray-200 mb-12 font-sans max-w-2xl mx-auto font-light tracking-wide">
           Join the community of creators, developers, and visionaries. The next revolution starts with you.
         </p>
 
