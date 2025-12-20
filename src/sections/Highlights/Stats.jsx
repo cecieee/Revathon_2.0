@@ -5,10 +5,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
-  { label: "Participants", value: 500, suffix: "+" },
-  { label: "Projects", value: 50, suffix: "+" },
+  { label: "Participants", value: 200, suffix: "+" },
+  { label: "Teams", value: 60, suffix: "+" },
   { label: "Hours", value: 24, suffix: "" },
-  { label: "Prizes", value: 1, prefix: "₹", suffix: "L+" },
+  { label: "Prizes", value: 50, prefix: "₹", suffix: "K" },
 ];
 
 const StatCard = ({ label, value, prefix = "", suffix = "" }) => {
@@ -50,15 +50,15 @@ const StatCard = ({ label, value, prefix = "", suffix = "" }) => {
     }, [value]);
 
     return (
-        <div ref={cardRef} className="relative group h-full">
+        <div ref={cardRef} className="relative group h-full border-2 border-white/20 rounded-lg p-[3px]">
             {/* Animated Border Container */}
-            <div className="absolute inset-0 rounded-xl overflow-hidden">
+            <div className="absolute inset-0 rounded-lg overflow-hidden">
                 {/* Moving Gradient Border */}
                 <div className="absolute inset-[-500%] bg-[conic-gradient(from_0deg,transparent_0_290deg,#3ABFBC_360deg)] animate-[spin_3s_linear_infinite] opacity-100"></div>
             </div>
 
             {/* Inner Card Background */}
-            <div className="relative h-full bg-black m-[3px] rounded-[9px] p-8 overflow-hidden">
+            <div className="relative h-full bg-black rounded-[9px] p-8 overflow-hidden">
                 
                 {/* Grid Background */}
                 <div className="absolute inset-0 opacity-10" 
