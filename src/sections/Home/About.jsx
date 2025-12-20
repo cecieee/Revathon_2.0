@@ -84,23 +84,10 @@ const About = () => {
                 <span className="text-white text-2xl tracking-wide">REV-A-THON</span> <span className="text-[#ff7046]"> 2.0</span>
               </h2>
 
-              <div ref={textRef} className="about-text font-sans space-y-6 text-lg md:text-xl text-gray-300 leading-relaxed">
-                <p>
-                  India's First <span className="text-[#ff7046] font-semibold">Reverse Engineering Hackathon</span> is a unique 24-hour competition that
-                  goes beyond typical hackathons by focusing on the art of reverse engineering.
-                </p>
-                <p>
-                  The event is structured around three key stages:{" "}
-                  <span className="text-[#3abfbc] font-bold">Breakdown, Analysis, and Reconstruction</span>.
-                </p>
-                <p>
-                  Participants are given a product—whether it’s hardware or a system—to
-                  deconstruct, understand its underlying mechanics, and then reconstruct it,
-                  enhancing or reimagining it with innovative solutions.
-                </p>
-                <p>
-                  It is a perfect platform for curious minds passionate about taking things apart to uncover their inner workings.
-                </p>
+              <div ref={textRef} className="about-text font-sans space-y-3 text-lg md:text-xl text-gray-300 leading-relaxed">
+               <p><span className="font-bold">REV-A-THON 2.0</span> is a <span className="text-[#3abfbc] font-bold">reverse-engineering</span>–based technical <span className="text-[#ff7046] font-bold">hackathon</span> organized by the IEEE Robotics & Automation Society Student Branch Chapter College of Engineering Chengannur. </p>
+               <p> Unlike traditional hackathons, this reverse hackathon begins by breaking systems apart-encouraging participants to <span className="text-[#3abfbc] font-bold uppercase">Reverse </span>, <span className="text-[#ff7046] uppercase font-bold">Rethink</span>, and <span className="text-[#3abfbc] uppercase font-bold">Rebuild</span> . </p>
+               <p> It promotes collaboration, critical thinking, and hands-on learning across robotics, electronics, and embedded systems, turning analysis into innovation.</p>
               </div>
             </div>
           </div>
