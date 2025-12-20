@@ -88,7 +88,7 @@ export default function Countdown() {
               textShadow: "0 0 20px rgba(58, 191, 188, 0.3)",
             }}
           >
-            STARTS
+            STaRTS
             <span className="text-primary"> IN</span>
           </h2>
         </div>
@@ -99,10 +99,10 @@ export default function Countdown() {
               {/* Card Container */}
               <div className="relative bg-black/40 backdrop-blur-sm border border-white/10 rounded-xl p-4 md:p-8 flex flex-col items-center justify-center overflow-hidden transition-all duration-300 hover:border-secondary/50 hover:shadow-[0_0_30px_rgba(58,191,188,0.2)]">
                 {/* Decorative Corners */}
-                <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-primary/50 group-hover:border-primary transition-colors"></div>
-                <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-secondary/50 group-hover:border-secondary transition-colors"></div>
-                <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-secondary/50 group-hover:border-secondary transition-colors"></div>
-                <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-primary/50 group-hover:border-primary transition-colors"></div>
+                <div className="pointer-events-none absolute -top-px -left-px w-4 h-4 rounded-tl-xl border-t-2 border-l-2 border-primary/50 transition-colors group-hover:border-primary"></div>
+                <div className="pointer-events-none absolute -top-px -right-px w-4 h-4 rounded-tr-xl border-t-2 border-r-2 border-secondary/50 transition-colors group-hover:border-secondary"></div>
+                <div className="pointer-events-none absolute -bottom-px -left-px w-4 h-4 rounded-bl-xl border-b-2 border-l-2 border-secondary/50 transition-colors group-hover:border-secondary"></div>
+                <div className="pointer-events-none absolute -bottom-px -right-px w-4 h-4 rounded-br-xl border-b-2 border-r-2 border-primary/50 transition-colors group-hover:border-primary"></div>
 
                 {/* Animated Background Line */}
                 <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-secondary to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
