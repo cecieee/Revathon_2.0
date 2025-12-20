@@ -69,7 +69,8 @@ const HighlightsPreview = () => {
 
           // Move heading up to make space
           .to(headingRef.current, {
-            top: "15%",
+            top: "10%",
+            yPercent: 0,
             scale: 0.8,
             duration: 1,
             ease: "power2.inOut"
@@ -77,7 +78,7 @@ const HighlightsPreview = () => {
 
           // 4. Images come from corners
           .to(imagesRef.current, {
-            top: "50%",
+            top: "60%",
             left: "50%",
             xPercent: -50,
             yPercent: -50,
@@ -90,11 +91,11 @@ const HighlightsPreview = () => {
               const row = index < 3 ? 0 : 1;
               const col = index < 3 ? index : index - 3;
 
-              // Row 0 (3 items): -110%, 0%, 110%
-              if (row === 0) return (col - 1) * 110 + "%";
+              // Row 0 (3 items): -105%, 0%, 105%
+              if (row === 0) return (col - 1) * 105 + "%";
 
-              // Row 1 (2 items): -55%, 55%
-              if (row === 1) return (col === 0 ? "-55%" : "55%");
+              // Row 1 (2 items): -52.5%, 52.5%
+              if (row === 1) return (col === 0 ? "-52.5%" : "52.5%");
 
               return 0;
             },
@@ -106,7 +107,7 @@ const HighlightsPreview = () => {
               }
 
               const row = index < 3 ? 0 : 1;
-              return row === 0 ? "-55%" : "55%";
+              return row === 0 ? "-52%" : "52%";
             },
             rotation: (index) => {
               if (isMobile) {
@@ -142,14 +143,14 @@ const HighlightsPreview = () => {
   };
 
   return (
-    <div ref={containerRef} className="relative w-full h-[220vh] md:h-[300vh]" >
+    <div ref={containerRef} className="relative w-full h-[220vh] md:h-[300vh] " >
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <section ref={sectionRef} className="relative h-full w-full bg-black flex flex-col items-center justify-center z-10">
 
           {/* Heading & Text */}
           <div
             ref={headingRef}
-            className="absolute z-20 text-center px-4 flex flex-col items-center w-full"
+            className="absolute z-40 text-center px-4 flex flex-col items-center w-full"
             style={{ top: '50%', transform: 'translateY(-50%)' }} // Explicit initial centering
           >
             <h2 className="text-2xl md:text-7xl font-bold text-white tracking-wider">
@@ -177,7 +178,7 @@ const HighlightsPreview = () => {
               <div
                 key={index}
                 ref={addToRefs}
-                className={`absolute z-10 w-64 h-40 sm:w-40 sm:h-28 md:w-52 md:h-36 lg:w-72 lg:h-48 xl:w-96 xl:h-64 rounded-lg overflow-hidden border border-primary/40 shadow-[0_0_15px_rgba(58,191,188,0.2)] opacity-0 pointer-events-none ${initialClass}`}
+                className={`absolute z-10 w-48 h-32 sm:w-32 sm:h-24 md:w-44 md:h-32 lg:w-60 lg:h-40 xl:w-80 xl:h-52 rounded-lg overflow-hidden border border-primary/40 shadow-[0_0_15px_rgba(58,191,188,0.2)] opacity-0 pointer-events-none ${initialClass}`}
                 style={{ transform: 'translate(0, 0)', willChange: 'transform, opacity' }}
               >
                 <img src={src} alt={`Highlight ${index + 1}`} className="w-full h-full object-cover" />
