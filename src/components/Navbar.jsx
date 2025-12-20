@@ -73,11 +73,11 @@ const Navbar = () => {
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
           {/* Logo */}
           <div
-            className="text-l md:text-2xl font-bold tracking-widest cursor-pointer text-white hover:text-primary transition-colors duration-300 relative z-[110]"
+            className="text-m md:text-xl font-bold tracking-widest cursor-pointer text-white hover:text-primary transition-colors duration-300 relative z-[110]"
             style={{ fontFamily: "Mechsuit" }}
             onClick={() => handleNavigation({ target: "hero" })}
           >
-            REVATHON <span className="text-primary">2.0</span>
+            REV-A-THON <span className="text-primary">2.0</span>
           </div>
 
           {/* Desktop Menu */}

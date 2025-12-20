@@ -47,7 +47,7 @@ const Hero = () => {
             style={{
               width: `${Math.random() * 4 + 2}px`,
               height: `${Math.random() * 4 + 2}px`,
-              background: i % 2 === 0 ? '#3abfbc' : '#ff7046',
+              background: i % 2 === 0 ? "#3abfbc" : "#ff7046",
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
               opacity: 0.5,
@@ -91,24 +91,26 @@ const Hero = () => {
 
       {/* Main content container */}
       <div className="container mx-auto px-4 sm:px-6 md:px-12 pt-32 sm:pt-32 md:pt-0 relative z-20 flex flex-col md:flex-row items-center justify-center md:justify-start h-full">
-        <div className="w-full md:w-1/2 text-center md:text-left">
+        <div className="w-full  text-center md:text-left">
           <div ref={textRef}>
             <h1
-              className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-4 sm:mb-6 tracking-tighter leading-tight sm:leading-none"
+              className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-9xl font-bold mb-4 sm:mb-6 tracking-tighter leading-tight sm:leading-none"
               style={{ fontFamily: "Mechsuit" }}
             >
-              REVATHON <br />
-              <span className="text-white font-bold">
-                2.0
-              </span>
+              REV-A-THON
+              <br />
+              <span className="text-white font-bold">2.0</span>
             </h1>
             <p className="text-xs sm:text-base md:text-xl text-gray-300 max-w-lg mx-auto md:mx-0 mb-6 sm:mb-8 border-l-0 md:border-l-4 border-primary pl-0 md:pl-4 mt-2 md:mt-0 leading-relaxed font-mono tracking-wider">
-              <span className="inline-block text-secondary" style={{ transform: 'scaleX(-1)', display: 'inline-block' }}>REVERSE</span>{' '}
+              <span
+                className="inline-block text-secondary"
+                style={{ transform: "scaleX(-1)", display: "inline-block" }}
+              >
+                REVERSE
+              </span>{" "}
               THE FLOW <br />
-              <span className="text-white">REVEAL</span>{' '}
-              <span className="text-primary font-bold">
-                THE LOGIC
-              </span>
+              <span className="text-white">REVEAL</span>{" "}
+              <span className="text-primary font-bold">THE LOGIC</span>
             </p>
           </div>
 

@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const TARGET_TEXT = "REV-A-THON2.0";
-const INITIAL_TEXT = "revAthon";
+const INITIAL_TEXT = "rev-A-thon";
 const SCRAMBLE_CHARS = "revathon";
 
 const GlitchLoader = ({ onComplete }) => {
