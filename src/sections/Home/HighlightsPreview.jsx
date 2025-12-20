@@ -10,6 +10,7 @@ const HighlightsPreview = () => {
   const sectionRef = useRef(null);
   const headingRef = useRef(null);
   const textRef = useRef(null);
+  const highlightTitleRef = useRef(null);
   const imagesRef = useRef([]);
   const buttonRef = useRef(null);
 
@@ -55,6 +56,13 @@ const HighlightsPreview = () => {
           .to(textRef.current, {
             opacity: 0,
             y: -100,
+            duration: 1,
+            ease: "power2.in"
+          }, "exit")
+
+          .to(highlightTitleRef.current, {
+            opacity: 0,
+            y: -50,
             duration: 1,
             ease: "power2.in"
           }, "exit")
@@ -134,7 +142,7 @@ const HighlightsPreview = () => {
   };
 
   return (
-    <div ref={containerRef} className="relative w-full h-[220vh] md:h-[250vh]" >
+    <div ref={containerRef} className="relative w-full h-[220vh] md:h-[300vh]" >
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <section ref={sectionRef} className="relative h-full w-full bg-black flex flex-col items-center justify-center z-10">
 
@@ -147,7 +155,7 @@ const HighlightsPreview = () => {
             <h2 className="text-2xl md:text-7xl font-bold text-white tracking-wider">
               REVATHON <span className="text-primary">1.0</span>
             </h2>
-            <p className="text-gray-400 mt-2 text-xl uppercase tracking-widest">Highlights</p>
+            <p ref={highlightTitleRef} className="text-gray-400 mt-2 text-xl uppercase tracking-widest">Highlights</p>
 
             <p ref={textRef} className="text-gray-300 mt-6 max-w-2xl text-center text-xl md:text-2xl font-sans leading-relaxed opacity-0 translate-y-4">
               Relive the innovation and energy that defined our first chapter.

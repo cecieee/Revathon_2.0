@@ -25,13 +25,13 @@ const Hero = () => {
       </div>
       <div className="relative z-10 flex flex-col items-center gap-4 px-4 w-full">
         <div className="flex flex-col w-fit max-w-full gap-2">
-          <p className="text-sm pr-[5vw] md:text-2xl font-sans uppercase font-bold text-[#ff7046] self-end text-right">
+          <p className="text-sm pr-[5vw] md:pr-0 md:text-2xl font-sans uppercase font-bold text-[#ff7046] self-end text-right">
             India's First Ever
           </p>
           <h1 ref={titleRef} className="hero-title text-2xl  md:text-7xl lg:text-8xl font-medium text-white tracking-tighter text-center" data-text="REV-A-THON 1.0">
             REV-A-THON 1.0
           </h1>
-          <p ref={subtitleRef} className="text-sm pl-[5vw] md:text-2xl font-sans uppercase font-bold mt-2 sm:mt-6 text-[#3abfbc] self-start text-left">
+          <p ref={subtitleRef} className="text-sm pl-[5vw] md:pl-0 md:text-2xl font-sans uppercase font-bold mt-2 sm:mt-6 text-[#3abfbc] self-start text-left">
             Reverse Engineering Hackathon
           </p>
           <div className="text-base sm:text-2xl md:text-3xl lg:text-4xl font-sans uppercase pt-4 sm:pt-8 text-white self-center font-semibold text-center">
