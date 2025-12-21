@@ -29,12 +29,16 @@ const Footer = () => {
             <div className="pt-2"></div>
           </div>
 
-          <div className="space-y-4 text-center">
+          <div className="relative min-h-[120px] hidden md:flex items-end justify-center">
+            <RobotFooter />
+          </div>
+
+          <div className="space-y-4 text-center md:text-right">
             <h3 className="text-sm font-semibold text-white tracking-widest uppercase mb-4" style={{ fontFamily: 'ui-sans-serif, system-ui, sans-serif' }}>
               Connect With Us
             </h3>
 
-            <div className="flex flex-col items-center gap-4">
+            <div className="flex flex-col items-center md:items-end gap-4">
               <a href="mailto:rassbccec@gmail.com"
                 className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors group">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-500 group-hover:text-primary transition-colors">
@@ -43,7 +47,7 @@ const Footer = () => {
                 <span className="text-xs font-sans">rassbccec@gmail.com</span>
               </a>
 
-              <div className="flex justify-center gap-4">
+              <div className="flex justify-center md:justify-end gap-4">
                 <a href="https://www.instagram.com/ieeerascec/" className="p-2 rounded-full bg-gray-900 border border-gray-800 text-gray-400 hover:text-white hover:border-[#E1306C] hover:bg-[#E1306C]/10 transition-all duration-300 hover:scale-110">
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
@@ -65,7 +69,7 @@ const Footer = () => {
             </div>
 
             {/* Coordinators */}
-            <div className="flex flex-col items-center gap-1.5 mt-4 text-[11px] font-sans tracking-wide transition transform duration-300 hover:scale-110">
+            <div className="flex flex-col items-center md:items-end gap-1.5 mt-4 text-[11px] font-sans tracking-wide transition transform duration-300 hover:scale-110">
               <div className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors cursor-default">
                 <span className="text-primary font-bold hover:text-white">Ashna Sunil(Chairperson)</span>
                 <span>+91 9188821690</span>
@@ -75,11 +79,6 @@ const Footer = () => {
                 <span>+91 94967 70497</span>
               </div>
             </div>
-          </div>
-
-
-          <div className="relative min-h-[120px] hidden md:flex items-end justify-center md:justify-end">
-            <RobotFooter />
           </div>
 
         </div>
