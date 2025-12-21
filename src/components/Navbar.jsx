@@ -36,7 +36,7 @@ const Navbar = () => {
     // { name: "Events", target: "event-details" },
     // { name: "Training", target: "training" },
     { name: "Register", target: "register" },
-    { name: "Highlights", path: "/highlights" },
+    { name: "Revathon 1.0", path: "/highlights" },
   ];
 
   const handleNavigation = (link) => {
