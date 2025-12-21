@@ -200,8 +200,6 @@ body {
   pointer-events: none;
 }
 
-/* Removed duplicate Mechsuit font-face */
-
 :root {
   --primary: #ff7046;
   --secondary: #3abfbc;
@@ -211,4 +209,14 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+.hero-text-shadow {
+  text-shadow: 1px 1px 0 #3abfbc;
+}
+
+@media (min-width: 768px) {
+  .hero-text-shadow {
+    text-shadow: 2px 2px 0 #3abfbc;
+  }
 }

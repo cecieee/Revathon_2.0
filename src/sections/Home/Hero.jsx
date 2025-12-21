@@ -94,7 +94,7 @@ const Hero = () => {
         <div className="w-full  text-center md:text-left">
           <div ref={textRef}>
             <h1
-              className="text-lg sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-bold mb-4 sm:mb-6 tracking-wide leading-tight sm:leading-none md:leading-tight whitespace-nowrap flex flex-row md:flex-col items-baseline md:items-start justify-center md:justify-start gap-2 md:gap-0"
+              className="hero-text-shadow text-lg sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-bold mb-4 sm:mb-6 tracking-wide leading-tight sm:leading-none md:leading-tight whitespace-nowrap flex flex-row md:flex-col items-baseline md:items-start justify-center md:justify-start gap-2 md:gap-0"
               style={{ fontFamily: "Mechsuit" }}
             >
               <span>REV-A-THON</span>
