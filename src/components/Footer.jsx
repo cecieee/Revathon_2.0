@@ -13,7 +13,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
 
           <div className="space-y-3 text-center md:text-left">
-            <h2 className="text-2xl font-primary tracking-tighter">
+            <h2 className="text-2xl font-primary tracking-tighter"
+              style={{ fontFamily: 'Mechsuit, sans-serif' }}
+            >
               REV-A-THON <span className="text-primary">2.0</span>
             </h2>
             <p className="text-xs sm:text-base md:text-xl text-gray-300 max-w-lg mx-auto md:mx-0 mb-6 sm:mb-8 border-l-0 md:border-l-4 border-primary pl-0 md:pl-4 mt-2 md:mt-0 leading-relaxed font-mono tracking-wider">

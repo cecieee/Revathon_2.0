@@ -302,7 +302,7 @@ export default function ProcessWorkflow() {
             <div className="w-full max-w-4xl flex flex-col gap-20">
                 <h2
                     className="text-center text-2xl md:text-4xl font-extrabold tracking-wide"
-                    style={{ color: "white" }}
+                    style={{ color: "white", fontFamily: 'Mechsuit, sans-serif' }}
                 >
                     WHAT IS <span style={{ color: "#FF7046" }}>REVERSE ENGINEERING ?</span>
                 </h2>
@@ -321,6 +321,7 @@ export default function ProcessWorkflow() {
                 <div className="w-full mt-6">
                     <h3
                         className="text-center text-secondary text-2xl md:text-3xl font-bold tracking-wide mb-4"
+                        style={{ fontFamily: 'Mechsuit, sans-serif' }}
                     >
                         WHY REVERSE HACKATHON?
                     </h3>
@@ -342,6 +343,7 @@ export default function ProcessWorkflow() {
                 {/* Title outside the box */}
                 <h3
                     className="text-center text-secondary text-xl md:text-2xl font-extrabold tracking-wide mb-6"
+                    style={{ fontFamily: 'Mechsuit, sans-serif' }}
                 >
                     HOW REVERSE HACKATHON?
                 </h3>
@@ -401,21 +403,21 @@ export default function ProcessWorkflow() {
             <div className="text-center space-y-2 mb-12 mt-16">
                 <h2
                     className="text-xl md:text-3xl tracking-wide"
-                    style={{ color: "#FF7046" }}
+                    style={{ color: "#FF7046", fontFamily: 'Mechsuit, sans-serif' }}
                 >
                     NORMAL HACKATHON
                 </h2>
 
                 <h3
                     className="text-lg md:text-2xl tracking-wide"
-                    style={{ color: "#FF7046" }}
+                    style={{ color: "#FF7046", fontFamily: 'Mechsuit, sans-serif' }}
                 >
                     VS
                 </h3>
 
                 <h2
                     className="text-xl md:text-3xl tracking-wide"
-                    style={{ color: "#3ABFBC" }}
+                    style={{ color: "#3ABFBC", fontFamily: 'Mechsuit, sans-serif' }}
                 >
                     REVERSE HACKATHON
                 </h2>
@@ -427,13 +429,13 @@ export default function ProcessWorkflow() {
                     {/* Header Row */}
                     <div
                         className="border-2 rounded-t-lg md:rounded-t-xl py-3 md:py-6 px-2 md:px-6 text-center font-bold text-xs md:text-lg"
-                        style={{ borderColor: "#FF7046", color: "#FF7046", backgroundColor: "rgba(255,112,70,0.1)" }}
+                        style={{ borderColor: "#FF7046", color: "#FF7046", backgroundColor: "rgba(255,112,70,0.1)", fontFamily: 'Mechsuit, sans-serif' }}
                     >
                         Normal Hackathon
                     </div>
                     <div
                         className="border-2 rounded-t-lg md:rounded-t-xl py-3 md:py-6 px-2 md:px-6 text-center font-bold text-xs md:text-lg"
-                        style={{ borderColor: "#3ABFBC", color: "#3ABFBC", backgroundColor: "rgba(58,191,188,0.1)" }}
+                        style={{ borderColor: "#3ABFBC", color: "#3ABFBC", backgroundColor: "rgba(58,191,188,0.1)", fontFamily: 'Mechsuit, sans-serif' }}
                     >
                         Reverse Hackathon
                     </div>

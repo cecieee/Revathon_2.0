@@ -24,7 +24,7 @@
 body {
   background-color: var(--background);
   color: #ffffff;
-  font-family: var(--font-primary);
+  font-family: "Outfit", sans-serif;
 }
 
 /* html {
@@ -200,12 +200,7 @@ body {
   pointer-events: none;
 }
 
-@font-face {
-  font-family: "Mechsuit";
-  src: url("/font/Mechsuit.otf") format("opentype");
-  font-weight: normal;
-  font-style: normal;
-}
+/* Removed duplicate Mechsuit font-face */
 
 :root {
   --primary: #ff7046;

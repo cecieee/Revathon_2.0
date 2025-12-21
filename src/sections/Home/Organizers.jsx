@@ -53,6 +53,7 @@ export default function Organizers() {
                        text-white
                        drop-shadow-[0_0_4px_rgba(58,191,188,0.35)]
                        animate-soft-pulse"
+            style={{ fontFamily: 'Mechsuit, sans-serif' }}
           >
             ORGANIZERS
           </h2>

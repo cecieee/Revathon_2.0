@@ -174,7 +174,9 @@ const HighlightsPreview = () => {
             className="absolute z-40 text-center px-4 flex flex-col items-center w-full"
             style={{ top: "50%", transform: "translateY(-50%)" }} // Explicit initial centering
           >
-            <h2 className="text-2xl md:text-7xl font-bold text-white tracking-wider">
+            <h2 className="text-2xl md:text-7xl font-bold text-white tracking-wider"
+              style={{ fontFamily: 'Mechsuit, sans-serif' }}
+            >
               REV-A-THON <span className="text-primary">1.0</span>
             </h2>
             <p

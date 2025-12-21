@@ -64,11 +64,10 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${
-          scrolled
-            ? "bg-black/80 backdrop-blur-md border-b border-primary/20"
-            : "bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${scrolled
+          ? "bg-black/80 backdrop-blur-md border-b border-primary/20"
+          : "bg-transparent"
+          }`}
       >
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
           {/* Logo */}
@@ -81,7 +80,10 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex space-x-8"
+            style={{ fontFamily: 'Mechsuit, sans-serif' }}
+
+          >
             {navLinks.map((link) => (
               <button
                 key={link.name}
@@ -101,19 +103,16 @@ const Navbar = () => {
           >
             <div className="w-8 h-6 flex flex-col justify-between">
               <span
-                className={`block w-full h-[2px] bg-primary transition-transform duration-300 ${
-                  isOpen ? "rotate-45 translate-y-2.5" : ""
-                }`}
+                className={`block w-full h-[2px] bg-primary transition-transform duration-300 ${isOpen ? "rotate-45 translate-y-2.5" : ""
+                  }`}
               ></span>
               <span
-                className={`block w-full h-[2px] bg-secondary transition-opacity duration-300 ${
-                  isOpen ? "opacity-0" : ""
-                }`}
+                className={`block w-full h-[2px] bg-secondary transition-opacity duration-300 ${isOpen ? "opacity-0" : ""
+                  }`}
               ></span>
               <span
-                className={`block w-full h-[2px] bg-primary transition-transform duration-300 ${
-                  isOpen ? "-rotate-45 -translate-y-2.5" : ""
-                }`}
+                className={`block w-full h-[2px] bg-primary transition-transform duration-300 ${isOpen ? "-rotate-45 -translate-y-2.5" : ""
+                  }`}
               ></span>
             </div>
           </button>
@@ -122,19 +121,18 @@ const Navbar = () => {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 bg-black/95 backdrop-blur-xl z-[90] flex flex-col items-center justify-center space-y-8 transition-transform duration-500 ease-in-out md:hidden ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`fixed inset-0 bg-black/95 backdrop-blur-xl z-[90] flex flex-col items-center justify-center space-y-8 transition-transform duration-500 ease-in-out md:hidden ${isOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+        style={{ fontFamily: 'Mechsuit, sans-serif' }}
       >
         {navLinks.map((link, index) => (
           <button
             key={link.name}
             onClick={() => handleNavigation(link)}
-            className={`text-2xl text-white font-bold hover:text-primary transition-all duration-300 tracking-widest uppercase transform ${
-              isOpen
-                ? "translate-x-0 opacity-100"
-                : "translate-x-full opacity-0"
-            }`}
+            className={`text-2xl text-white font-bold hover:text-primary transition-all duration-300 tracking-widest uppercase transform ${isOpen
+              ? "translate-x-0 opacity-100"
+              : "translate-x-full opacity-0"
+              }`}
             style={{
               transitionDelay: isOpen ? `${index * 100}ms` : "0ms",
             }}
