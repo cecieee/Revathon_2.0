@@ -35,24 +35,24 @@ const THEMES = {
 const PROCESS_STEPS = [
     {
         id: 1,
-        title: "BREAK",
+        title: "Reverse",
         variant: "neutral",
         description:
-            "Deconstruct the problem or system into smaller, manageable components to understand its structure and identify key areas requiring attention.",
+            "Understand the system by breaking it down.Analyze every component, connection, and function.",
     },
     {
         id: 2,
-        title: "ANALYSE",
+        title: "RETHINK",
         variant: "blue",
         description:
-            "Examine each component critically to uncover inefficiencies, weaknesses or areas of improvement through data and pattern study.",
+            "Question existing logic and challenge assumptions.Reimagine how the system can work smarter and better.",
     },
     {
         id: 3,
-        title: "INNOVATE",
+        title: "REBUILD",
         variant: "dark",
         description:
-            "Create meaningful, creative and efficient solutions by leveraging insights gathered from the analysis phase.",
+            "Reconstruct with innovation and purpose.Transform ideas into a stronger, improved solution.",
     },
 ];
 
