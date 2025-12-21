@@ -94,12 +94,10 @@ const Hero = () => {
         <div className="w-full  text-center md:text-left">
           <div ref={textRef}>
             <h1
-              className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-9xl font-bold mb-4 sm:mb-6 tracking-tighter leading-tight sm:leading-none"
+              className="text-2xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-9xl font-bold mb-4 sm:mb-6 tracking-tighter leading-tight sm:leading-none whitespace-nowrap md:whitespace-normal"
               style={{ fontFamily: "Mechsuit" }}
             >
-              REV-A-THON
-              <br />
-              <span className="text-white font-bold">2.0</span>
+              REV-A-THON <br className="hidden md:block" /> <span className="text-white font-bold">2.0</span>
             </h1>
             <p className="text-xs sm:text-base md:text-xl text-gray-300 max-w-lg mx-auto md:mx-0 mb-6 sm:mb-8 border-l-0 md:border-l-4 border-primary pl-0 md:pl-4 mt-2 md:mt-0 leading-relaxed font-mono tracking-wider">
               <span

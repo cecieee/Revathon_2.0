@@ -194,7 +194,7 @@ const EventInfo = () => {
             <div className="relative border border-[#3abfbc]/30 rounded-2xl p-8 md:p-12 mb-8 overflow-hidden group">
                 <div className="absolute inset-0 bg-[#0d1d1d]/80 backdrop-blur-sm -z-10" />
                 <div className="absolute top-0 right-0 p-4 opacity-20">
-                    <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#3abfbc" strokeWidth="1">
+                    <svg className="w-16 h-16 md:w-32 md:h-32" viewBox="0 0 24 24" fill="none" stroke="#3abfbc" strokeWidth="1">
                         <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                         <line x1="16" y1="2" x2="16" y2="6" />
                         <line x1="8" y1="2" x2="8" y2="6" />
@@ -203,10 +203,10 @@ const EventInfo = () => {
                 </div>
 
                 <div className="flex flex-col items-center justify-center text-center">
-                    <div className="flex items-baseline gap-2 md:gap-4 mb-2">
-                        <span className="text-6xl md:text-8xl font-black text-[#3abfbc] tracking-tighter" style={{ fontFamily: 'Mechsuit' }}>1</span>
+                    <div className="flex items-baseline gap-1 md:gap-4 mb-2">
+                        <span className="text-5xl sm:text-6xl md:text-8xl font-black text-[#3abfbc] tracking-tighter" style={{ fontFamily: 'Mechsuit' }}>10</span>
                     </div>
-                    <h3 className="text-2xl md:text-4xl text-white font-bold tracking-[0.5em] mt-2">JANUARY 2026</h3>
+                    <h3 className="text-lg sm:text-xl md:text-2xl text-white font-bold tracking-[0.2em] md:tracking-[0.5em] mt-1 md:mt-2">JANUARY 2026</h3>
                 </div>
             </div>
 
@@ -215,9 +215,9 @@ const EventInfo = () => {
                 <div className="relative border border-white/10 rounded-2xl p-8 overflow-hidden group hover:border-[#3abfbc]/50 transition-colors duration-300">
                     <div className="absolute inset-0 bg-[#111111]/80 backdrop-blur-sm -z-10" />
 
-                    <div className="text-center mb-8">
-                        <h2 className="text-4xl font-bold tracking-widest text-white uppercase mb-2">VENUE</h2>
-                        <div className="w-24 h-1 bg-[#3abfbc] mx-auto rounded-full" />
+                    <div className="text-center mb-6 md:mb-8">
+                        <h2 className="text-3xl md:text-4xl font-bold tracking-widest text-white uppercase mb-2">VENUE</h2>
+                        <div className="w-16 md:w-24 h-1 bg-[#3abfbc] mx-auto rounded-full" />
                     </div>
 
                     <div className="space-y-6">
@@ -229,21 +229,21 @@ const EventInfo = () => {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                 </svg>
-                                <span className="text-sm font-mono">College of Engineering Chengannur, Chengannur, Kerala 689121</span>
+                                <span className="text-xs md:text-sm font-mono">College of Engineering Chengannur, Chengannur, Kerala 689121</span>
                             </div>
 
                             <div className="flex items-center gap-4 text-gray-300">
                                 <svg className="w-6 h-6 shrink-0 text-[#3abfbc]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
-                                <span className="text-sm font-mono">9:00 AM - 6:00 PM</span>
+                                <span className="text-xs md:text-sm font-mono">9:00 AM - 6:00 PM</span>
                             </div>
 
                             <div className="flex items-center gap-4 text-gray-300">
                                 <svg className="w-6 h-6 shrink-0 text-[#3abfbc]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                                 </svg>
-                                <span className="text-sm font-mono">Offline - On Campus</span>
+                                <span className="text-xs md:text-sm font-mono">Offline - On Campus</span>
                             </div>
                         </div>
 
@@ -265,9 +265,9 @@ const EventInfo = () => {
                 <div className="relative border border-white/10 rounded-2xl p-8 overflow-hidden group hover:border-[#ff7046]/50 transition-colors duration-300">
                     <div className="absolute inset-0 bg-[#1a0f0b]/80 backdrop-blur-sm -z-10" />
 
-                    <div className="text-center">
-                        <h2 className="text-4xl font-bold tracking-widest text-white uppercase mb-2">PRIZEPOOL</h2>
-                        <div className="w-24 h-1 bg-[#ff7046] mx-auto rounded-full" />
+                    <div className="text-center mb-6 md:mb-8">
+                        <h2 className="text-3xl md:text-4xl font-bold tracking-widest text-white uppercase mb-2">PRIZEPOOL</h2>
+                        <div className="w-16 md:w-24 h-1 bg-[#ff7046] mx-auto rounded-full" />
                     </div>
 
                     <div className="flex flex-col items-center justify-center h-full min-h-[200px] space-y-4">
@@ -277,9 +277,9 @@ const EventInfo = () => {
                         </h3>
                         <p className="text-gray-400 font-mono text-sm tracking-wider uppercase">Worth of Prizes</p>
                         <div>
-                            <p className="text-xl font-mono">- Swags</p>
-                            <p className="text-xl font-mono">- Certificates</p>
-                            <p className="text-xl font-mono">- Cash Prizes</p>
+                            <p className="text-base md:text-xl font-mono">- Swags</p>
+                            <p className="text-base md:text-xl font-mono">- Certificates</p>
+                            <p className="text-base md:text-xl font-mono">- Cash Prizes</p>
                         </div>
                     </div>
                 </div>
@@ -294,7 +294,7 @@ const EventInfo = () => {
 
 export default function ProcessWorkflow() {
     return (
-        <section id="event-details" className="min-h-screen bg-black p-6 md:p-12 flex flex-col items-center">
+        <section id="event-details" className="min-h-screen bg-black p-4 md:p-12 flex flex-col items-center">
 
             {/* NEW EVENT INFO SECTION */}
             <EventInfo />

@@ -75,36 +75,38 @@ const About = () => {
 
       <div className="container mx-auto px-6 md:px-12 relative z-5">
         <div className="flex flex-col-reverse md:flex-row items-center gap-12">
-          
+
           {/* Text Section */}
           <div className="md:w-1/2 justify-center flex md:pr-10 w-[83vw] m-auto p-3">
             <div className="max-w-xl">
               <h2 className="text-xl md:text-4xl font-bold text-[#3abfbc] mb-12 about-title tracking-tighter">
                 ABOUT <br />
-                <span className="text-white text-2xl tracking-wide">REV-A-THON</span> <span className="text-[#ff7046]"> 2.0</span>
+                <span className="whitespace-nowrap">
+                  <span className="text-white text-2xl tracking-wide">REV-A-THON</span> <span className="text-[#ff7046]"> 2.0</span>
+                </span>
               </h2>
 
               <div ref={textRef} className="about-text font-sans space-y-3 text-lg md:text-xl text-gray-300 leading-relaxed">
-               <p><span className="font-bold">REV-A-THON 2.0</span> is a <span className="text-[#3abfbc] font-bold">reverse-engineering</span>–based technical <span className="text-[#ff7046] font-bold">hackathon</span> organized by the IEEE Robotics & Automation Society Student Branch Chapter College of Engineering Chengannur. </p>
-               <p> Unlike traditional hackathons, this reverse hackathon begins by breaking systems apart-encouraging participants to <span className="text-[#3abfbc] font-bold uppercase">Reverse </span>, <span className="text-[#ff7046] uppercase font-bold">Rethink</span>, and <span className="text-[#3abfbc] uppercase font-bold">Rebuild</span> . </p>
-               <p> It promotes collaboration, critical thinking, and hands-on learning across robotics, electronics, and embedded systems, turning analysis into innovation.</p>
+                <p><span className="font-bold">REV-A-THON 2.0</span> is a <span className="text-[#3abfbc] font-bold">reverse-engineering</span>–based technical <span className="text-[#ff7046] font-bold">hackathon</span> organized by the IEEE Robotics & Automation Society Student Branch Chapter College of Engineering Chengannur. </p>
+                <p> Unlike traditional hackathons, this reverse hackathon begins by breaking systems apart-encouraging participants to <span className="text-[#3abfbc] font-bold uppercase">Reverse </span>, <span className="text-[#ff7046] uppercase font-bold">Rethink</span>, and <span className="text-[#3abfbc] uppercase font-bold">Rebuild</span> . </p>
+                <p> It promotes collaboration, critical thinking, and hands-on learning across robotics, electronics, and embedded systems, turning analysis into innovation.</p>
               </div>
             </div>
           </div>
 
           {/* Image Section */}
           <div className="hidden w-full md:w-1/2 about-image md:flex justify-center md:justify-end pb-10 md:pb-20 md:pr-10">
-             <div className="relative rounded-xl overflow-hidden flex items-center justify-center max-w-md">
-                <video 
-                  src="/assets/images/video1.mp4" 
-                  autoPlay
-                  loop
-                  muted
-                  controls={0}
-                  playsInline
-                  className="w-full md:h-[90vh] object-cover md:mt-20 mt-0"
-                />
-             </div>
+            <div className="relative rounded-xl overflow-hidden flex items-center justify-center max-w-md">
+              <video
+                src="/assets/images/video1.mp4"
+                autoPlay
+                loop
+                muted
+                controls={0}
+                playsInline
+                className="w-full md:h-[90vh] object-cover md:mt-20 mt-0"
+              />
+            </div>
           </div>
 
         </div>
