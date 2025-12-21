@@ -166,7 +166,7 @@ const HighlightsPreview = () => {
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <section
           ref={sectionRef}
-          className="relative h-full w-full bg-black flex flex-col items-center justify-center z-10"
+          className="relative h-full w-full bg-transparent flex flex-col items-center justify-center z-10"
         >
           {/* Heading & Text */}
           <div

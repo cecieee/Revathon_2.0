@@ -12,6 +12,7 @@ import About from "../sections/Home/About";
 import HighlightsPreview from "../sections/Home/HighlightsPreview";
 // Direct import for Robot3D to avoid lazy loading issues with WebGL
 import Robot3D from "../components/Robot3D";
+import StarBackground from "../components/StarBackground";
 
 // Lazy load Hero component only
 const Hero = lazy(() => import("../sections/Home/Hero"));
@@ -21,10 +22,11 @@ const Home = () => {
 
   return (
     <>
+      <StarBackground />
       {isLoading && <GlitchLoader onComplete={() => setIsLoading(false)} />}
       {!isLoading && <Navbar />}
       <Robot3D />
-      <main>
+      <main className="relative z-10">
         <Suspense fallback={null}>
           <Hero />
         </Suspense>

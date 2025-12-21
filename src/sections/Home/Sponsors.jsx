@@ -24,7 +24,7 @@ export default function Sponsors() {
 
       <section
         className="relative overflow-hidden py-10 sm:py-12 md:py-14
-                   text-center bg-black"
+                   text-center bg-transparent"
         aria-labelledby="sponsors-heading"
       >
         <div className="container mx-auto px-4 sm:px-6 relative z-10">

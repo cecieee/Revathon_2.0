@@ -21,8 +21,13 @@
   --font-primary: "Mechsuit", sans-serif;
 }
 
-body {
+html {
   background-color: var(--background);
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: transparent;
   color: #ffffff;
   font-family: "Outfit", sans-serif;
 }

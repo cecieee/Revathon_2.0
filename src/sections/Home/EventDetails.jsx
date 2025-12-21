@@ -307,7 +307,7 @@ const EventInfo = () => {
 
 export default function ProcessWorkflow() {
     return (
-        <section id="event-details" className="min-h-screen bg-black p-4 md:p-12 flex flex-col items-center">
+        <section id="event-details" className="min-h-screen bg-transparent p-4 md:p-12 flex flex-col items-center">
 
             {/* NEW EVENT INFO SECTION */}
             <EventInfo />
