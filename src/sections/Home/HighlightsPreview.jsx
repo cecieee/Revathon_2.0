@@ -137,7 +137,7 @@ const HighlightsPreview = () => {
                 duration: 2,
                 ease: "linear",
               },
-              "exit"
+              "exit+=0.5"
             )
 
             .fromTo(
@@ -162,7 +162,7 @@ const HighlightsPreview = () => {
   };
 
   return (
-    <div ref={containerRef} className="relative w-full h-[220vh] md:h-[300vh] ">
+    <div ref={containerRef} className="relative w-full h-[400vh] md:h-[300vh] ">
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <section
           ref={sectionRef}
