@@ -12,7 +12,7 @@ const HighlightsPreview = () => {
   const textRef = useRef(null);
   const highlightTitleRef = useRef(null);
   const imagesRef = useRef([]);
-  const buttonRef = useRef(null);
+  const desktopButtonRef = useRef(null);
 
   const images = [
     "/assets/images/bh1.jpeg",
@@ -34,6 +34,7 @@ const HighlightsPreview = () => {
         (context) => {
           const { isMobile } = context.conditions;
 
+          // Scroll-driven Scatter Animation
           const tl = gsap.timeline({
             scrollTrigger: {
               trigger: containerRef.current,
@@ -43,8 +44,6 @@ const HighlightsPreview = () => {
               invalidateOnRefresh: true,
             },
           });
-
-          // Animation Sequence
 
           // 1. Para appears
           tl.to(textRef.current, {
@@ -80,7 +79,7 @@ const HighlightsPreview = () => {
             .to(
               headingRef.current,
               {
-                top: "10%",
+                top: isMobile ? "20%" : "10%",
                 yPercent: 0,
                 scale: 0.8,
                 duration: 1,
@@ -93,16 +92,12 @@ const HighlightsPreview = () => {
             .to(
               imagesRef.current,
               {
-                top: "60%",
+                top: isMobile ? "40%" : "60%",
                 left: "50%",
                 xPercent: -50,
                 yPercent: -50,
                 x: (index) => {
-                  if (isMobile) {
-                    return 0;
-                  }
-
-                  // Desktop: 5 images layout
+                  // 5 images layout
                   const row = index < 3 ? 0 : 1;
                   const col = index < 3 ? index : index - 3;
 
@@ -115,22 +110,10 @@ const HighlightsPreview = () => {
                   return 0;
                 },
                 y: (index) => {
-                  if (isMobile) {
-                    // Vertical stack for mobile
-                    // Spread them out vertically
-                    return (index - 2) * 40 + "%";
-                  }
-
                   const row = index < 3 ? 0 : 1;
                   return row === 0 ? "-52%" : "52%";
                 },
-                rotation: (index) => {
-                  if (isMobile) {
-                    // Slight random rotation for "uneven" feel
-                    return (index % 2 === 0 ? -3 : 3) * (index + 1);
-                  }
-                  return 0;
-                },
+                rotation: 0,
                 opacity: 1,
                 autoAlpha: 1,
                 scale: 1,
@@ -141,7 +124,7 @@ const HighlightsPreview = () => {
             )
 
             .fromTo(
-              buttonRef.current,
+              desktopButtonRef.current,
               { opacity: 0, scale: 0.5 },
               { opacity: 1, scale: 1, duration: 1, ease: "back.out(1.7)" },
               "-=0.5"
@@ -162,36 +145,46 @@ const HighlightsPreview = () => {
   };
 
   return (
-    <div ref={containerRef} className="relative w-full h-[220vh] md:h-[300vh] ">
+    <div ref={containerRef} className="relative w-full h-[250vh]">
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <section
           ref={sectionRef}
-          className="relative h-full w-full bg-black flex flex-col items-center justify-center z-10"
+          className="relative h-full w-full bg-black flex flex-col items-center justify-center z-10 overflow-hidden"
         >
+          
           {/* Heading & Text */}
           <div
             ref={headingRef}
-            className="absolute z-40 text-center px-4 flex flex-col items-center w-full"
-            style={{ top: "50%", transform: "translateY(-50%)" }} // Explicit initial centering
+            className="absolute z-40 w-full h-auto top-1/2 -translate-y-1/2 pointer-events-none"
           >
-            <h2 className="text-2xl md:text-7xl font-bold text-white tracking-wider">
-              REV-A-THON <span className="text-primary">1.0</span>
-            </h2>
-            <p
-              ref={highlightTitleRef}
-              className="text-gray-400 mt-2 text-xl uppercase tracking-widest"
-            >
-              Highlights
-            </p>
+            {/* Title Group */}
+            <div className="relative w-full flex flex-col items-center">
+                <h2 className="text-2xl sm:3xl md:text-7xl text-center font-bold text-white tracking-wide">
+                  REV-A-THON <span className="text-primary">1.0</span>
+                </h2>
+                <p
+                  ref={highlightTitleRef}
+                  className="text-gray-400 mt-2 text-xl uppercase tracking-widest"
+                >
+                  Highlights
+                </p>
+            </div>
 
-            <p
-              ref={textRef}
-              className="text-gray-300 mt-6 max-w-2xl text-center text-xl md:text-2xl font-sans leading-relaxed opacity-0 translate-y-4"
-            >
-              Relive the innovation and energy that defined our first chapter.
-              From intense coding sessions to breakthrough moments, witness the
-              journey that started it all.
-            </p>
+            {/* Text Group */}
+            <div className="relative mt-6 flex flex-col items-center w-full px-4">
+                <div className="relative max-w-2xl">
+                    <p
+                      ref={textRef}
+                      className="text-gray-300 text-center text-lg md:text-2xl font-sans leading-relaxed 
+                                 opacity-0 translate-y-4 
+                                 bg-transparent p-0 rounded-xl border-none"
+                    >
+                      Relive the innovation and energy that defined our first chapter.
+                      From intense coding sessions to breakthrough moments, witness the
+                      journey that started it all.
+                    </p>
+                </div>
+            </div>
           </div>
 
           {/* Images */}
@@ -211,7 +204,7 @@ const HighlightsPreview = () => {
               <div
                 key={index}
                 ref={addToRefs}
-                className={`absolute z-10 w-48 h-32 sm:w-32 sm:h-24 md:w-44 md:h-32 lg:w-60 lg:h-40 xl:w-80 xl:h-52 rounded-lg overflow-hidden border border-primary/40 shadow-[0_0_15px_rgba(58,191,188,0.2)] opacity-0 pointer-events-none ${initialClass}`}
+                className={`absolute z-10 w-28 h-20 sm:w-32 sm:h-24 md:w-44 md:h-32 lg:w-60 lg:h-40 xl:w-80 xl:h-52 rounded-lg overflow-hidden border border-primary/40 shadow-[0_0_15px_rgba(58,191,188,0.2)] opacity-0 pointer-events-none ${initialClass}`}
                 style={{
                   transform: "translate(0, 0)",
                   willChange: "transform, opacity",
@@ -228,8 +221,8 @@ const HighlightsPreview = () => {
 
           {/* Button */}
           <div
-            ref={buttonRef}
-            className="absolute z-50 translate-[-125.269px,0px] md:-translate-x-1/2 opacity-0 bottom-[10%] pointer-events-auto"
+            ref={desktopButtonRef}
+            className="absolute z-50 opacity-0 bottom-[40%] md:bottom-[5%] pointer-events-auto"
           >
             <TechButton
               to="/highlights"
