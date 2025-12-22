@@ -2,7 +2,7 @@ import React from 'react';
 
 const BehindTheScenes = () => {
   return (
-    <section className="py-20 ">
+    <section className="py-20 " style={{fontFamily: "Mechsuit, Inter, sans-serif"}}>
       <div className="container w-[90vw] m-auto mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-16 text-white">Behind The <span className="text-[#3abfbc]">Scenes</span></h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 h-96 md:h-[600px]">

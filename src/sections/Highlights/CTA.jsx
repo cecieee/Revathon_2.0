@@ -4,7 +4,7 @@ import DotGrid from '../../components/DotGrid';
 
 const CTA = () => {
   return (
-    <section className="relative py-32 overflow-hidden">
+    <section className="relative py-32 overflow-hidden" style={{fontFamily: "Mechsuit, Inter, sans-serif"}}>
       {/* Background Dot Grid Animation */}
       <div className="absolute inset-0 opacity-30">
         <DotGrid

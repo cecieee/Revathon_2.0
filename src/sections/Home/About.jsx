@@ -97,9 +97,9 @@ const About = () => {
           </div>
 
           {/* Image Section */}
-          <div className="hidden w-full md:w-1/2 about-image md:flex justify-center md:justify-end pb-10 md:pb-20 md:pr-10">
+          <div className="hidden w-full md:w-1/2 about-image md:flex justify-center md:justify-end pb-10 md:pb-20">
             <div className="relative rounded-xl overflow-hidden flex items-center justify-center max-w-md">
-              <video
+              {/* <video
                 src="/assets/images/video1.mp4"
                 autoPlay
                 loop
@@ -107,6 +107,11 @@ const About = () => {
                 controls={0}
                 playsInline
                 className="w-full md:h-[90vh] object-cover md:mt-20 mt-0"
+              /> */}
+              <img
+                src="/assets/images/aboutnobg.png"
+                alt="About Revathon 2.0"
+                className="w-full md:h-[90vh] md:mt-20 mt-0"
               />
             </div>
           </div>

@@ -3,7 +3,7 @@ import React from 'react';
 const Sponsors = () => {
   return (
     <section className="py-20">
-      <div className="container mx-auto px-4 text-center">
+      <div className="container mx-auto px-4 text-center" style={{fontFamily: "Mechsuit, Inter, sans-serif"}}>
         
         {/* Organizers Section */}
         <div className="mb-24">

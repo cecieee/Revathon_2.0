@@ -57,6 +57,7 @@ const StatCard = ({ label, value, prefix = "", suffix = "" }) => {
     <div
       ref={cardRef}
       className="relative group h-full border-2 border-white/20 rounded-lg p-[3px]"
+      style={{fontFamily: "Mechsuit, Inter, sans-serif"}}
     >
       {/* Animated Border Container */}
       <div className="absolute inset-0 rounded-lg overflow-hidden">
@@ -93,7 +94,7 @@ const StatCard = ({ label, value, prefix = "", suffix = "" }) => {
             </span>
           </h3>
           <div className="h-1px w-12 bg-zinc-800 my-4 group-hover:w-24 group-hover:bg-[#3abfbc] transition-all duration-300"></div>
-          <p className="text-gray-400 text-lg font-mono uppercase tracking-widest group-hover:text-white transition-colors">
+          <p className="text-gray-400 text-md uppercase tracking-widest group-hover:text-white transition-colors">
             {label}
           </p>
         </div>

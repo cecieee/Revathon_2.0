@@ -51,7 +51,7 @@ const Gallery = () => {
   return (
     <section className="overflow-hidden">
       <div ref={triggerRef}>
-        <div ref={sectionRef} className="grid grid-cols-2 gap-2 md:gap-0 md:flex md:flex-row w-[90vw] m-auto md:w-fit h-auto md:h-screen md:pt-12">
+        <div ref={sectionRef} className="grid grid-cols-2 gap-2 md:gap-0 md:flex md:flex-row w-[90vw] m-auto md:w-fit h-auto md:h-screen md:pt-12" style={{fontFamily: "Mechsuit, Inter, sans-serif"}}>
           <div className="col-span-2 h-[30vh] md:h-full w-full md:w-screen flex items-center justify-center px-4 md:px-20 shrink-0">
              <h2 className="text-2xl md:text-8xl font-bold text-white text-center"><span className='text-[#ff7046]'>Memories</span> <br/> from <span className="text-[#3abfbc]">Revathon 1.0</span></h2>
           </div>
