@@ -1,5 +1,6 @@
 import React from "react";
 import TechButton from "../../components/Button";
+import toast from 'react-hot-toast';
 
 export default function RegisterNow() {
   return (
@@ -63,7 +64,38 @@ export default function RegisterNow() {
         >
           REGISTER <span className="text-primary">NOW</span>
         </h2>
-        <TechButton size="lg">Click Here</TechButton>
+        <TechButton size="lg" onClick={() => {
+          toast.custom((t) => (
+            <div
+              className={`${
+                t.visible ? 'animate-enter' : 'animate-leave'
+              } max-w-md w-full pointer-events-auto`}
+            >
+              <div className="bg-black border border-[#3ABFBC] p-4 relative shadow-[0_0_20px_rgba(58,191,188,0.1)]">
+                  {/* Corner Accents */}
+                  <div className="absolute -top-[1px] -left-[1px] w-3 h-3 border-t-2 border-l-2 border-white"></div>
+                  <div className="absolute -top-[1px] -right-[1px] w-3 h-3 border-t-2 border-r-2 border-white"></div>
+                  <div className="absolute -bottom-[1px] -left-[1px] w-3 h-3 border-b-2 border-l-2 border-white"></div>
+                  <div className="absolute -bottom-[1px] -right-[1px] w-3 h-3 border-b-2 border-r-2 border-white"></div>
+                  
+                  <div className="flex items-center gap-4">
+                      <div className="flex-shrink-0">
+                          <span className="text-2xl">🚀</span>
+                      </div>
+                      
+                      <div className="flex-1">
+                          <h3 className="text-primary text-[10px] font-bold tracking-[0.2em] uppercase mb-1" style={{ fontFamily: 'Mechsuit' }}>
+                              SYSTEM NOTIFICATION
+                          </h3>
+                          <p className="text-white text-sm font-inter tracking-wide">
+                              Registration Starting Soon
+                          </p>
+                      </div>
+                  </div>
+              </div>
+            </div>
+          ));
+        }}>Click Here</TechButton>
       </div>
     </section>
   );
