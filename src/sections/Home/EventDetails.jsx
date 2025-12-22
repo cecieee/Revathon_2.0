@@ -249,7 +249,7 @@ const EventInfo = () => {
                                 <svg className="w-6 h-6 shrink-0 text-[#3abfbc]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
-                                <span className="text-xs md:text-lg">Overnight Event (12 Hours)</span>
+                                <span className="text-xs md:text-lg">Overnight Event (24 Hours)</span>
                             </div>
 
                             <div className="flex items-center gap-4 text-gray-300">
