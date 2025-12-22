@@ -75,7 +75,7 @@ export default function Sponsors() {
                       src={sponsor.logo}
                       alt={sponsor.alt}
                       loading="lazy"
-                      className="max-h-8 sm:max-h-10 md:max-h-12
+                      className="max-h-8 sm:max-h-10 md:max-h-18
                                  max-w-full object-contain
                                  brightness-110 contrast-110
                                  drop-shadow-[0_0_4px_rgba(58,191,188,0.3)]"
