@@ -1,15 +1,25 @@
 import React from "react";
+
 import TechButton from "../../components/Button";
 import toast from 'react-hot-toast';
 
 export default function RegisterNow() {
+  const handleRegisterClick = () => {
+    toast.info("Registration will open soon! Stay tuned!", {
+      position: "top-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+  };
   return (
     <section
       id="register"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-transparent py-14 sm:py-20"
-    >
+      className="relative flex items-center justify-center min-h-screen overflow-hidden bg-transparent py-14 sm:py-20">
       {/* Circuit Border Top Left */}
-      <div className="absolute top-0 left-0 w-24 h-24 sm:w-32 sm:h-32 md:w-64 md:h-64 text-white pointer-events-none opacity-80">
+      <div className="absolute top-0 left-0 w-24 h-24 text-white pointer-events-none sm:w-32 sm:h-32 md:w-64 md:h-64 opacity-80">
         <svg viewBox="0 0 100 100" fill="none" className="w-full h-full">
           <path d="M0 2 H30 L45 17 V45" stroke="currentColor" strokeWidth="1" />
           <circle cx="45" cy="45" r="2" fill="currentColor" />
@@ -32,7 +42,7 @@ export default function RegisterNow() {
       </div>
 
       {/* Circuit Border Bottom Right */}
-      <div className="absolute bottom-0 right-0 w-24 h-24 sm:w-32 sm:h-32 md:w-64 md:h-64 text-white pointer-events-none rotate-180 opacity-80">
+      <div className="absolute bottom-0 right-0 w-24 h-24 text-white rotate-180 pointer-events-none sm:w-32 sm:h-32 md:w-64 md:h-64 opacity-80">
         <svg viewBox="0 0 100 100" fill="none" className="w-full h-full">
           <path d="M0 2 H30 L45 17 V45" stroke="currentColor" strokeWidth="1" />
           <circle cx="45" cy="45" r="2" fill="currentColor" />
@@ -57,11 +67,10 @@ export default function RegisterNow() {
       {/* Background Blobs */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] sm:w-[420px] sm:h-[420px] md:w-[500px] md:h-[500px] bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full blur-[80px] sm:blur-[100px] -z-10 animate-pulse"></div>
 
-      <div className="container mx-auto px-4 sm:px-6 text-center relative z-10">
+      <div className="container relative z-10 px-4 mx-auto text-center sm:px-6">
         <h2
-          className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 sm:mb-12 tracking-tighter"
-          style={{ fontFamily: "Mechsuit" }}
-        >
+          className="mb-8 text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl sm:mb-12"
+          style={{ fontFamily: "Mechsuit" }}>
           REGISTER <span className="text-primary">NOW</span>
         </h2>
         <TechButton size="lg" onClick={() => {
@@ -87,7 +96,7 @@ export default function RegisterNow() {
                           <h3 className="text-primary text-[10px] font-bold tracking-[0.2em] uppercase mb-1" style={{ fontFamily: 'Mechsuit' }}>
                               SYSTEM NOTIFICATION
                           </h3>
-                          <p className="text-white text-sm font-inter tracking-wide">
+                          <p className="text-sm tracking-wide text-white font-inter">
                               Registration Starting Soon
                           </p>
                       </div>

@@ -5,7 +5,9 @@ import toast from 'react-hot-toast';
 
 const CTA = () => {
   return (
-    <section className="relative py-32 overflow-hidden" style={{fontFamily: "Mechsuit, Inter, sans-serif"}}>
+    <section
+      className="relative py-32 overflow-hidden"
+      style={{ fontFamily: "Mechsuit, Inter, sans-serif" }}>
       {/* Background Dot Grid Animation */}
       <div className="absolute inset-0 opacity-30">
         <DotGrid
@@ -17,14 +19,18 @@ const CTA = () => {
         />
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 text-center">
+      <div className="container relative z-10 px-4 mx-auto text-center">
         <h2 className="text-xl md:text-4xl font-bold mb-6 text-[#3abfbc] tracking-wider">
-          Ready for <br />  <span className="text-2xl md:text-6xl font-bold text-white mb-4 tracking-tighter">
-            REV-A-THON</span> <span className="text-[#ff7046] text-2xl md:text-6xl">2.0</span> ?
+          Ready for <br />{" "}
+          <span className="mb-4 text-2xl font-bold tracking-tighter text-white md:text-6xl">
+            REV-A-THON
+          </span>{" "}
+          <span className="text-[#ff7046] text-2xl md:text-6xl">2.0</span> ?
         </h2>
 
-        <p className="text-xl text-gray-200 mb-12 font-sans max-w-2xl mx-auto font-light tracking-wide">
-          Join the community of creators, developers, and visionaries. The next revolution starts with you.
+        <p className="max-w-2xl mx-auto mb-12 font-sans text-xl font-light tracking-wide text-gray-200">
+          Join the community of creators, developers, and visionaries. The next
+          revolution starts with you.
         </p>
 
         <TechButton to="/" size="lg" onClick={() => {
@@ -50,7 +56,7 @@ const CTA = () => {
                           <h3 className="text-[#3ABFBC] text-[10px] font-bold tracking-[0.2em] uppercase mb-1" style={{ fontFamily: 'Mechsuit' }}>
                               SYSTEM NOTIFICATION
                           </h3>
-                          <p className="text-white text-sm font-mono tracking-wide">
+                          <p className="font-mono text-sm tracking-wide text-white">
                               Registration Starting Soon
                           </p>
                       </div>
