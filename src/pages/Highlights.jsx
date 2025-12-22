@@ -13,7 +13,7 @@ function Highlights() {
     return(
         <>
             <Navbar />
-            <main className="highlights-page">
+            <main className="highlights-page hover:cursor-default">
                 <Hero />
                 <Stats />
                 <About />

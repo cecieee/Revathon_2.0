@@ -56,7 +56,7 @@ const StatCard = ({ label, value, prefix = "", suffix = "" }) => {
   return (
     <div
       ref={cardRef}
-      className="relative group h-full border-2 border-white/20 rounded-lg p-[3px]"
+      className="relative group h-full border-2 border-white/20 rounded-lg p-[3px] hover:cursor-default"
       style={{fontFamily: "Mechsuit, Inter, sans-serif"}}
     >
       {/* Animated Border Container */}
