@@ -1,8 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import TechButton from "../../components/Button";
-import { toast } from "react-toastify";
+import TechButton from "../../components/Button";import toast from 'react-hot-toast';
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
@@ -114,16 +113,41 @@ const Hero = () => {
             <TechButton
               size="lg"
               onClick={() => {
-                toast.info("Registration will open soon! Stay tuned!", {
-                  position: "top-right",
-                  autoClose: 4000,
-                  hideProgressBar: false,
-                  closeOnClick: true,
-                  pauseOnHover: true,
-                  draggable: true,
-                });
-           
-              }}>
+                document
+                  .getElementById("register")
+                  ?.scrollIntoView({ behavior: "smooth" });
+                toast.custom((t) => (
+                  <div
+                    className={`${
+                      t.visible ? 'animate-enter' : 'animate-leave'
+                    } max-w-md w-full pointer-events-auto`}
+                  >
+                    <div className="bg-black border border-[#3ABFBC] p-4 relative shadow-[0_0_20px_rgba(58,191,188,0.1)]">
+                        {/* Corner Accents */}
+                        <div className="absolute -top-[1px] -left-[1px] w-3 h-3 border-t-2 border-l-2 border-[#3ABFBC]"></div>
+                        <div className="absolute -top-[1px] -right-[1px] w-3 h-3 border-t-2 border-r-2 border-[#3ABFBC]"></div>
+                        <div className="absolute -bottom-[1px] -left-[1px] w-3 h-3 border-b-2 border-l-2 border-[#3ABFBC]"></div>
+                        <div className="absolute -bottom-[1px] -right-[1px] w-3 h-3 border-b-2 border-r-2 border-[#3ABFBC]"></div>
+                        
+                        <div className="flex items-center gap-4">
+                            <div className="flex-shrink-0">
+                                <span className="text-2xl">🚀</span>
+                            </div>
+                            
+                            <div className="flex-1">
+                                <h3 className="text-primary text-[10px] font-bold tracking-[0.2em] uppercase mb-1" style={{ fontFamily: 'Mechsuit' }}>
+                                    SYSTEM NOTIFICATION
+                                </h3>
+                                <p className="font-mono text-sm tracking-wide text-white">
+                                    Registration Starting Soon
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                ));
+              }}
+            >
               Register Now
             </TechButton>
           </div>
