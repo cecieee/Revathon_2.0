@@ -45,14 +45,19 @@ const HighlightsPreview = () => {
             },
           });
 
-          // 1. Para appears
-          tl.to(textRef.current, {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power2.out",
-          })
-            // 3. Para moves up and fades out
+          // 1. Initial Delay
+          tl.to({}, { duration: 1 })
+            // 2. Para appears
+            .to(textRef.current, {
+              opacity: 1,
+              y: 0,
+              duration: 1,
+              ease: "power2.out",
+            })
+            // 3. Pause for reading
+            .to({}, { duration: 1 })
+            .add("exit")
+            // 4. Para moves up and fades out
             .to(
               textRef.current,
               {
@@ -120,7 +125,7 @@ const HighlightsPreview = () => {
                 duration: 2,
                 ease: "linear",
               },
-              "exit"
+              "exit+=0.5"
             )
 
             .fromTo(
@@ -145,11 +150,11 @@ const HighlightsPreview = () => {
   };
 
   return (
-    <div ref={containerRef} className="relative w-full h-[250vh]">
+    <div ref={containerRef} className="relative w-full h-[300vh]" style={{fontFamily: "Mechsuit, sans-serif"}}>
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <section
           ref={sectionRef}
-          className="relative h-full w-full bg-black flex flex-col items-center justify-center z-10 overflow-hidden"
+          className="relative h-full w-full flex flex-col items-center justify-center z-10 overflow-hidden"
         >
           
           {/* Heading & Text */}
@@ -159,7 +164,7 @@ const HighlightsPreview = () => {
           >
             {/* Title Group */}
             <div className="relative w-full flex flex-col items-center">
-                <h2 className="text-2xl sm:3xl md:text-7xl text-center font-bold text-white tracking-wide">
+                <h2 className="text-2xl sm:3xl md:text-7xl text-center font-bold font- text-white tracking-wide">
                   REV-A-THON <span className="text-primary">1.0</span>
                 </h2>
                 <p
@@ -171,7 +176,7 @@ const HighlightsPreview = () => {
             </div>
 
             {/* Text Group */}
-            <div className="relative mt-6 flex flex-col items-center w-full px-4">
+            <div className="relative mt-6 flex flex-col items-center w-full px-4" style={{fontFamily: "Inter, sans-serif"}}>
                 <div className="relative max-w-2xl">
                     <p
                       ref={textRef}
@@ -222,7 +227,7 @@ const HighlightsPreview = () => {
           {/* Button */}
           <div
             ref={desktopButtonRef}
-            className="absolute z-50 opacity-0 bottom-[40%] md:bottom-[5%] pointer-events-auto"
+            className="absolute z-50 opacity-0 bottom-[27%] md:bottom-[5%] pointer-events-auto"
           >
             <TechButton
               to="/highlights"

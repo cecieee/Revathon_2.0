@@ -8,18 +8,18 @@ const TechButton = ({ children, onClick, className = "", size = "md", to, href }
         lg: "px-6 sm:px-12 py-3 sm:py-4 text-base sm:text-xl",
     };
 
-    const baseClasses = `group relative inline-flex items-center justify-center ${sizeClasses[size]} bg-transparent border border-white/20 overflow-hidden cursor-pointer hover:bg-white hover:border-white transition-all duration-300 ${className}`;
+    const baseClasses = `group/btn relative inline-flex items-center justify-center ${sizeClasses[size]} bg-transparent border border-white/20 overflow-hidden cursor-pointer hover:bg-white hover:border-white transition-all duration-300 ${className}`;
 
     const innerContent = (
         <>
-            <span className="relative text-white font-mono tracking-widest uppercase group-hover:text-black transition-colors duration-300 whitespace-nowrap">
+            <span className="relative text-white font-mono tracking-widest uppercase group-hover/btn:text-black transition-colors duration-300 whitespace-nowrap">
                 {children}
             </span>
             <div className="absolute top-0 right-0 p-1">
-                <div className="w-1 h-1 bg-white group-hover:bg-black transition-colors duration-300"></div>
+                <div className="w-1 h-1 bg-white group-hover/btn:bg-black transition-colors duration-300"></div>
             </div>
             <div className="absolute bottom-0 left-0 p-1">
-                <div className="w-1 h-1 bg-white group-hover:bg-black transition-colors duration-300"></div>
+                <div className="w-1 h-1 bg-white group-hover/btn:bg-black transition-colors duration-300"></div>
             </div>
         </>
     );

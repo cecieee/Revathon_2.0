@@ -5,6 +5,8 @@ module.exports = {
     extend: {
       fontFamily: {
         mechsuit: ["Mechsuit"],
+        sans: ["Outfit", "sans-serif"],
+        orbitron: ["Orbitron", "sans-serif"],
       },
       colors: {
         primary: "#FF7046",

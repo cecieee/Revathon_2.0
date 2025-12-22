@@ -39,7 +39,7 @@ export default function Organizers() {
 
       <section
         className="relative overflow-hidden py-10 sm:py-12 md:py-14
-                   text-center bg-black"
+                   text-center bg-transparent"
         aria-labelledby="organizers-heading"
       >
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
@@ -53,6 +53,7 @@ export default function Organizers() {
                        text-white
                        drop-shadow-[0_0_4px_rgba(58,191,188,0.35)]
                        animate-soft-pulse"
+            style={{ fontFamily: 'Mechsuit, sans-serif' }}
           >
             ORGANIZERS
           </h2>

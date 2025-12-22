@@ -21,10 +21,15 @@
   --font-primary: "Mechsuit", sans-serif;
 }
 
-body {
+html {
   background-color: var(--background);
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: transparent;
   color: #ffffff;
-  font-family: var(--font-primary);
+  font-family: "Outfit", sans-serif;
 }
 
 /* html {
@@ -200,13 +205,6 @@ body {
   pointer-events: none;
 }
 
-@font-face {
-  font-family: "Mechsuit";
-  src: url("/font/Mechsuit.otf") format("opentype");
-  font-weight: normal;
-  font-style: normal;
-}
-
 :root {
   --primary: #ff7046;
   --secondary: #3abfbc;
@@ -216,4 +214,14 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+.hero-text-shadow {
+  text-shadow: 1px 1px 0 #3abfbc;
+}
+
+@media (min-width: 768px) {
+  .hero-text-shadow {
+    text-shadow: 2px 2px 0 #3abfbc;
+  }
 }

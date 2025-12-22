@@ -79,7 +79,9 @@ const About = () => {
           {/* Text Section */}
           <div className="md:w-1/2 justify-center flex md:pr-10 w-[83vw] m-auto p-3">
             <div className="max-w-xl">
-              <h2 className="text-xl md:text-4xl font-bold text-[#3abfbc] mb-12 about-title tracking-tighter">
+              <h2 className="text-xl md:text-4xl font-bold text-[#3abfbc] mb-12 about-title tracking-tighter"
+                style={{ fontFamily: 'Mechsuit, sans-serif' }}
+              >
                 ABOUT <br />
                 <span className="whitespace-nowrap">
                   <span className="text-white text-2xl tracking-wide">REV-A-THON</span> <span className="text-[#ff7046]"> 2.0</span>
