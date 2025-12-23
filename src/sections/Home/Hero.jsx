@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import TechButton from "../../components/Button";import toast from 'react-hot-toast';
+import TechButton from "../../components/Button"; import toast from 'react-hot-toast';
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
@@ -118,31 +118,34 @@ const Hero = () => {
                   ?.scrollIntoView({ behavior: "smooth" });
                 toast.custom((t) => (
                   <div
-                    className={`${
-                      t.visible ? 'animate-enter' : 'animate-leave'
-                    } max-w-md w-full pointer-events-auto`}
+                    className={`${t.visible ? 'animate-enter' : 'animate-leave'
+                      } max-w-md w-full pointer-events-auto`}
                   >
                     <div className="bg-black border border-[#3ABFBC] p-4 relative shadow-[0_0_20px_rgba(58,191,188,0.1)]">
-                        {/* Corner Accents */}
-                        <div className="absolute -top-[1px] -left-[1px] w-3 h-3 border-t-2 border-l-2 border-[#3ABFBC]"></div>
-                        <div className="absolute -top-[1px] -right-[1px] w-3 h-3 border-t-2 border-r-2 border-[#3ABFBC]"></div>
-                        <div className="absolute -bottom-[1px] -left-[1px] w-3 h-3 border-b-2 border-l-2 border-[#3ABFBC]"></div>
-                        <div className="absolute -bottom-[1px] -right-[1px] w-3 h-3 border-b-2 border-r-2 border-[#3ABFBC]"></div>
-                        
-                        <div className="flex items-center gap-4">
-                            <div className="flex-shrink-0">
-                                <span className="text-2xl">🚀</span>
-                            </div>
-                            
-                            <div className="flex-1">
-                                <h3 className="text-primary text-[10px] font-bold tracking-[0.2em] uppercase mb-1" style={{ fontFamily: 'Mechsuit' }}>
-                                    SYSTEM NOTIFICATION
-                                </h3>
-                                <p className="font-mono text-sm tracking-wide text-white">
-                                    Registration Starting Soon
-                                </p>
-                            </div>
+                      {/* Corner Accents */}
+                      <div className="absolute -top-[1px] -left-[1px] w-3 h-3 border-t-2 border-l-2 border-[#3ABFBC]"></div>
+                      <div className="absolute -top-[1px] -right-[1px] w-3 h-3 border-t-2 border-r-2 border-[#3ABFBC]"></div>
+                      <div className="absolute -bottom-[1px] -left-[1px] w-3 h-3 border-b-2 border-l-2 border-[#3ABFBC]"></div>
+                      <div className="absolute -bottom-[1px] -right-[1px] w-3 h-3 border-b-2 border-r-2 border-[#3ABFBC]"></div>
+
+                      <div className="flex items-center gap-4">
+                        <div className="flex-shrink-0">
+                          <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-[#FF7046]" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+                            <path d="M12 9v4" />
+                            <path d="M12 17h.01" />
+                          </svg>
                         </div>
+
+                        <div className="flex-1">
+                          <h3 className="text-primary text-[10px] font-bold tracking-[0.2em] uppercase mb-1" style={{ fontFamily: 'Mechsuit' }}>
+                            SYSTEM NOTIFICATION
+                          </h3>
+                          <p className="font-mono text-sm tracking-wide text-white">
+                            Registration Starting Soon
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 ));
