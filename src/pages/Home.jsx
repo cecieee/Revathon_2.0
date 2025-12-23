@@ -25,7 +25,7 @@ const Home = () => {
       <StarBackground />
       {isLoading && <GlitchLoader onComplete={() => setIsLoading(false)} />}
       {!isLoading && <Navbar />}
-      <Robot3D />
+      {!isLoading && <Robot3D />}
       <main className="relative z-10">
         <Suspense fallback={null}>
           <Hero />
