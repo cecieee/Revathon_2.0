@@ -1,0 +1,11 @@
+{
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
+  ],
+  "redirects" : [
+    { "source": "/CA_Activities", "destination": "https://docs.google.com/forms/d/1sGssTJvbFuGD-4N5HK_qm5cbPdA2nh9sJbDU4_Y4VJ8/edit?usp=drivesdk"},
+    { "source":"/Volunteer_call","destination":"https://forms.gle/BxgLeD97JqjdP6x98"}
+  ]
+
+
+} 
