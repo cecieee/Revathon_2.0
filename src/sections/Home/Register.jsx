@@ -38,7 +38,7 @@ const BrutalistCard = ({ title, price, subtitle, color }) => {
             31 JAN<br />01 FEB
           </span>
           <span className="text-[8px] font-bold font-mono opacity-80 leading-tight mt-1">
-            CEC<br />CHENGANNUR
+            CE<br />CHENGANNUR
           </span>
         </div>
 
