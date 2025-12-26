@@ -74,39 +74,7 @@ export default function RegisterNow() {
           REGISTER <span className="text-primary">NOW</span>
         </h2>
         <TechButton size="lg" onClick={() => {
-          toast.custom((t) => (
-            <div
-              className={`${t.visible ? 'animate-enter' : 'animate-leave'
-                } max-w-md w-full pointer-events-auto`}
-            >
-              <div className="bg-black border border-[#3ABFBC] p-4 relative shadow-[0_0_20px_rgba(58,191,188,0.1)]">
-                {/* Corner Accents */}
-                <div className="absolute -top-[1px] -left-[1px] w-3 h-3 border-t-2 border-l-2 border-white"></div>
-                <div className="absolute -top-[1px] -right-[1px] w-3 h-3 border-t-2 border-r-2 border-white"></div>
-                <div className="absolute -bottom-[1px] -left-[1px] w-3 h-3 border-b-2 border-l-2 border-white"></div>
-                <div className="absolute -bottom-[1px] -right-[1px] w-3 h-3 border-b-2 border-r-2 border-white"></div>
-
-                <div className="flex items-center gap-4">
-                  <div className="flex-shrink-0">
-                    <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-[#FF7046]" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
-                      <path d="M12 9v4" />
-                      <path d="M12 17h.01" />
-                    </svg>
-                  </div>
-
-                  <div className="flex-1">
-                    <h3 className="text-primary text-[10px] font-bold tracking-[0.2em] uppercase mb-1" style={{ fontFamily: 'Mechsuit' }}>
-                      SYSTEM NOTIFICATION
-                    </h3>
-                    <p className="text-sm tracking-wide text-white font-inter">
-                      Registration Starting Soon
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ));
+          window.open("https://forms.gle/z2ow4dzWqWZJ63o86", "_blank");
         }}>Click Here</TechButton>
       </div>
     </section>
