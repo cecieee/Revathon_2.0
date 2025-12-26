@@ -94,7 +94,7 @@ const StatCard = ({ label, value, prefix = "", suffix = "" }) => {
             </span>
           </h3>
           <div className="h-1px w-12 bg-zinc-800 my-4 group-hover:w-24 group-hover:bg-[#3abfbc] transition-all duration-300"></div>
-          <p className="text-gray-400 text-md uppercase tracking-widest group-hover:text-white transition-colors">
+          <p className="text-gray-400 text-xs md:text-md uppercase tracking-widest group-hover:text-white transition-colors">
             {label}
           </p>
         </div>
