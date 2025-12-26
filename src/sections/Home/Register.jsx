@@ -42,6 +42,7 @@ const BrutalistCard = ({ title, price, subtitle, color }) => {
           </span>
         </div>
 
+        {/* Barcode / Admit One */}
         <div className="mt-0 md:mt-auto relative z-10 flex flex-col items-end md:items-center justify-center">
           <span className="hidden md:block text-[8px] font-mono mb-1 text-center font-bold">SCAN ME</span>
           <div className="w-24 md:w-full">
@@ -76,17 +77,10 @@ const BrutalistCard = ({ title, price, subtitle, color }) => {
           </p>
         </div>
 
-        <div className="mt-auto mb-2 flex items-end justify-between border-t border-white/10 pt-3">
+        <div className="mt-auto flex items-end justify-between border-t border-white/10 pt-3">
           <span className="text-3xl md:text-4xl font-black text-white font-mechsuit tracking-tighter">
             ₹{price}
           </span>
-          <TechButton
-            size="sm"
-            onClick={() => window.open("https://forms.gle/z2ow4dzWqWZJ63o86", "_blank")}
-            className={`!py-1.5 !px-3 !text-[10px] md:!text-xs font-bold uppercase transition-colors rounded-none ${isSecondary ? '!bg-secondary !text-black hover:!bg-white' : '!bg-primary !text-white hover:!bg-white hover:!text-black'}`}
-          >
-            Register
-          </TechButton>
         </div>
       </div>
     </div>
@@ -112,10 +106,19 @@ export default function RegisterNow() {
           </h2>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-6 md:gap-8 max-w-[900px] mx-auto">
-          <BrutalistCard title="IEEE RAS MEMBERS" price="100" color="secondary" />
-          <BrutalistCard title="IEEE MEMBERS" price="150" color="primary" />
-          <BrutalistCard title="NON IEEE MEMBERS" price="200" color="secondary" />
+        <div className="flex flex-wrap justify-center gap-6 md:gap-8 max-w-[900px] mx-auto mb-16">
+          <BrutalistCard title="IEEE RAS MEMBERS" subtitle="Members Only" price="100" color="secondary" />
+          <BrutalistCard title="IEEE MEMBERS" subtitle="Standard Access" price="150" color="primary" />
+          <BrutalistCard title="NON IEEE MEMBERS" subtitle="Open Access" price="200" color="secondary" />
+        </div>
+
+        <div className="text-center mb-6">
+          <TechButton
+            onClick={() => window.open("https://forms.gle/z2ow4dzWqWZJ63o86", "_blank")}
+            className="!text-xl !py-4 !px-12 !bg-black !text-white hover:!bg-white hover:!text-black uppercase tracking-widest font-black"
+          >
+            Register Now
+          </TechButton>
         </div>
       </div>
 
