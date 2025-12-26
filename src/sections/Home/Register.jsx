@@ -64,7 +64,7 @@ const BrutalistCard = ({ title, price, subtitle, color }) => {
         </div>
 
         <div className="relative z-10 mb-2">
-          <h3 className={`text-2xl md:text-3xl font-black uppercase leading-[0.85] font-mechsuit text-white mb-2 break-words`}>
+          <h3 className={`text-xl md:text-[18px] font-black uppercase font-mechsuit text-white mb-2  break-words`}>
             {title.split(' ').map((word, i) => (
               <span key={i} className={i === 0 ? accentColor : 'text-white'}>
                 {word} {' '}
@@ -78,7 +78,7 @@ const BrutalistCard = ({ title, price, subtitle, color }) => {
         </div>
 
         <div className="mt-auto flex items-end justify-between border-t border-white/10 pt-3">
-          <span className="text-3xl md:text-4xl font-black text-white font-mechsuit tracking-tighter">
+          <span className="text-3xl md:text-2xl tracking-widest font-black text-white font-mechsuit">
             ₹{price}
           </span>
         </div>
@@ -106,8 +106,8 @@ export default function RegisterNow() {
           </h2>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-6 md:gap-8 max-w-[900px] mx-auto mb-16">
-          <BrutalistCard title="IEEE RAS MEMBERS" subtitle="Members Only" price="100" color="secondary" />
+        <div className="flex flex-wrap justify-center gap-6 md:gap-8 max-w-[900px] mx-auto mb-16" style={{fontFamily: "Mechsuit, Inter, sans-serif"}}>
+          <BrutalistCard title="IEEE RAS MEMBERS" subtitle="Members Only" price="100" color="secondary" className="text-md" />
           <BrutalistCard title="IEEE MEMBERS" subtitle="Standard Access" price="150" color="primary" />
           <BrutalistCard title="NON IEEE MEMBERS" subtitle="Open Access" price="200" color="secondary" />
         </div>
