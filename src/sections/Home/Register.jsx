@@ -113,9 +113,9 @@ export default function RegisterNow() {
         </div>
 
         <div className="flex flex-wrap justify-center gap-6 md:gap-8 max-w-[900px] mx-auto">
-          <BrutalistCard title="IEEE RAS MEMBERS" subtitle="Members Only" price="100" color="secondary" />
-          <BrutalistCard title="IEEE MEMBERS" subtitle="Standard Access" price="150" color="primary" />
-          <BrutalistCard title="NON IEEE MEMBERS" subtitle="Open Access" price="200" color="secondary" />
+          <BrutalistCard title="IEEE RAS MEMBERS" price="100" color="secondary" />
+          <BrutalistCard title="IEEE MEMBERS" price="150" color="primary" />
+          <BrutalistCard title="NON IEEE MEMBERS" price="200" color="secondary" />
         </div>
       </div>
 
