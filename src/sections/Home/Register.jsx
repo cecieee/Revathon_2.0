@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { createPortal } from "react-dom";
 import TechButton from "../../components/Button";
 
 const BarcodeScanner = () => (
@@ -88,6 +89,8 @@ const BrutalistCard = ({ title, price, subtitle, color }) => {
 };
 
 export default function RegisterNow() {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <section
       id="register"
@@ -114,12 +117,49 @@ export default function RegisterNow() {
 
         <div className="text-center mb-6">
           <TechButton
-            onClick={() => window.open("https://forms.gle/z2ow4dzWqWZJ63o86", "_blank")}
+            onClick={() => setShowModal(true)}
             className="!text-xl !py-4 !px-12 !bg-black !text-white hover:!bg-white hover:!text-black uppercase tracking-widest font-black"
           >
             Register Now
           </TechButton>
         </div>
+
+        {showModal && createPortal(
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+            <div className="bg-zinc-900 border border-zinc-800 p-6 max-w-md w-full relative shadow-2xl">
+              <h3 className="text-2xl font-mechsuit text-primary mb-4 tracking-wider"  style={{fontFamily: "Mechsuit, Inter, sans-serif"}}>TERMS <span className="text-white">&</span> <span className="text-secondary">CONDITIONS</span></h3>
+              <div className="text-gray-300 mb-6 max-h-[60vh] overflow-y-auto font-inter text-xl space-y-3 pr-3">
+                <p>Membership status of participants will be considered as per their IEEE membership validity 
+                  at the time of event registration.</p>
+                <p>The IEEE membership status of participants will be considered only as on the date of their event registration for the purpose of determining the 
+                  applicable registration fee category.</p>
+                <p>Participants who complete their registration while their IEEE/RAS 
+                  membership is valid will be eligible for IEEE/RAS Member pricing. 
+                  Any subsequent change, expiry, or non-renewal of membership after successful registration will not affect the fee category already applied.</p>
+                <p>Participants whose IEEE membership is not valid at the time of registration must register under the Non-IEEE Member pricing category unless the membership is 
+                  renewed prior to registration.</p>
+              </div>
+              <div className="flex gap-4 justify-end items-center">
+                <button 
+                  onClick={() => setShowModal(false)}
+                  className="px-4 py-2 text-sm font-bold text-gray-400 hover:text-white transition-colors font-mono uppercase"
+                >
+                  Cancel
+                </button>
+                <TechButton
+                  onClick={() => {
+                    window.open("https://forms.gle/z2ow4dzWqWZJ63o86", "_blank");
+                    setShowModal(false);
+                  }}
+                  className="!text-xs !py-2 !px-4 !bg-primary !text-black hover:!bg-white"
+                >
+                  AGREE & PROCEED
+                </TechButton>
+              </div>
+            </div>
+          </div>,
+          document.body
+        )}
       </div>
 
       <style>{`
