@@ -89,14 +89,14 @@ export default function Hackathon() {
 
   return (
     <div className="relative flex flex-col items-center justify-between w-full h-screen overflow-hidden bg-black">
-      <div className="z-10 flex items-center justify-center w-screen text-2xl text-white h-28 font-mech bg-primary">
+      <div className="z-10 flex items-center justify-center w-screen text-2xl text-white bg-slate-900 h-28 font-mech">
         <Banner />
       </div>
 
       <div className="bg-[url('/assets/images/pattern.jpeg')] absolute w-full h-full z-0 opacity-30 bg-cover  top-0 left-0 "></div>
 
       <Countdown />
-      <div className="z-10 flex items-center justify-center w-screen text-2xl text-white h-28 font-mech bg-primary">
+      <div className="z-10 flex items-center justify-center w-screen text-2xl text-white h-28 font-mech bg-slate-900">
         <Banner reverse={true} />
       </div>
       <div

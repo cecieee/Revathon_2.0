@@ -7,6 +7,7 @@ function Banner({ reverse = false }) {
     {src:"/assets/images/IEEE SB CEC.png", alt:"IEEE SB CEC"},
     {src:"/assets/images/RAS.png", alt:"RAS"},
     {src:"/assets/images/quadratech.png", alt:"Quadratech"},
+  {src:"/organisers-sponsors/Zentroniq.png", alt:"Zentroniq"},
 
   ]
   // const logos = [IEEE_LOGO, IEEE_SB_LOGO, RAS_LOGO, Quadratech, Spinners];
@@ -48,7 +49,7 @@ function Banner({ reverse = false }) {
       </div>
       <div
         className={
-          "absolute flex font-primary items-center justify-center duration-300 delay-100 font-mech overflow-hidden whitespace-nowrap top-0 left-[50%] z-10  h-full bg-primary transition-all " +
+          "absolute flex font-primary items-center justify-center duration-300 delay-100 font-mech overflow-hidden whitespace-nowrap top-0 left-[50%] z-10  h-full bg-slate-900 transition-all " +
           (banner ? "w-full -translate-x-[50%]" : "w-0")
         }>
         <p>REV-A-THON 2.0</p>
