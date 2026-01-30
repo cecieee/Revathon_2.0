@@ -1,9 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #ff7046;
+  --color-primary: #d65e3a;
   --color-secondary: #3abfbc;
   --color-background: #0b0b0b;
+  --font-primary: "Mechsuit", sans-serif;
+  --animate-scroll: scroll 20s linear infinite;
+  --animate-reverse: scroll 20s linear infinite reverse;
 }
 
 @font-face {
@@ -14,8 +17,17 @@
   font-display: swap;
 }
 
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
 :root {
-  --primary: #ff7046;
+  --primary: #d65e3a;
   --secondary: #3abfbc;
   --background: #0b0b0b;
   --font-primary: "Mechsuit", sans-serif;
